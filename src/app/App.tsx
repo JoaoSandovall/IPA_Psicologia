@@ -625,7 +625,7 @@ export default function App() {
     ? "bg-[#161E1F] border-b border-white/5"
     : scrolled
     ? "bg-[#F4F1EA]/95 backdrop-blur-md shadow-sm border-b border-[#1A2118]/5"
-    : "bg-transparent"; // Totalmente transparente no topo zero
+    : "bg-transparent";
 
   return (
     <div className="min-h-screen bg-background text-foreground" style={{ fontFamily: "'Lato', sans-serif" }}>
