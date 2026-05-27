@@ -876,13 +876,13 @@ export default function App() {
               ser quem você é.
             </h2>
             <div className="space-y-4 text-base leading-relaxed" style={{ color: "#3A4838", fontWeight: 300 }}>
-              <p >
+              <p className="indent-8">
                 A IPA está no mercado há mais de 2 décadas, nasceu de um sonho de mulheres empreendedoras, estudiosas e que sempre tiveram em sua história a valorização do ser humano. O IPA, trata-se de um instituto diferenciado, pois, a justificativa de nossa existência é o ser humano em sua totalidade, tanto valorizamos os nossos clientes como nossos profissionais e temos um ambiente que entrega resultados.
-              <br />
-              <br />
-Em nosso ambiente de trabalho apoiado na valorização da pessoa e com base científica, levamos nossos clientes a possibilidade de viverem a experiência de cura, de bem-estar e de consciência do seu estado atual e do estado desejado, conferindo ações, produtividade e realização. 
-              <br />
-              <br />
+              </p>
+              <p className="indent-8">
+                Em nosso ambiente de trabalho apoiado na valorização da pessoa e com base científica, levamos nossos clientes a possibilidade de viverem a experiência de cura, de bem-estar e de consciência do seu estado atual e do estado desejado, conferindo ações, produtividade e realização. 
+              </p>
+              <p className="indent-8">
                 Atendemos a partir de 2 anos de idade, oferecemos palestras, treinamentos e encontros com os mais diversos grupos.
               </p>
             </div>
