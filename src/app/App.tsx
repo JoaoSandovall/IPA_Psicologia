@@ -9,9 +9,19 @@ import {
   Heart, Shield, Users, Star, Search, Camera,
 } from "lucide-react";
 
+import fotoCamila from "@/imports/Camila Rodrigues.jpeg";
+import fotoGiovane from "@/imports/Giovane Tapia.jpeg";
+import fotoMaira from "@/imports/Maira Muniz.png";
+import fotoMatheus from "@/imports/Matheus Leon.jpeg";
+import fotoSamara from "@/imports/Samara Pires.jpeg";
+import fotoVitoria from "@/imports/Vitoria Shalders.jpeg";
+import fotoYan from "@/imports/Yan Ribeiro.jpeg";
+
+
 const psychologists = [
   {
     name: "Camila Rodrigues",
+    image: fotoCamila,
     title: "Psicóloga Clínica",
     crp: "CRP 01/26973",
     specialty: "Psicoterapia Infantil e do Adolescente",
@@ -22,6 +32,7 @@ const psychologists = [
   },
   {
     name: "Giovani Tápia",
+    image: fotoGiovane,
     title: "Psicólogo Clínico",
     crp: "CRP 01/29959",
     specialty: "Gestalt-terapia",
@@ -32,6 +43,7 @@ const psychologists = [
   },
   {
     name: "Maira Muniz",
+    image: fotoMaira,
     title: "Psicóloga Clínica",
     crp: "CRP 01/31337",
     specialty: "Psicodinâmica",
@@ -42,6 +54,7 @@ const psychologists = [
   },
   {
     name: "Matheus Leon",
+    image: fotoMatheus,
     title: "Psicólogo Clínico",
     crp: "CRP 01/22177",
     specialty: "Neuropsicologia",
@@ -52,6 +65,7 @@ const psychologists = [
   },
   {
     name: "Samara Pires",
+    image: fotoSamara,
     title: "Psicóloga Clínica",
     crp: "CRP 01/20921",
     specialty: "Terapia Cognitivo-Comportamental",
@@ -62,6 +76,7 @@ const psychologists = [
   },
   {
     name: "Vitória Shalders",
+    image: fotoVitoria,
     title: "Psicóloga Clínica",
     crp: "CRP 01/25620",
     specialty: "Psicanálise Clínica",
@@ -72,6 +87,7 @@ const psychologists = [
   },
   {
     name: "Yan Ribeiro",
+    image: fotoYan,
     title: "Psicólogo Clínico",
     crp: "CRP 01/22881",
     specialty: "Psicologia Analítica Junguiana",
@@ -877,7 +893,7 @@ export default function App() {
             </h2>
             <div className="space-y-4 text-base leading-relaxed" style={{ color: "#3A4838", fontWeight: 300 }}>
               <p className="indent-8">
-                A IPA está no mercado há mais de 2 décadas, nasceu de um sonho de mulheres empreendedoras, estudiosas e que sempre tiveram em sua história a valorização do ser humano. O IPA, trata-se de um instituto diferenciado, pois, a justificativa de nossa existência é o ser humano em sua totalidade, tanto valorizamos os nossos clientes como nossos profissionais e temos um ambiente que entrega resultados.
+                O IPA está no mercado há mais de 2 décadas, nasceu de um sonho de mulheres empreendedoras, estudiosas e que sempre tiveram em sua história a valorização do ser humano. O IPA, trata-se de um instituto diferenciado, pois, a justificativa de nossa existência é o ser humano em sua totalidade, tanto valorizamos os nossos clientes como nossos profissionais e temos um ambiente que entrega resultados.
               </p>
               <p className="indent-8">
                 Em nosso ambiente de trabalho apoiado na valorização da pessoa e com base científica, levamos nossos clientes a possibilidade de viverem a experiência de cura, de bem-estar e de consciência do seu estado atual e do estado desejado, conferindo ações, produtividade e realização. 
@@ -1027,7 +1043,17 @@ export default function App() {
                 className="flex-shrink-0 flex flex-col rounded-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
                 style={{ width: 268, background: "#fff", border: "1px solid rgba(26,33,24,0.09)", cursor: "grab" }}
               >
-                <PhotoPlaceholder name={p.name} />
+                {/* Renderização condicional da foto */}
+                {p.image ? (
+                  <img
+                    src={p.image}
+                    alt={p.name}
+                    className="w-full object-cover"
+                    style={{ height: 260 }}
+                  />
+                ) : (
+                  <PhotoPlaceholder name={p.name} />
+                )}
 
                 <div className="flex flex-col flex-1 p-5">
 
