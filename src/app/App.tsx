@@ -1048,14 +1048,23 @@ export default function App() {
                   <img
                     src={p.image}
                     alt={p.name}
-                    className="w-full object-cover"
+                    draggable={false}
+                    className="w-full object-cover select-none"
                     style={{ height: 260 }}
                   />
                 ) : (
                   <PhotoPlaceholder name={p.name} />
                 )}
 
-                <div className="flex flex-col flex-1 p-5">
+                {/* ── Detalhe de Separação ── */}
+                <div className="w-full flex justify-center -mt-[2px] relative z-10">
+                  <div 
+                    className="w-1/2 h-[3px] rounded-full shadow-sm" 
+                    style={{ background: "#4A7259" }} 
+                  />
+                </div>
+
+      <div className="flex flex-col flex-1 p-5">
 
                   {/* Identity */}
                   <div className="mb-4">
