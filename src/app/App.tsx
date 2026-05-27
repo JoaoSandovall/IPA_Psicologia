@@ -621,99 +621,149 @@ export default function App() {
   };
 
   const onConvenios = page === "convenios";
-  const navTextColor = onConvenios ? "#C8D8C2" : "#1A2118";
   const navBg = onConvenios
     ? "bg-[#161E1F] border-b border-white/5"
     : scrolled
-    ? "bg-card/95 backdrop-blur-sm shadow-sm border-b border-border"
-    : "bg-transparent";
+    ? "bg-[#F4F1EA]/95 backdrop-blur-md shadow-sm border-b border-[#1A2118]/5"
+    : "bg-transparent"; // Totalmente transparente no topo zero
 
   return (
     <div className="min-h-screen bg-background text-foreground" style={{ fontFamily: "'Lato', sans-serif" }}>
 
       {/* ── NAV ── */}
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${navBg}`}>
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-20">
+      <header 
+        className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 will-change-transform ${navBg}`}
+        style={{
+          boxShadow: scrolled ? "0 1px 3px 0 rgba(0, 0, 0, 0.05)" : "none",
+        }}
+      >
+        <div className="max-w-7xl mx-auto px-6 lg:px-10 flex h-20 w-full">
 
-          <button onClick={goHome} className="flex items-center">
-            <ImageWithFallback
-              src={ipaLogoSimple}
-              alt="IPA — Instituto de Psicologia Aplicada"
-              style={{
-                height: 54,
-                width: "auto",
-                objectFit: "contain",
-                filter: onConvenios ? "brightness(0) invert(1)" : "none",
-                opacity: onConvenios ? 0.88 : 1,
-              }}
-            />
-          </button>
+          {/* ── BLOCO ESQUERDO (Alinhado com os 52% do painel creme) ── */}
+          <div className="hidden lg:flex items-center justify-between lg:w-[52%] pr-12">
+            <button onClick={goHome} className="flex items-center transition-transform active:scale-98">
+              <ImageWithFallback
+                src={ipaLogoSimple}
+                alt="IPA — Instituto de Psicologia Aplicada"
+                style={{
+                  height: 48,
+                  width: "auto",
+                  objectFit: "contain",
+                  filter: onConvenios ? "brightness(0) invert(1)" : "none",
+                  opacity: onConvenios ? 0.88 : 1,
+                }}
+              />
+            </button>
+            
+            {/* Links posicionados sobre o lado esquerdo (Creme -> Texto Verde no topo) */}
+            <div className="flex items-center gap-8">
+              {navLinks.slice(0, 3).map((link) => (
+                <button
+                  key={link.href}
+                  onClick={() => scrollTo(link.href)}
+                  className={`text-xs tracking-[0.15em] uppercase font-medium transition-colors duration-200 ${
+                    onConvenios
+                      ? "text-[#C8D8C2] hover:text-[#8BBDA0]"
+                      : scrolled 
+                      ? "text-[#1A2118] hover:text-[#C97B52]" 
+                      : "text-[#4A7259] hover:text-[#C97B52]"
+                  }`}
+                >
+                  {link.label}
+                </button>
+              ))}
+            </div>
+          </div>
 
-          {/* desktop */}
-          <nav className="hidden lg:flex items-center gap-8">
-            {navLinks.map((link) => (
+          {/* ── BLOCO DIREITO (Alinhado com os 48% do painel verde) ── */}
+          <div className="hidden lg:flex items-center justify-end lg:w-[48%] gap-8">
+            {/* Links posicionados sobre o lado direito (Verde -> Texto Branco no topo) */}
+            {navLinks.slice(3).map((link) => (
               <button
                 key={link.href}
                 onClick={() => scrollTo(link.href)}
-                className="text-sm tracking-wide transition-colors duration-200"
-                style={{ color: navTextColor, fontWeight: 400 }}
-                onMouseEnter={(e) => ((e.target as HTMLElement).style.color = "#C97B52")}
-                onMouseLeave={(e) => ((e.target as HTMLElement).style.color = navTextColor)}
+                className={`text-xs tracking-[0.15em] uppercase font-medium transition-colors duration-200 ${
+                  onConvenios
+                    ? "text-[#C8D8C2] hover:text-[#8BBDA0]"
+                    : scrolled 
+                    ? "text-[#1A2118] hover:text-[#C97B52]" 
+                    : "text-[#F7F5F1] hover:text-[#C97B52]"
+                }`}
               >
                 {link.label}
               </button>
             ))}
             <button
               onClick={goConvenios}
-              className="text-sm tracking-wide transition-colors duration-200"
-              style={{ color: onConvenios ? "#8BBDA0" : navTextColor, fontWeight: onConvenios ? 600 : 400 }}
-              onMouseEnter={(e) => ((e.target as HTMLElement).style.color = "#8BBDA0")}
-              onMouseLeave={(e) => ((e.target as HTMLElement).style.color = onConvenios ? "#8BBDA0" : navTextColor)}
+              className={`text-xs tracking-[0.15em] uppercase transition-colors duration-200 ${
+                onConvenios
+                  ? "text-[#8BBDA0] font-semibold"
+                  : scrolled
+                  ? "text-[#1A2118] font-medium hover:text-[#C97B52]"
+                  : "text-[#F7F5F1] font-medium hover:text-[#C97B52]"
+              }`}
             >
               Convênios
             </button>
             <button
               onClick={() => scrollTo("#contato")}
-              className="px-5 py-2.5 text-sm font-semibold rounded-sm transition-all duration-200"
-              style={{ background: "#4A7259", color: "#F7F5F1", letterSpacing: "0.04em" }}
-              onMouseEnter={(e) => ((e.target as HTMLElement).style.background = "#3A5E47")}
-              onMouseLeave={(e) => ((e.target as HTMLElement).style.background = "#4A7259")}
+              className={`px-6 py-3 text-xs font-semibold rounded-sm transition-all duration-200 uppercase tracking-wider ${
+                onConvenios || scrolled
+                  ? "bg-[#4A7259] text-[#F7F5F1] hover:bg-[#3A5E47]"
+                  : "bg-[#F7F5F1] text-[#4A7259] hover:bg-[#E5E1D9]"
+              }`}
+              style={{ letterSpacing: "0.06em" }}
             >
               Agendar Consulta
             </button>
-          </nav>
+          </div>
 
-          <button
-            className="lg:hidden p-2"
-            onClick={() => setMenuOpen(!menuOpen)}
-            style={{ color: onConvenios ? "#C8D8C2" : "#1A2118" }}
-          >
-            {menuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          {/* ── ESTRUTURA MOBILE (Mantém o fluxo padrão de largura total) ── */}
+          <div className="lg:hidden flex items-center justify-between w-full">
+            <button onClick={goHome} className="flex items-center">
+              <ImageWithFallback
+                src={ipaLogoSimple}
+                alt="IPA"
+                style={{
+                  height: 48,
+                  width: "auto",
+                  objectFit: "contain",
+                  filter: onConvenios ? "brightness(0) invert(1)" : "none",
+                }}
+              />
+            </button>
+            <button
+              className="p-2 transition-colors"
+              onClick={() => setMenuOpen(!menuOpen)}
+              style={{ color: onConvenios ? "#C8D8C2" : "#1A2118" }}
+            >
+              {menuOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
+          </div>
         </div>
 
+        {/* Mobile Dropdown */}
         {menuOpen && (
-          <div className="lg:hidden bg-card border-t border-border py-6 px-6 flex flex-col gap-4">
+          <div className="lg:hidden bg-[#F7F5F1] border-t border-border/40 py-6 px-6 flex flex-col gap-3 shadow-inner">
             {navLinks.map((link) => (
               <button
                 key={link.href}
                 onClick={() => scrollTo(link.href)}
-                className="text-left text-base text-foreground py-2 border-b border-border/50"
+                className="text-left text-sm text-[#1A2118] py-2.5 border-b border-border/30 tracking-wide"
               >
                 {link.label}
               </button>
             ))}
             <button
               onClick={goConvenios}
-              className="text-left text-base py-2 border-b border-border/50 font-semibold"
+              className="text-left text-sm py-2.5 border-b border-border/30 font-semibold"
               style={{ color: "#4A7259" }}
             >
               Convênios
             </button>
             <button
               onClick={() => scrollTo("#contato")}
-              className="mt-2 px-5 py-3 text-sm font-semibold text-center rounded-sm"
-              style={{ background: "#4A7259", color: "#F7F5F1" }}
+              className="mt-3 px-5 py-3.5 text-xs font-semibold text-center rounded-sm uppercase tracking-wider bg-[#4A7259] text-[#F7F5F1]"
             >
               Agendar Consulta
             </button>
