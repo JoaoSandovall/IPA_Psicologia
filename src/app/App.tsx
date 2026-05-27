@@ -723,34 +723,25 @@ export default function App() {
 
         {/* ── LEFT PANEL — cream content ── */}
         <div
-          className="relative z-10 flex flex-col justify-center w-full lg:w-[52%] px-8 sm:px-14 lg:px-20 py-32"
+          className="relative z-10 flex flex-col justify-center w-full lg:w-[52%] px-8 sm:px-14 lg:px-24 py-32"
           style={{ background: "#F4F1EA" }}
         >
-          {/* Logo */}
-          <div className="mb-10">
-            <ImageWithFallback
-              src={ipaLogoSimple}
-              alt="IPA — Instituto de Psicologia Aplicada"
-              style={{ height: 108, width: "auto", objectFit: "contain" }}
-            />
-          </div>
-
-          {/* Location */}
-          <div className="flex items-center gap-3 mb-9">
+          {/* Badge de Localização */}
+          <div className="flex items-center gap-3 mb-8">
             <div style={{ width: 36, height: 1, background: "#C97B52" }} />
             <p className="text-xs tracking-[0.32em] uppercase font-semibold" style={{ color: "#C97B52" }}>
               Brasília, DF
             </p>
           </div>
 
-          {/* Headline */}
+          {/* Headline redimensionada */}
           <h1
-            className="font-semibold mb-6 leading-tight"
+            className="font-semibold mb-6"
             style={{
               fontFamily: "'Playfair Display', serif",
               color: "#1A2118",
-              fontSize: "clamp(2.4rem, 4.5vw, 3.75rem)",
-              lineHeight: 1.16,
+              fontSize: "clamp(2.8rem, 5vw, 4.2rem)",
+              lineHeight: 1.1,
             }}
           >
             Cuidar da mente
@@ -758,18 +749,16 @@ export default function App() {
             <em style={{ color: "#4A7259" }}>é cuidar da vida.</em>
           </h1>
 
-          {/* Description */}
+          {/* Descrição ajustada */}
           <p
-            className="text-base leading-relaxed mb-10"
-            style={{ color: "#4A5848", fontWeight: 300, maxWidth: 440 }}
+            className="text-base sm:text-lg leading-relaxed mb-10"
+            style={{ color: "#4A5848", fontWeight: 300, maxWidth: 480 }}
           >
-            Um espaço de acolhimento, escuta e transformação. Nossa equipe de
-            psicólogos especializados está aqui para caminhar ao seu lado no
-            processo de autoconhecimento e bem-estar.
+            Há mais de 2 décadas sendo referência em cuidado psicológico e acolhimento humano.
           </p>
 
           {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-3">
+          <div className="flex flex-col sm:flex-row gap-4">
             <button
               onClick={() => scrollTo("#contato")}
               className="px-8 py-4 text-sm font-semibold rounded-sm transition-all duration-200"
@@ -790,13 +779,13 @@ export default function App() {
             </button>
           </div>
 
-          {/* Scroll indicator */}
-          <div className="absolute bottom-10 left-8 sm:left-14 lg:left-20 flex items-center gap-3">
+          {/* Scroll indicator (Posição ajustada para o novo padding) */}
+          <div className="absolute bottom-10 left-8 sm:left-14 lg:left-24 flex items-center gap-3">
             <div className="w-8 h-px animate-pulse" style={{ background: "rgba(26,33,24,0.2)" }} />
             <span className="text-xs tracking-widest uppercase" style={{ color: "rgba(26,33,24,0.3)" }}>Role para baixo</span>
           </div>
         </div>
-
+..
         {/* ── RIGHT PANEL — sage green with large tree ── */}
         <div
           className="hidden lg:flex flex-col items-center justify-center relative flex-1 overflow-hidden"
@@ -887,8 +876,8 @@ export default function App() {
               ser quem você é.
             </h2>
             <div className="space-y-4 text-base leading-relaxed" style={{ color: "#3A4838", fontWeight: 300 }}>
-              <p>
-                O IPA está no mercado desde 2005, nasceu de um sonho de mulheres empreendedoras, estudiosas e que sempre tiveram em sua história a valorização do ser humano. O IPA, trata-se de um instituto diferenciado, pois, a justificativa de nossa existência é o ser humano em sua totalidade, tanto valorizamos os nossos clientes como nossos profissionais e temos um ambiente que entrega resultados.
+              <p >
+                A IPA está no mercado há mais de 2 décadas, nasceu de um sonho de mulheres empreendedoras, estudiosas e que sempre tiveram em sua história a valorização do ser humano. O IPA, trata-se de um instituto diferenciado, pois, a justificativa de nossa existência é o ser humano em sua totalidade, tanto valorizamos os nossos clientes como nossos profissionais e temos um ambiente que entrega resultados.
               <br />
               <br />
 Em nosso ambiente de trabalho apoiado na valorização da pessoa e com base científica, levamos nossos clientes a possibilidade de viverem a experiência de cura, de bem-estar e de consciência do seu estado atual e do estado desejado, conferindo ações, produtividade e realização. 
@@ -1193,18 +1182,6 @@ Em nosso ambiente de trabalho apoiado na valorização da pessoa e com base cien
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label className="text-xs font-semibold tracking-wide uppercase" style={{ color: "#6A7368" }}>E-mail</label>
-              <input
-                type="email"
-                placeholder="seu@email.com"
-                className="px-4 py-3 rounded-sm text-sm outline-none transition-colors"
-                style={{ background: "#E5E1D9", border: "1px solid rgba(26,33,24,0.1)", color: "#1A2118", fontFamily: "'Lato', sans-serif" }}
-                onFocus={(e) => ((e.target as HTMLElement).style.borderColor = "#4A7259")}
-                onBlur={(e) => ((e.target as HTMLElement).style.borderColor = "rgba(26,33,24,0.1)")}
-              />
-            </div>
-
-            <div className="flex flex-col gap-1.5">
               <label className="text-xs font-semibold tracking-wide uppercase" style={{ color: "#6A7368" }}>Profissional de interesse</label>
               <select
                 className="px-4 py-3 rounded-sm text-sm outline-none transition-colors appearance-none"
@@ -1270,18 +1247,27 @@ Em nosso ambiente de trabalho apoiado na valorização da pessoa e com base cien
                 Cuidado psicológico humanizado em Brasília, DF.
               </p>
               <div className="flex gap-4 mt-6">
-                {[Instagram, Facebook].map((Icon, i) => (
-                  <a
-                    key={i}
-                    href="#"
-                    className="w-9 h-9 rounded-sm flex items-center justify-center transition-colors"
-                    style={{ background: "rgba(200,216,194,0.08)", color: "rgba(200,216,194,0.45)" }}
-                    onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = "rgba(201,123,82,0.2)"; (e.currentTarget as HTMLElement).style.color = "#C97B52"; }}
-                    onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = "rgba(200,216,194,0.08)"; (e.currentTarget as HTMLElement).style.color = "rgba(200,216,194,0.45)"; }}
+                <div className="flex gap-4">
+                  {/* Link do Instagram */}
+                  <a 
+                    href="https://www.instagram.com/psicologia_ipa/"
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-gray-600 hover:text-[#C97B52] transition-colors"
                   >
-                    <Icon size={16} />
+                    <Instagram className="w-6 h-6" />
                   </a>
-                ))}
+
+                  {/* Link do Facebook */}
+                  <a 
+                    href="https://www.facebook.com/ipapsicologia/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-gray-600 hover:text-[#C97B52] transition-colors"
+                  >
+                    <Facebook className="w-6 h-6" />
+                  </a>
+                </div>
               </div>
             </div>
 
@@ -1321,7 +1307,7 @@ Em nosso ambiente de trabalho apoiado na valorização da pessoa e com base cien
 
           <div className="border-t pt-8 flex flex-col sm:flex-row justify-between items-center gap-4" style={{ borderColor: "rgba(200,216,194,0.07)" }}>
             <p className="text-xs" style={{ color: "rgba(200,216,194,0.22)", fontWeight: 300 }}>
-              © 2024 IPA — Instituto de Psicologia Aplicada. Todos os direitos reservados.
+              © 2026 IPA — Instituto de Psicologia Aplicada. Todos os direitos reservados.
             </p>
             <p className="text-xs" style={{ color: "rgba(200,216,194,0.22)", fontWeight: 300 }}>
               CFP — Conselho Federal de Psicologia
