@@ -937,7 +937,7 @@ export default function App() {
               O que dizem nossos pacientes
             </h2>
             <p className="text-base max-w-2xl" style={{ color: "#3A4838", fontWeight: 300 }}>
-              A confiança e o bem-estar de quem nos procura são o reflexo do nosso compromisso com o cuidado humano, a ética e a excelência clínica.
+              Priorizar a sua saúde mental gera impactos reais e mensuráveis no seu dia a dia. A terapia oferece um ambiente estruturado para o autoconhecimento, a resolução de conflitos e o desenvolvimento de uma vida mais equilibrada.
             </p>
           </div>
 
