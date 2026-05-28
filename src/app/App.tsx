@@ -17,7 +17,6 @@ import fotoSamara from "@/imports/Samara Pires.jpeg";
 import fotoVitoria from "@/imports/Vitoria Shalders.jpeg";
 import fotoYan from "@/imports/Yan Ribeiro.jpeg";
 
-
 const psychologists = [
   {
     name: "Camila Rodrigues",
@@ -923,6 +922,32 @@ export default function App() {
           ))}
         </div>
       </div>
+
+      {/* ── AVALIAÇÕES (GOOGLE REVIEWS) ── */}
+      
+      {/* ── AVALIAÇÕES (GOOGLE REVIEWS DINÂMICO) ── */}
+      <section className="py-20 lg:py-24" style={{ background: "#F4F1EA" }}>
+        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+          
+          <div className="flex flex-col items-center text-center mb-14">
+            <h2 
+              className="text-3xl lg:text-4xl mb-4" 
+              style={{ fontFamily: "'Playfair Display', serif", color: "#1A2118" }}
+            >
+              O que dizem nossos pacientes
+            </h2>
+            <p className="text-base max-w-2xl" style={{ color: "#3A4838", fontWeight: 300 }}>
+              A confiança e o bem-estar de quem nos procura são o reflexo do nosso compromisso com o cuidado humano, a ética e a excelência clínica.
+            </p>
+          </div>
+
+          {/* Widget Elfsight */}
+          <div className="w-full">
+            <div className="elfsight-app-a16ea832-6f37-4365-9fc8-f238124787d2" data-elfsight-app-lazy></div>
+          </div>
+
+        </div>
+      </section>
 
       {/* ── SOBRE ── */}
       <section id="sobre" className="py-24 lg:py-32 bg-background">
