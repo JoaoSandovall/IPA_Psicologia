@@ -627,7 +627,8 @@ export default function App() {
     : "bg-transparent";
 
   return (
-    <div className="min-h-screen bg-background text-foreground" style={{ fontFamily: "'Lato', sans-serif" }}>
+
+    <div className="relative w-full overflow-x-hidden bg-[#F4F1EA]">
 
       {/* ── NAV ── */}
       <header 
@@ -782,13 +783,82 @@ export default function App() {
       )}
 
       {page === "home" && <>
+      
+      
 
       {/* ── HERO ── */}
+      
       <section id="topo" className="relative min-h-screen flex overflow-hidden">
+
+        <div className="flex lg:hidden flex-col w-full min-h-screen bg-[#3D5447]">
+          
+          {/* ── TOPO VERDE ESCURO ── */}
+          <div className="relative flex-1 flex flex-col items-center justify-center py-10 px-4 overflow-hidden">
+            {/* Círculos Concêntricos */}
+            <div className="absolute w-[260px] h-[260px] rounded-full border border-white/5 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+            <div className="absolute w-[380px] h-[380px] rounded-full border border-white/5 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+
+            {/* Badge de Localização */}
+            <div className="relative z-10 border border-[#C97B52]/60 rounded-full px-5 py-2 mb-6">
+              <p className="text-[10px] tracking-[0.15em] uppercase font-semibold text-[#C97B52]">
+                • BRASÍLIA, DF
+              </p>
+            </div>
+
+            {/* Logo IPA em Texto */}
+            <div className="relative z-10 text-center text-[#F7F5F1]">
+              <h2 className="text-7xl mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>IPA</h2>
+              <p className="text-[9px] uppercase tracking-[0.25em] opacity-80">Instituto de Psicologia Aplicada</p>
+            </div>
+
+            {/* Divisória Decorativa */}
+            <div className="relative z-10 mt-8 flex items-center gap-4 opacity-50">
+              <div className="w-12 h-[1px] bg-[#C97B52]" />
+              <div className="w-1.5 h-1.5 rounded-full bg-[#C97B52]" />
+              <div className="w-12 h-[1px] bg-[#C97B52]" />
+            </div>
+          </div>
+
+          {/* ── CARD CREME INFERIOR ── */}
+          <div className="relative z-20 bg-[#F4F1EA] rounded-t-[32px] px-6 pt-6 pb-12 flex flex-col items-center text-center shadow-[0_-10px_40px_rgba(0,0,0,0.15)]">
+            
+            {/* Indicador de "Puxar" (Tracejado no topo) */}
+            <div className="w-10 h-1 bg-black/10 rounded-full mb-8" />
+
+            {/* Headline */}
+            <h1 className="font-semibold mb-5" style={{ fontFamily: "'Playfair Display', serif", color: "#1A2118", fontSize: "2.3rem", lineHeight: 1.1 }}>
+              Cuidar da mente<br/>
+              <em style={{ color: "#4A7259" }}>é cuidar da vida.</em>
+            </h1>
+
+            {/* Descrição */}
+            <p className="text-sm leading-relaxed mb-8 px-2" style={{ color: "#4A5848", fontWeight: 300 }}>
+              Há mais de 2 décadas a ser referência no cuidado psicológico e acolhimento humano.
+            </p>
+
+            {/* Botões */}
+            <div className="flex flex-col gap-3 w-full">
+              <button
+                onClick={() => scrollTo("#contato")}
+                className="w-full py-4 text-sm font-semibold rounded-md transition-all duration-200"
+                style={{ background: "#4A7259", color: "#F7F5F1" }}
+              >
+                Agendar Consulta
+              </button>
+              <button
+                onClick={() => scrollTo("#equipe")}
+                className="w-full py-4 text-sm font-semibold rounded-md border transition-all duration-200"
+                style={{ borderColor: "rgba(74,114,89,0.3)", color: "#4A7259", background: "transparent" }}
+              >
+                Conheça a Nossa Equipe
+              </button>
+            </div>
+          </div>
+        </div>
 
         {/* ── LEFT PANEL — cream content ── */}
         <div
-          className="relative z-10 flex flex-col justify-center w-full lg:w-[52%] px-8 sm:px-14 lg:px-24 py-32"
+          className="relative z-10 hidden lg:flex flex-col justify-center w-full lg:w-[52%] px-8 sm:px-14 lg:px-24 py-32"
           style={{ background: "#F4F1EA" }}
         >
           {/* Badge de Localização */}
@@ -844,13 +914,13 @@ export default function App() {
             </button>
           </div>
 
-          {/* Scroll indicator (Posição ajustada para o novo padding) */}
+          {/* Scroll indicator */}
           <div className="absolute bottom-10 left-8 sm:left-14 lg:left-24 flex items-center gap-3">
             <div className="w-8 h-px animate-pulse" style={{ background: "rgba(26,33,24,0.2)" }} />
             <span className="text-xs tracking-widest uppercase" style={{ color: "rgba(26,33,24,0.3)" }}>Role para baixo</span>
           </div>
         </div>
-..
+
         {/* ── RIGHT PANEL — sage green with large tree ── */}
         <div
           className="hidden lg:flex flex-col items-center justify-center relative flex-1 overflow-hidden"
@@ -1067,11 +1137,12 @@ export default function App() {
         </div>
 
         <div className="relative">
+          
           {/* Left arrow */}
           <button
             onClick={() => scrollTeam("left")}
             aria-label="Anterior"
-            className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full flex items-center justify-center shadow-md transition-all duration-200"
+            className="hidden sm:flex absolute left-2 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full items-center justify-center shadow-md transition-all duration-200"
             style={{
               background: "#fff",
               color: "#4A7259",
@@ -1088,7 +1159,7 @@ export default function App() {
           <button
             onClick={() => scrollTeam("right")}
             aria-label="Próximo"
-            className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full flex items-center justify-center shadow-md transition-all duration-200"
+            className="hidden sm:flex absolute right-2 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full items-center justify-center shadow-md transition-all duration-200"
             style={{
               background: "#fff",
               color: "#4A7259",
@@ -1204,14 +1275,17 @@ export default function App() {
       </section>
 
       {/* ── LOCALIZAÇÃO ── */}
-      <section id="localizacao" style={{ background: "#1A2118" }} className="py-24 lg:py-32">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-2 gap-16 items-start">
-          <div>
+      <section id="localizacao" style={{ background: "#1A2118" }} className="py-16 lg:py-32">
+        
+        <div className="max-w-7xl mx-auto px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          
+          {/* BLOCO DE TEXTO */}
+          <div className="w-full flex flex-col items-start text-left">
             <p className="text-xs tracking-[0.25em] uppercase mb-4 font-semibold" style={{ color: "#C97B52" }}>
               Como nos encontrar
             </p>
             <h2
-              className="text-3xl lg:text-4xl font-semibold leading-snug mb-10"
+              className="text-[2rem] leading-tight lg:text-4xl font-semibold lg:leading-snug mb-8 lg:mb-10"
               style={{ fontFamily: "'Playfair Display', serif", color: "#C8D8C2" }}
             >
               Estamos na
@@ -1219,18 +1293,18 @@ export default function App() {
               Asa Norte, Brasília — DF
             </h2>
 
-            <div className="space-y-6">
+            <div className="space-y-6 w-full">
               {[
                 { Icon: MapPin, label: "Endereço", text: "STN Edifício Vital Brazil, Bloco M\n1° andar, Sala 220 — Asa Norte\nBrasília — DF, 70770-100" },
                 { Icon: Clock, label: "Horário de Funcionamento", text: "Segunda a Sexta: 08h às 17h\nSábado e Domingo: Fechado" },
                 { Icon: Phone, label: "Telefone / WhatsApp", text: "(61) 99257-6460" },
                 { Icon: Mail, label: "E-mail", text: "contato@ipapsicologia.com.br" },
               ].map(({ Icon, label, text }) => (
-                <div key={label} className="flex items-start gap-4">
+                <div key={label} className="flex items-start gap-4 w-full">
                   <div className="w-10 h-10 rounded-sm flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: "rgba(201,123,82,0.15)" }}>
                     <Icon size={18} color="#C97B52" />
                   </div>
-                  <div>
+                  <div className="flex-1">
                     <p className="text-sm font-semibold mb-1" style={{ color: "#C8D8C2" }}>{label}</p>
                     <p className="text-sm leading-relaxed whitespace-pre-line" style={{ color: "rgba(200,216,194,0.6)", fontWeight: 300 }}>{text}</p>
                   </div>
@@ -1239,7 +1313,11 @@ export default function App() {
             </div>
           </div>
 
-          <div className="rounded-sm overflow-hidden" style={{ height: 480, background: "rgba(200,216,194,0.06)", border: "1px solid rgba(200,216,194,0.1)" }}>
+          {/* BLOCO DO MAPA */}
+          <div 
+            className="w-full rounded-sm overflow-hidden h-[340px] lg:h-[480px] mt-2 lg:mt-0" 
+            style={{ background: "rgba(200,216,194,0.06)", border: "1px solid rgba(200,216,194,0.1)" }}
+          >
             <iframe
               title="Localização IPA"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d939.0!2d-47.8972246!3d-15.7328445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a39d82ca80417%3A0xdafe33d521fa3da7!2sInstituto%20de%20Psicologia%20Aplicada%20-%20IPA!5e0!3m2!1spt-BR!2sbr!4v1716307200000!5m2!1spt-BR!2sbr"
@@ -1338,8 +1416,11 @@ export default function App() {
       {/* ── FOOTER ── */}
       <footer style={{ background: "#111816" }} className="py-12">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-            <div className="lg:col-span-2">
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12 text-center lg:text-left">
+            
+            {/* Bloco 1: Logo e Redes Sociais */}
+            <div className="lg:col-span-2 flex flex-col items-center lg:items-start">
               <div className="mb-5">
                 <ImageWithFallback
                   src={ipaLogoSimple}
@@ -1356,9 +1437,8 @@ export default function App() {
               <p className="text-sm leading-relaxed max-w-xs" style={{ color: "rgba(200,216,194,0.45)", fontWeight: 300 }}>
                 Cuidado psicológico humanizado em Brasília, DF.
               </p>
-              <div className="flex gap-4 mt-6">
+              <div className="flex gap-4 mt-6 justify-center lg:justify-start w-full">
                 <div className="flex gap-4">
-                  {/* Link do Instagram */}
                   <a 
                     href="https://www.instagram.com/psicologia_ipa/"
                     target="_blank" 
@@ -1367,8 +1447,6 @@ export default function App() {
                   >
                     <Instagram className="w-6 h-6" />
                   </a>
-
-                  {/* Link do Facebook */}
                   <a 
                     href="https://www.facebook.com/ipapsicologia/" 
                     target="_blank" 
@@ -1381,11 +1459,12 @@ export default function App() {
               </div>
             </div>
 
-            <div>
+            {/* Bloco 2: Navegação */}
+            <div className="flex flex-col items-center lg:items-start">
               <p className="text-xs font-semibold tracking-widest uppercase mb-4" style={{ color: "rgba(200,216,194,0.35)" }}>
                 Navegação
               </p>
-              <ul className="space-y-2">
+              <ul className="space-y-2 flex flex-col items-center lg:items-start">
                 {[...navLinks, { label: "Convênios", href: "#" }].map((l) => (
                   <li key={l.label}>
                     <button
@@ -1402,11 +1481,12 @@ export default function App() {
               </ul>
             </div>
 
-            <div>
+            {/* Bloco 3: Contato */}
+            <div className="flex flex-col items-center lg:items-start">
               <p className="text-xs font-semibold tracking-widest uppercase mb-4" style={{ color: "rgba(200,216,194,0.35)" }}>
                 Contato
               </p>
-              <ul className="space-y-2 text-sm" style={{ color: "rgba(200,216,194,0.5)", fontWeight: 300 }}>
+              <ul className="space-y-2 text-sm flex flex-col items-center lg:items-start text-center lg:text-left" style={{ color: "rgba(200,216,194,0.5)", fontWeight: 300 }}>
                 <li>(61) 99257-6460</li>
                 <li>contato@ipapsicologia.com.br</li>
                 <li>STN Ed. Vital Brazil, Bl. M, Sala 220</li>
@@ -1415,7 +1495,8 @@ export default function App() {
             </div>
           </div>
 
-          <div className="border-t pt-8 flex flex-col sm:flex-row justify-between items-center gap-4" style={{ borderColor: "rgba(200,216,194,0.07)" }}>
+          {/* Bloco Inferior: Direitos Autorais */}
+          <div className="border-t pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-center lg:text-left" style={{ borderColor: "rgba(200,216,194,0.07)" }}>
             <p className="text-xs" style={{ color: "rgba(200,216,194,0.22)", fontWeight: 300 }}>
               © 2026 IPA — Instituto de Psicologia Aplicada. Todos os direitos reservados.
             </p>
