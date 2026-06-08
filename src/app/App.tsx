@@ -541,7 +541,7 @@ function ConveniosSection({
 }
 
 function Depoimentos() {
-  const linkGoogleMaps = "https://www.google.com/maps/place/Instituto+de+Psicologia+Aplicada+-+IPA/@-15.7328445,-47.8997995,17z/data=!3m1!5s0x935a39926d1aaacb:0x5b42fe4c59fe1305!4m8!3m7!1s0x935a39d82ca80417:0xdafe33d521fa3da7!8m2!3d-15.7328445!4d-47.8972246!9m1!1b1!16s%2Fg%2F11h_446cjk?entry=ttu&g_ep=EgoyMDI2MDYwMy4xIKXMDSoASAFQAw%3D%3D";
+  const linkGoogleMaps = "https://www.google.com/maps/search/Instituto+de+Psicologia+Aplicada+Brasilia/";
 
   const avaliacoesGoogle = [
     {
@@ -602,73 +602,29 @@ function Depoimentos() {
     }
   ];
 
-  // ── LÓGICA DE NAVEGAÇÃO E ARRASTAR ──
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
-
-  // Controle de Arrastar (Drag)
-  const dragData = useRef({ active: false, startX: 0, scrollLeft: 0, isDragging: false });
-
-  const updateScrollState = () => {
-    if (!scrollRef.current) return;
-    const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-    setCanScrollLeft(scrollLeft > 4);
-    setCanScrollRight(Math.ceil(scrollLeft + clientWidth) < scrollWidth - 4);
-  };
-
-  const scrollAction = (direction: "left" | "right") => {
-    if (!scrollRef.current) return;
-    const shift = direction === "right" ? 340 : -340;
-    scrollRef.current.scrollBy({ left: shift, behavior: "smooth" });
-  };
-
-  const onMouseDown = (e: React.MouseEvent) => {
-    if (!scrollRef.current) return;
-    dragData.current = {
-      active: true,
-      startX: e.pageX - scrollRef.current.offsetLeft,
-      scrollLeft: scrollRef.current.scrollLeft,
-      isDragging: false,
-    };
-    scrollRef.current.style.cursor = "grabbing";
-    scrollRef.current.style.userSelect = "none";
-  };
-
-  const onMouseMove = (e: React.MouseEvent) => {
-    if (!dragData.current.active || !scrollRef.current) return;
-    const x = e.pageX - scrollRef.current.offsetLeft;
-    const walk = x - dragData.current.startX;
-    
-    // Se o mouse moveu mais de 5px, consideramos que é um arrasto e não um clique
-    if (Math.abs(walk) > 5) {
-      dragData.current.isDragging = true;
-    }
-    
-    scrollRef.current.scrollLeft = dragData.current.scrollLeft - walk;
-  };
-
-  const onMouseUp = () => {
-    dragData.current.active = false;
-    if (scrollRef.current) {
-      scrollRef.current.style.cursor = "grab";
-      scrollRef.current.style.userSelect = "";
-    }
-  };
-
-  const handleCardClick = (e: React.MouseEvent) => {
-    // Se o usuário estava arrastando, impede que o link do Google abra
-    if (dragData.current.isDragging) {
-      e.preventDefault();
-    }
-  };
-
   return (
     <section id="depoimentos" style={{ background: "#F4F1EA" }} className="py-16 lg:py-24 overflow-hidden relative">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 relative">
-        
+      
+      {/* Estilos CSS embutidos para a animação infinita */}
+      <style>
+        {`
+          @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+          }
+          .animate-marquee {
+            /* 40s é a velocidade. Se achar rápido, aumente para 50s. Se achar devagar, diminua para 30s */
+            animation: marquee 40s linear infinite;
+          }
+          .animate-marquee:hover {
+            animation-play-state: paused;
+          }
+        `}
+      </style>
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 mb-10 lg:mb-14">
         {/* Cabeçalho */}
-        <div className="text-center lg:text-left mb-10 lg:mb-14">
+        <div className="text-center lg:text-left">
           <p className="text-xs tracking-[0.25em] uppercase mb-4 font-semibold" style={{ color: "#C97B52" }}>
             Avaliações do Google
           </p>
@@ -691,97 +647,75 @@ function Depoimentos() {
                 ))}
               </div>
               <span className="text-sm" style={{ color: "#4A5848", fontWeight: 400 }}>
-                (+30 Avaliação  5 Estrelas)
+                (+30 Avaliações 5 Estrelas)
               </span>
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Container das Setas e Carrossel */}
-        <div className="relative">
+      {/* Container do Carrossel Infinito */}
+      <div className="relative w-full flex overflow-hidden py-4">
+        
+        {/* Sombras laterais (Fade-out) para um visual mais premium */}
+        <div className="absolute left-0 top-0 bottom-0 w-12 lg:w-32 bg-gradient-to-r from-[#F4F1EA] to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-12 lg:w-32 bg-gradient-to-l from-[#F4F1EA] to-transparent z-10 pointer-events-none" />
+
+        {/* Trilha Animada */}
+        <div className="flex w-max animate-marquee">
           
-          {/* Seta Esquerda */}
-          <button
-            onClick={() => scrollAction("left")}
-            aria-label="Anterior"
-            className="hidden sm:flex absolute -left-5 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full items-center justify-center shadow-[0_4px_14px_rgba(0,0,0,0.1)] transition-all duration-300 hover:scale-105 active:scale-95"
-            style={{
-              background: "#ffffff",
-              color: "#1A2118",
-              opacity: canScrollLeft ? 1 : 0,
-              pointerEvents: canScrollLeft ? "auto" : "none",
-            }}
-          >
-            <ChevronRight size={22} style={{ transform: "rotate(180deg)" }} />
-          </button>
-
-          {/* Seta Direita */}
-          <button
-            onClick={() => scrollAction("right")}
-            aria-label="Próximo"
-            className="hidden sm:flex absolute -right-5 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full items-center justify-center shadow-[0_4px_14px_rgba(0,0,0,0.1)] transition-all duration-300 hover:scale-105 active:scale-95"
-            style={{
-              background: "#ffffff",
-              color: "#1A2118",
-              opacity: canScrollRight ? 1 : 0,
-              pointerEvents: canScrollRight ? "auto" : "none",
-            }}
-          >
-            <ChevronRight size={22} />
-          </button>
-
-          {/* Fileira de Rolagem Única */}
-          <div 
-            ref={scrollRef}
-            onScroll={updateScrollState}
-            onMouseDown={onMouseDown}
-            onMouseMove={onMouseMove}
-            onMouseUp={onMouseUp}
-            onMouseLeave={onMouseUp}
-            className="flex gap-5 overflow-x-auto pb-10 pt-2 snap-x snap-mandatory -mx-6 px-6 lg:-mx-10 lg:px-10 cursor-grab active:cursor-grabbing"
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-          >
+          {/* Grupo 1 (Lista Original) */}
+          <div className="flex gap-5 pr-5">
             {avaliacoesGoogle.map((item) => (
               <a
-                key={item.id}
+                key={`grp1-${item.id}`}
                 href={linkGoogleMaps}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={handleCardClick}
                 draggable={false}
-                className="flex flex-col shrink-0 w-[85vw] max-w-[340px] bg-white p-7 rounded-2xl snap-center shadow-[0_2px_12px_rgba(0,0,0,0.04)] border border-black/5 transition-transform duration-300 hover:-translate-y-1.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)]"
+                className="flex flex-col shrink-0 w-[85vw] max-w-[340px] bg-white p-7 rounded-2xl shadow-[0_2px_12px_rgba(0,0,0,0.04)] border border-black/5 transition-transform duration-300 hover:-translate-y-1.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)] cursor-pointer"
               >
-                {/* Topo do Card: Informações do Usuário */}
                 <div className="flex items-center gap-3.5 mb-4 pointer-events-none">
-                  <div 
-                    className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
-                    style={{ background: "#4A7259" }}
-                  >
-                    <span className="text-white font-medium text-lg">
-                      {item.nome.charAt(0)}
-                    </span>
+                  <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "#4A7259" }}>
+                    <span className="text-white font-medium text-lg">{item.nome.charAt(0)}</span>
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-gray-900 leading-tight">
-                      {item.nome}
-                    </p>
-                    <p className="text-[13px] text-gray-500 mt-0.5 font-medium">
-                      {item.tempo}
-                    </p>
+                    <p className="text-sm font-semibold text-gray-900 leading-tight">{item.nome}</p>
+                    <p className="text-[13px] text-gray-500 mt-0.5 font-medium">{item.tempo}</p>
                   </div>
                 </div>
-
-                {/* Estrelas */}
                 <div className="flex gap-0.5 mb-4 pointer-events-none">
-                  {[...Array(item.nota)].map((_, i) => (
-                    <Star key={i} size={15} fill="#FBBC04" color="#FBBC04" />
-                  ))}
+                  {[...Array(item.nota)].map((_, i) => <Star key={i} size={15} fill="#FBBC04" color="#FBBC04" />)}
                 </div>
+                <p className="text-sm leading-relaxed text-gray-700 pointer-events-none">{item.texto}</p>
+              </a>
+            ))}
+          </div>
 
-                {/* Texto do Depoimento */}
-                <p className="text-sm leading-relaxed text-gray-700 pointer-events-none">
-                  {item.texto}
-                </p>
+          {/* Grupo 2 (Cópia exata para criar a ilusão de loop infinito) */}
+          <div className="flex gap-5 pr-5">
+            {avaliacoesGoogle.map((item) => (
+              <a
+                key={`grp2-${item.id}`}
+                href={linkGoogleMaps}
+                target="_blank"
+                rel="noopener noreferrer"
+                draggable={false}
+                className="flex flex-col shrink-0 w-[85vw] max-w-[340px] bg-white p-7 rounded-2xl shadow-[0_2px_12px_rgba(0,0,0,0.04)] border border-black/5 transition-transform duration-300 hover:-translate-y-1.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)] cursor-pointer"
+              >
+                <div className="flex items-center gap-3.5 mb-4 pointer-events-none">
+                  <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "#4A7259" }}>
+                    <span className="text-white font-medium text-lg">{item.nome.charAt(0)}</span>
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-gray-900 leading-tight">{item.nome}</p>
+                    <p className="text-[13px] text-gray-500 mt-0.5 font-medium">{item.tempo}</p>
+                  </div>
+                </div>
+                <div className="flex gap-0.5 mb-4 pointer-events-none">
+                  {[...Array(item.nota)].map((_, i) => <Star key={i} size={15} fill="#FBBC04" color="#FBBC04" />)}
+                </div>
+                <p className="text-sm leading-relaxed text-gray-700 pointer-events-none">{item.texto}</p>
               </a>
             ))}
           </div>
