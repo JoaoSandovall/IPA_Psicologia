@@ -1,14 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
-import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import clinicaPhoto from "@/imports/image.png";
 import ipaLogo from "@/imports/marca-ipa_sem_fundo.png";
 import ipaLogoSimple from "@/imports/logo.png";
-import {
-  MapPin, Phone, Mail, Clock, Menu, X,
-  Instagram, Facebook, ChevronRight,
-  Heart, Shield, Users, Star, Search, Camera,
-} from "lucide-react";
-
+import { MapPin, Clock, Phone, Mail, Instagram, Facebook, Star, Heart, Shield, Users, Camera, ChevronRight, Search, X, Menu } from 'lucide-react';
 import fotoCamila from "@/imports/Camila Rodrigues.jpeg";
 import fotoGiovane from "@/imports/Giovane Tapia.jpeg";
 import fotoMaira from "@/imports/Maira Muniz.png";
@@ -546,6 +540,257 @@ function ConveniosSection({
   );
 }
 
+function Depoimentos() {
+  const linkGoogleMaps = "https://www.google.com/maps/place/Instituto+de+Psicologia+Aplicada+-+IPA/@-15.7328445,-47.8997995,17z/data=!3m1!5s0x935a39926d1aaacb:0x5b42fe4c59fe1305!4m8!3m7!1s0x935a39d82ca80417:0xdafe33d521fa3da7!8m2!3d-15.7328445!4d-47.8972246!9m1!1b1!16s%2Fg%2F11h_446cjk?entry=ttu&g_ep=EgoyMDI2MDYwMy4xIKXMDSoASAFQAw%3D%3D";
+
+  const avaliacoesGoogle = [
+    {
+      id: 1,
+      nome: "Daniel e Samantha Adv",
+      tempo: "Há 1 mês",
+      texto: "Ótimos profissionais, estou me sentindo muito bem com meu tratamento, minha saúde mental melhorou muito, obrigado.",
+      nota: 5,
+    },
+    {
+      id: 2,
+      nome: "Rogeis Santos",
+      tempo: "Há 7 meses",
+      texto: "Nestes 3 anos que faço acompanhamento no IPA só tenho a agradecer pela experiência que tenho na clínica.",
+      nota: 5,
+    },
+    {
+      id: 3,
+      nome: "Glai Eres",
+      tempo: "Há 1 ano",
+      texto: "Eu tinha um pé atrás em fazer terapia.. até conhecer o Instituto de Psicologia Aplicada - IPA... de primeira já me conectei com o ambiente, que é leve, limpo, tranquilo, temperatura agradável.",
+      nota: 5,
+    },
+    {
+      id: 4,
+      nome: "Ana Carolina Vargas",
+      tempo: "Há 1 ano",
+      texto: "Sou atendida há quase dois anos e não troco por outra. Meu quadro tem melhorado muito. A clínica também tem uma estrutura ótima e é bem localizada. Recomendo!",
+      nota: 5,
+    },
+    {
+      id: 5,
+      nome: "Paula Mendonca",
+      tempo: "Há 1 ano",
+      texto: "A minha experiência foi e é maravilhosa. O trabalho é excepcional! Muito humana, sensata, inteligente e dedicada. Recomendo muito a profissional e a instituição!",
+      nota: 5,
+    },
+    {
+      id: 6,
+      nome: "Iago Carvalho",
+      tempo: "Há 1 ano",
+      texto: "Ambiente acolhedor e profissionalismo excepcional. Foi essencial na busca para que eu me encontrasse novamente e resolvesse minhas questões. Recomendo demais!",
+      nota: 5,
+    },
+    {
+      id: 7,
+      nome: "Arialba Siufi",
+      tempo: "Há 1 ano",
+      texto: "Gostei muito do local e recomendo. É um ambiente acolhedor e a profissional que me atende é ótima! Super atenciosa e pontual! Está me ajudando muito no meu processo de evolução.",
+      nota: 5,
+    },
+    {
+      id: 8,
+      nome: "Dark Ane Mendes",
+      tempo: "Há 1 ano",
+      texto: "Excelente clínica, com profissionais gabaritados no mercado e bem humanos nos atendimentos. Recomendo.",
+      nota: 5,
+    }
+  ];
+
+  // ── LÓGICA DE NAVEGAÇÃO E ARRASTAR ──
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  // Controle de Arrastar (Drag)
+  const dragData = useRef({ active: false, startX: 0, scrollLeft: 0, isDragging: false });
+
+  const updateScrollState = () => {
+    if (!scrollRef.current) return;
+    const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+    setCanScrollLeft(scrollLeft > 4);
+    setCanScrollRight(Math.ceil(scrollLeft + clientWidth) < scrollWidth - 4);
+  };
+
+  const scrollAction = (direction: "left" | "right") => {
+    if (!scrollRef.current) return;
+    const shift = direction === "right" ? 340 : -340;
+    scrollRef.current.scrollBy({ left: shift, behavior: "smooth" });
+  };
+
+  const onMouseDown = (e: React.MouseEvent) => {
+    if (!scrollRef.current) return;
+    dragData.current = {
+      active: true,
+      startX: e.pageX - scrollRef.current.offsetLeft,
+      scrollLeft: scrollRef.current.scrollLeft,
+      isDragging: false,
+    };
+    scrollRef.current.style.cursor = "grabbing";
+    scrollRef.current.style.userSelect = "none";
+  };
+
+  const onMouseMove = (e: React.MouseEvent) => {
+    if (!dragData.current.active || !scrollRef.current) return;
+    const x = e.pageX - scrollRef.current.offsetLeft;
+    const walk = x - dragData.current.startX;
+    
+    // Se o mouse moveu mais de 5px, consideramos que é um arrasto e não um clique
+    if (Math.abs(walk) > 5) {
+      dragData.current.isDragging = true;
+    }
+    
+    scrollRef.current.scrollLeft = dragData.current.scrollLeft - walk;
+  };
+
+  const onMouseUp = () => {
+    dragData.current.active = false;
+    if (scrollRef.current) {
+      scrollRef.current.style.cursor = "grab";
+      scrollRef.current.style.userSelect = "";
+    }
+  };
+
+  const handleCardClick = (e: React.MouseEvent) => {
+    // Se o usuário estava arrastando, impede que o link do Google abra
+    if (dragData.current.isDragging) {
+      e.preventDefault();
+    }
+  };
+
+  return (
+    <section id="depoimentos" style={{ background: "#F4F1EA" }} className="py-16 lg:py-24 overflow-hidden relative">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 relative">
+        
+        {/* Cabeçalho */}
+        <div className="text-center lg:text-left mb-10 lg:mb-14">
+          <p className="text-xs tracking-[0.25em] uppercase mb-4 font-semibold" style={{ color: "#C97B52" }}>
+            Avaliações do Google
+          </p>
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
+            <h2
+              className="text-[2rem] leading-tight lg:text-4xl font-semibold"
+              style={{ fontFamily: "'Playfair Display', serif", color: "#1A2118" }}
+            >
+              O que dizem sobre
+              <br />
+              o nosso acolhimento
+            </h2>
+            
+            {/* Nota Geral Google */}
+            <div className="flex items-center justify-center lg:justify-end gap-3 mt-2 lg:mt-0">
+              <span className="text-2xl font-bold" style={{ color: "#1A2118" }}>4.9</span>
+              <div className="flex gap-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} size={20} fill="#FBBC04" color="#FBBC04" />
+                ))}
+              </div>
+              <span className="text-sm" style={{ color: "#4A5848", fontWeight: 400 }}>
+                (+30 Avaliação  5 Estrelas)
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Container das Setas e Carrossel */}
+        <div className="relative">
+          
+          {/* Seta Esquerda */}
+          <button
+            onClick={() => scrollAction("left")}
+            aria-label="Anterior"
+            className="hidden sm:flex absolute -left-5 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full items-center justify-center shadow-[0_4px_14px_rgba(0,0,0,0.1)] transition-all duration-300 hover:scale-105 active:scale-95"
+            style={{
+              background: "#ffffff",
+              color: "#1A2118",
+              opacity: canScrollLeft ? 1 : 0,
+              pointerEvents: canScrollLeft ? "auto" : "none",
+            }}
+          >
+            <ChevronRight size={22} style={{ transform: "rotate(180deg)" }} />
+          </button>
+
+          {/* Seta Direita */}
+          <button
+            onClick={() => scrollAction("right")}
+            aria-label="Próximo"
+            className="hidden sm:flex absolute -right-5 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full items-center justify-center shadow-[0_4px_14px_rgba(0,0,0,0.1)] transition-all duration-300 hover:scale-105 active:scale-95"
+            style={{
+              background: "#ffffff",
+              color: "#1A2118",
+              opacity: canScrollRight ? 1 : 0,
+              pointerEvents: canScrollRight ? "auto" : "none",
+            }}
+          >
+            <ChevronRight size={22} />
+          </button>
+
+          {/* Fileira de Rolagem Única */}
+          <div 
+            ref={scrollRef}
+            onScroll={updateScrollState}
+            onMouseDown={onMouseDown}
+            onMouseMove={onMouseMove}
+            onMouseUp={onMouseUp}
+            onMouseLeave={onMouseUp}
+            className="flex gap-5 overflow-x-auto pb-10 pt-2 snap-x snap-mandatory -mx-6 px-6 lg:-mx-10 lg:px-10 cursor-grab active:cursor-grabbing"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          >
+            {avaliacoesGoogle.map((item) => (
+              <a
+                key={item.id}
+                href={linkGoogleMaps}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={handleCardClick}
+                draggable={false}
+                className="flex flex-col shrink-0 w-[85vw] max-w-[340px] bg-white p-7 rounded-2xl snap-center shadow-[0_2px_12px_rgba(0,0,0,0.04)] border border-black/5 transition-transform duration-300 hover:-translate-y-1.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)]"
+              >
+                {/* Topo do Card: Informações do Usuário */}
+                <div className="flex items-center gap-3.5 mb-4 pointer-events-none">
+                  <div 
+                    className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
+                    style={{ background: "#4A7259" }}
+                  >
+                    <span className="text-white font-medium text-lg">
+                      {item.nome.charAt(0)}
+                    </span>
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-gray-900 leading-tight">
+                      {item.nome}
+                    </p>
+                    <p className="text-[13px] text-gray-500 mt-0.5 font-medium">
+                      {item.tempo}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Estrelas */}
+                <div className="flex gap-0.5 mb-4 pointer-events-none">
+                  {[...Array(item.nota)].map((_, i) => (
+                    <Star key={i} size={15} fill="#FBBC04" color="#FBBC04" />
+                  ))}
+                </div>
+
+                {/* Texto do Depoimento */}
+                <p className="text-sm leading-relaxed text-gray-700 pointer-events-none">
+                  {item.texto}
+                </p>
+              </a>
+            ))}
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+}
 
 // ── Main App ───────────────────────────────────────────────────
 export default function App() {
@@ -642,7 +887,7 @@ export default function App() {
           {/* ── BLOCO ESQUERDO (Alinhado com os 52% do painel creme) ── */}
           <div className="hidden lg:flex items-center justify-between lg:w-[52%] pr-12">
             <button onClick={goHome} className="flex items-center transition-transform active:scale-98">
-              <ImageWithFallback
+              <img
                 src={ipaLogoSimple}
                 alt="IPA — Instituto de Psicologia Aplicada"
                 style={{
@@ -721,7 +966,7 @@ export default function App() {
           {/* ── ESTRUTURA MOBILE (Mantém o fluxo padrão de largura total) ── */}
           <div className="lg:hidden flex items-center justify-between w-full">
             <button onClick={goHome} className="flex items-center">
-              <ImageWithFallback
+              <img
                 src={ipaLogoSimple}
                 alt="IPA"
                 style={{
@@ -950,7 +1195,7 @@ export default function App() {
           />
 
           {/* Logo — large, white */}
-          <ImageWithFallback
+          <img
             src={ipaLogo}
             alt="IPA — Instituto de Psicologia Aplicada"
             style={{
@@ -994,30 +1239,7 @@ export default function App() {
       </div>
 
       {/* ── AVALIAÇÕES (GOOGLE REVIEWS) ── */}
-      
-      {/* ── AVALIAÇÕES (GOOGLE REVIEWS DINÂMICO) ── */}
-      <section className="py-20 lg:py-24" style={{ background: "#F4F1EA" }}>
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          
-          <div className="flex flex-col items-center text-center mb-14">
-            <h2 
-              className="text-3xl lg:text-4xl mb-4" 
-              style={{ fontFamily: "'Playfair Display', serif", color: "#1A2118" }}
-            >
-              O que dizem nossos pacientes
-            </h2>
-            <p className="text-base max-w-2xl" style={{ color: "#3A4838", fontWeight: 300 }}>
-              Priorizar a sua saúde mental gera impactos reais e mensuráveis no seu dia a dia. A terapia oferece um ambiente estruturado para o autoconhecimento, a resolução de conflitos e o desenvolvimento de uma vida mais equilibrada.
-            </p>
-          </div>
-
-          {/* Widget Elfsight */}
-          <div className="w-full">
-            <div className="elfsight-app-a16ea832-6f37-4365-9fc8-f238124787d2" data-elfsight-app-lazy></div>
-          </div>
-
-        </div>
-      </section>
+      <Depoimentos />
 
       {/* ── SOBRE ── */}
       <section id="sobre" className="py-24 lg:py-32 bg-background">
@@ -1061,7 +1283,7 @@ export default function App() {
           <div className="relative">
             <div className="absolute -top-4 -left-4 w-full h-full rounded-sm" style={{ background: "#D2CEC6" }} />
             <div className="relative rounded-sm overflow-hidden">
-              <ImageWithFallback
+              <img
                 src={clinicaPhoto}
                 alt="Sala de atendimento do Instituto de Psicologia Aplicada — IPA"
                 className="w-full h-[480px] object-cover object-[center_75%]"
@@ -1422,7 +1644,7 @@ export default function App() {
             {/* Bloco 1: Logo e Redes Sociais */}
             <div className="lg:col-span-2 flex flex-col items-center lg:items-start">
               <div className="mb-5">
-                <ImageWithFallback
+                <img
                   src={ipaLogoSimple}
                   alt="IPA — Instituto de Psicologia Aplicada"
                   style={{
