@@ -541,7 +541,7 @@ function ConveniosSection({
 }
 
 function Depoimentos() {
-  const linkGoogleMaps = "https://www.google.com/maps/search/Instituto+de+Psicologia+Aplicada+Brasilia/";
+  const linkGoogleMaps = "https://maps.app.goo.gl/QFbk8yPLHspRUp748";
 
   const avaliacoesGoogle = [
     {
@@ -1476,7 +1476,7 @@ export default function App() {
           >
             <iframe
               title="Localização IPA"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d939.0!2d-47.8972246!3d-15.7328445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a39d82ca80417%3A0xdafe33d521fa3da7!2sInstituto%20de%20Psicologia%20Aplicada%20-%20IPA!5e0!3m2!1spt-BR!2sbr!4v1716307200000!5m2!1spt-BR!2sbr"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3840.3456343013777!2d-47.89979952403532!3d-15.732844484898932!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a39d82ca80417%3A0xdafe33d521fa3da7!2sInstituto%20de%20Psicologia%20Aplicada%20-%20IPA!5e0!3m2!1spt-BR!2sbr!4v1781053146991!5m2!1spt-BR!2sbr"
               width="100%"
               height="100%"
               style={{ border: 0, filter: "grayscale(0.3) contrast(1.1)" }}
