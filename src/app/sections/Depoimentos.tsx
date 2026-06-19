@@ -1,7 +1,7 @@
 import { Star } from "lucide-react";
 
 export default function Depoimentos() {
-  const linkGoogleMaps = "https://googleusercontent.com/maps.google.com/1";
+  const linkGoogleMaps = "https://www.google.com/maps/place/Instituto+de+Psicologia+Aplicada+-+IPA/@-15.7328445,-47.8997995,17z/data=!3m1!5s0x935a39926d1aaacb:0x5b42fe4c59fe1305!4m8!3m7!1s0x935a39d82ca80417:0xdafe33d521fa3da7!8m2!3d-15.7328445!4d-47.8972246!9m1!1b1!16s%2Fg%2F11h_446cjk?entry=ttu&g_ep=EgoyMDI2MDYxNi4wIKXMDSoASAFQAw%3D%3D";
 
   const avaliacoesGoogle = [
     {

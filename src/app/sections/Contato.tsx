@@ -1,17 +1,13 @@
+import iconewhatsapp from "@/imports/iconewhatsapp.svg"
+
 export default function Contato() {
-  const listPsychologists = [
-    "Camila Rodrigues",
-    "Giovani Tápia",
-    "Maira Muniz",
-    "Matheus Leon",
-    "Samara Pires",
-    "Vitória Shalders",
-    "Yan Ribeiro"
-  ];
+  const whatsappNumber = "5561992576460";
+  const mensagem = "Olá! Gostaria de agendar uma consulta.";
+  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(mensagem)}`;
 
   return (
-    <section id="contato" style={{ background: "#EDEAE3" }} className="py-24 lg:py-32">
-      <div className="max-w-3xl mx-auto px-6 lg:px-10 text-center mb-14">
+    <section id="contato" style={{ background: "#EDEAE3" }} className="py-24 lg:py-32 flex flex-col items-center">
+      <div className="max-w-3xl mx-auto px-6 lg:px-10 text-center mb-10">
         <p className="text-xs tracking-[0.25em] uppercase mb-4 font-semibold" style={{ color: "#4A7259" }}>
           Agende sua consulta
         </p>
@@ -22,68 +18,35 @@ export default function Contato() {
         </h2>
       </div>
 
-      <div className="max-w-2xl mx-auto px-6 lg:px-10 bg-card rounded-sm border border-border/40 p-8 lg:p-12">
-        <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
-          <div className="grid sm:grid-cols-2 gap-5">
-            {[
-              { label: "Nome completo", type: "text", placeholder: "Seu nome" },
-              { label: "Telefone", type: "tel", placeholder: "(61) 99999-9999" },
-            ].map(({ label, type, placeholder }) => (
-              <div key={label} className="flex flex-col gap-1.5">
-                <label className="text-xs font-semibold tracking-wide uppercase" style={{ color: "#6A7368" }}>{label}</label>
-                <input
-                  type={type}
-                  placeholder={placeholder}
-                  className="px-4 py-3 rounded-sm text-sm outline-none transition-colors"
-                  style={{ background: "#E5E1D9", border: "1px solid rgba(26,33,24,0.1)", color: "#1A2118", fontFamily: "'Lato', sans-serif" }}
-                  onFocus={(e) => ((e.target as HTMLElement).style.borderColor = "#4A7259")}
-                  onBlur={(e) => ((e.target as HTMLElement).style.borderColor = "rgba(26,33,24,0.1)")}
-                />
-              </div>
-            ))}
-          </div>
+      <div className="max-w-lg w-full mx-auto px-6 text-center bg-card rounded-sm border border-border/40 p-8 lg:p-12 shadow-sm bg-white">
+        <p className="text-sm leading-relaxed mb-8" style={{ color: "#6A7368", fontWeight: 300 }}>
+          Para sua maior comodidade e para um atendimento mais ágil, realizamos todos os nossos agendamentos diretamente pelo WhatsApp.
+        </p>
 
-          <div className="flex flex-col gap-1.5">
-            <label className="text-xs font-semibold tracking-wide uppercase" style={{ color: "#6A7368" }}>Profissional de interesse</label>
-            <select
-              className="px-4 py-3 rounded-sm text-sm outline-none transition-colors appearance-none"
-              style={{ background: "#E5E1D9", border: "1px solid rgba(26,33,24,0.1)", color: "#1A2118", fontFamily: "'Lato', sans-serif" }}
-              onFocus={(e) => ((e.target as HTMLElement).style.borderColor = "#4A7259")}
-              onBlur={(e) => ((e.target as HTMLElement).style.borderColor = "rgba(26,33,24,0.1)")}
-            >
-              <option value="">Sem preferência — quero indicação</option>
-              {listPsychologists.map((name) => (
-                <option key={name}>{name}</option>
-              ))}
-            </select>
-          </div>
+        <a
+          href={whatsappLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center gap-3 w-full py-4 px-8 text-sm font-semibold tracking-widest uppercase rounded-sm transition-all duration-300"
+          style={{ background: "#4A7259", color: "#C8D8C2" }}
+          onMouseEnter={(e) => {
+            (e.currentTarget as HTMLElement).style.background = "#3A5E47";
+            (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
+            (e.currentTarget as HTMLElement).style.boxShadow = "0 10px 25px -5px rgba(74, 114, 89, 0.4)";
+          }}
+          onMouseLeave={(e) => {
+            (e.currentTarget as HTMLElement).style.background = "#4A7259";
+            (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
+            (e.currentTarget as HTMLElement).style.boxShadow = "none";
+          }}
+        >
+          <img src={iconewhatsapp} alt="Ícone WhatsApp" className="w-5 h-5" />
+          Agende pelo WhatsApp
+        </a>
 
-          <div className="flex flex-col gap-1.5">
-            <label className="text-xs font-semibold tracking-wide uppercase" style={{ color: "#6A7368" }}>Mensagem (opcional)</label>
-            <textarea
-              rows={3}
-              placeholder="Conte um pouco sobre o que busca no atendimento..."
-              className="px-4 py-3 rounded-sm text-sm outline-none transition-colors resize-none"
-              style={{ background: "#E5E1D9", border: "1px solid rgba(26,33,24,0.1)", color: "#1A2118", fontFamily: "'Lato', sans-serif" }}
-              onFocus={(e) => ((e.target as HTMLElement).style.borderColor = "#4A7259")}
-              onBlur={(e) => ((e.target as HTMLElement).style.borderColor = "rgba(26,33,24,0.1)")}
-            />
-          </div>
-
-          <button
-            type="submit"
-            className="w-full py-4 text-sm font-semibold tracking-widest uppercase rounded-sm transition-all duration-200"
-            style={{ background: "#4A7259", color: "#C8D8C2" }}
-            onMouseEnter={(e) => ((e.target as HTMLElement).style.background = "#3A5E47")}
-            onMouseLeave={(e) => ((e.target as HTMLElement).style.background = "#4A7259")}
-          >
-            Enviar solicitação
-          </button>
-
-          <p className="text-center text-xs" style={{ color: "#6A7368", fontWeight: 300 }}>
-            Entraremos em contato em até 24h úteis para confirmar seu agendamento.
-          </p>
-        </form>
+        <p className="mt-6 text-xs" style={{ color: "#9AA89A", fontWeight: 300 }}>
+          Nossa equipe responderá o mais breve possível.
+        </p>
       </div>
     </section>
   );

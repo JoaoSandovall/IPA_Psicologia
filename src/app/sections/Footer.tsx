@@ -67,7 +67,7 @@ export default function Footer({ navLinks, goConvenios, scrollTo }: FooterProps)
             <ul className="space-y-2 text-sm flex flex-col items-center lg:items-start text-center lg:text-left" style={{ color: "rgba(200,216,194,0.5)", fontWeight: 300 }}>
               <li>(61) 99257-6460</li>
               <li>contato@ipapsicologia.com.br</li>
-              <li>STN Ed. Vital Brazil, Bl. M, Sala 220</li>
+              <li>STN Ed. Vital Brazil, Bl. M, Sala 212/214</li>
               <li>Asa Norte — Brasília, DF</li>
             </ul>
           </div>

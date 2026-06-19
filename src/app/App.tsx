@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import ipaLogoSimple from "@/imports/logo.png";
 import { X, Menu } from 'lucide-react';
-
-// Importação das seções modulares isoladas
 import Hero from "./sections/Hero";
 import Sobre from "./sections/Sobre";
 import Especialidades from "./sections/Especialidades";

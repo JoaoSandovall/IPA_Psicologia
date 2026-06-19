@@ -19,7 +19,7 @@ export default function Localizacao() {
 
           <div className="space-y-6 w-full">
             {[
-              { Icon: MapPin, label: "Endereço", text: "STN Edifício Vital Brazil, Bloco M\n1° andar, Sala 220 — Asa Norte\nBrasília — DF, 70770-100" },
+              { Icon: MapPin, label: "Endereço", text: "STN Edifício Vital Brazil, Bloco M\n1° andar, Sala 212/214 — Asa Norte\nBrasília — DF, 70770-100" },
               { Icon: Clock, label: "Horário de Funcionamento", text: "Segunda a Sexta: 08h às 17h\nSábado e Domingo: Fechado" },
               { Icon: Phone, label: "Telefone / WhatsApp", text: "(61) 99257-6460" },
               { Icon: Mail, label: "E-mail", text: "contato@ipapsicologia.com.br" },
