@@ -1,4 +1,4 @@
-# IPA - Instituto de Psicologia Aplicada
+# IPA - Instituto de Psicologia Aplicada (Ainda em desenvolvimento)
 
 > Landing Page SPA da clínica de psicologia IPA (Brasília - DF), modularidade e mitigação de dependências externas.
 
