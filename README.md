@@ -6,79 +6,109 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
-![shadcn/ui](https://img.shields.io/badge/shadcn%2Fui-000000?style=for-the-badge&logo=shadcnui&logoColor=white)
 
 ---
 
 ## Sobre o Projeto
 
-Single Page Application (SPA) desenvolvida para apresentar os serviços, o corpo clínico e a infraestrutura do Instituto de Psicologia Aplicada. O projeto possui um design limpo e responsivo, com renderização condicional avançada para garantir a melhor experiência de leitura e navegação em Desktop e Mobile.
+Single Page Application (SPA) desenvolvida para apresentar os serviços, o corpo clínico e a infraestrutura do Instituto de Psicologia Aplicada. A arquitetura foi refatorada para um modelo modularizado, removendo dependências externas desnecessárias (como bibliotecas de UI de terceiros e scripts pesados) para focar em performance, utilizando CSS nativo para animações e Tailwind CSS v4 para estilização global.
+
+A aplicação utiliza renderização condicional baseada em estado para alternar entre a página principal e a seção específica de Convênios.
 
 ## Principais Funcionalidades
 
-* **Design Responsivo:** Estruturas de layout adaptadas e exclusivas para dispositivos móveis e computadores.
-* **Hero Section:** Apresentação da identidade visual institucional com chamadas para ação (CTAs).
-* **Apresentação da Equipe:** Seção de perfil dedicada aos especialistas da clínica.
-* **Localização Integrada:** Endereço com iframe interativo do Google Maps.
-* **Agendamento:** Botões de encaminhamento direto e rápido para o WhatsApp da clínica.
+* **Design Responsivo:** Layout adaptado nativamente via Tailwind para mobile, tablet e desktop.
+* **Componentização Modular:** Arquitetura fatiada em seções (`Hero`, `Sobre`, `Equipe`, `Contato`, etc.) para facilitar a manutenção.
+* **Carrossel Infinito Nativo:** Exibição de avaliações do Google Maps desenvolvida com animações de CSS puro (keyframes), sem bibliotecas externas.
+* **Roteamento por Estado:** Alternância limpa entre a Home e a visualização de Convênios sem recarregamento da página.
+* **Localização Integrada:** Iframe nativo do Google Maps apontando para o endereço físico da clínica.
 
 ## Tecnologias Utilizadas
 
-* **React + Vite:** Biblioteca de interface de usuário e bundler de alta performance.
-* **TypeScript:** Tipagem estática para maior segurança e previsibilidade do código.
-* **Tailwind CSS:** Framework de CSS utilitário.
-* **shadcn/ui:** Componentes de interface acessíveis e customizáveis.
-* **Lucide React:** Biblioteca de ícones.
-* **pnpm:** Gerenciador de pacotes.
+* **React + Vite:** Biblioteca de construção de interface e bundler otimizado.
+* **TypeScript:** Tipagem estática para validação de dados e segurança do código.
+* **Tailwind CSS v4:** Framework de CSS utilitário integrado via plugin do Vite.
+* **Lucide React:** Biblioteca nativa para renderização de ícones SVG.
+* **npm:** Gerenciador de dependências.
 
 ## Estrutura de Diretórios
 
 ```text
 IPA_Psicologia/
-├── public/                 # Assets públicos
+├── public/                 # Assets públicos estáticos
 ├── src/
 │   ├── app/
-│   │   ├── App.tsx         # Estrutura principal da Landing Page
-│   │   └── components/     # Componentes reutilizáveis (shadcn/ui e personalizados)
-│   ├── imports/            # Imagens locais
-│   ├── styles/             # Estilização global (Tailwind, Fonts)
-│   └── main.tsx            # Ponto de entrada do React
-├── package.json            # Dependências e scripts
-├── tailwind.config.js      # Configurações do Tailwind CSS
-└── vite.config.ts          # Configurações do Vite
+│   │   ├── App.tsx         # Esqueleto principal e roteamento de estados
+│   │   └── sections/       # Componentes modulares de cada seção da página
+│   ├── imports/            # Imagens e logos (arquivos locais)
+│   ├── styles/             # Arquivos base de CSS (Tailwind, fontes e animações)
+│   └── main.tsx            # Ponto de entrada de renderização do React
+├── package.json            # Configuração de dependências e scripts do Node
+└── vite.config.ts          # Configurações do compilador Vite e plugins
+```
 
-## Como Executar o Projeto
+## Como Executar o Projeto Localmente
 
-Certifique-se de ter o Node.js e o pnpm instalados na sua máquina.
+### Requisitos
 
-1. Clone o repositório:
+- Node.js instalado
+- npm instalado
+
+### 1. Clone o repositório
+
 ```bash
-git clone [https://github.com/seu-usuario/ipa-psicologia.git](https://github.com/seu-usuario/ipa-psicologia.git)
+git clone https://github.com/seu-usuario/ipa-psicologia.git
 cd ipa-psicologia
 ```
 
-2. Instale as dependências:
+### 2. Instale as dependências
+
 ```bash
-pnpm install
+npm install
 ```
 
-3. Inicie o servidor de desenvolvimento:
+### 3. Permita a execução dos scripts de construção
+
+Necessário apenas na primeira instalação para liberar os binários utilizados pelo Tailwind CSS e Esbuild.
+
 ```bash
-pnpm dev
+npm approve-scripts @tailwindcss/oxide esbuild sharp
 ```
 
-O servidor estará disponível localmente em `http://localhost:5173/`.
+### 4. Inicie o servidor de desenvolvimento
 
-## Deploy
-
-O projeto está otimizado para plataformas de hospedagem estática e Serverless (como Vercel, Netlify, Hostinger, HostGator, etc.).
-
-Para gerar a versão otimizada de produção, execute:
 ```bash
-pnpm build
+npm run dev
 ```
 
-A pasta `dist/` será gerada na raiz do projeto com os arquivos finais prontos para publicação no servidor.
+A aplicação estará disponível em:
+
+```text
+http://localhost:5173
+```
 
 ---
-Desenvolvido com dedicação para o IPA — Cuidar da mente é cuidar da vida.
+
+## Deploy (Produção)
+
+O projeto é totalmente estático e pode ser hospedado em plataformas como:
+
+- Vercel
+- Netlify
+- Hostinger
+- HostGator
+- Outros serviços de hospedagem compatíveis com arquivos estáticos
+
+### Gerar Build de Produção
+
+```bash
+npm run build
+```
+
+Após a execução do comando, será criada uma pasta:
+
+```text
+dist/
+```
+
+Essa pasta conterá todos os arquivos otimizados e minificados da aplicação (HTML, CSS, JavaScript e assets), prontos para publicação em produção.
