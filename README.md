@@ -1,6 +1,6 @@
-# IPA - Instituto de Psicologia Aplicada
+# IPA - Instituto de Psicologia Aplicada (Ainda em desenvolvimento)
 
-> Landing Page oficial e responsiva para a clínica de psicologia IPA, localizada em Brasília - DF.
+> Landing Page SPA da clínica de psicologia IPA (Brasília - DF), modularidade e mitigação de dependências externas.
 
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
@@ -9,106 +9,66 @@
 
 ---
 
-## Sobre o Projeto
+## ⚙️ Stacks
 
-Single Page Application (SPA) desenvolvida para apresentar os serviços, o corpo clínico e a infraestrutura do Instituto de Psicologia Aplicada. A arquitetura foi refatorada para um modelo modularizado, removendo dependências externas desnecessárias (como bibliotecas de UI de terceiros e scripts pesados) para focar em performance, utilizando CSS nativo para animações e Tailwind CSS v4 para estilização global.
+* **Core:** React + Vite
+* **Linguagem:** TypeScript
+* **Estilização:** Tailwind CSS v4
+* **Assets:** Lucide React (Ícones SVG)
 
-A aplicação utiliza renderização condicional baseada em estado para alternar entre a página principal e a seção específica de Convênios.
+## Funcionalidades
 
-## Principais Funcionalidades
+* **Arquitetura Modular:** Componentização baseada em blocos de seção independentes.
+* **Roteamento por Estado:** Gerenciamento de visualização (Home / Convênios) controlado via React State, dispensando reloads ou React Router.
+* **UI/UX Otimizada:** Implementação de carrosséis e animações puramente via CSS nativo (`keyframes` e `scroll-snap`), removendo o *overhead* de bibliotecas de terceiros.
+* **Integrações Nativas:** Redirecionamento formatado para a API do WhatsApp (agendamentos) e Iframe embedado do Google Maps.
 
-* **Design Responsivo:** Layout adaptado nativamente via Tailwind para mobile, tablet e desktop.
-* **Componentização Modular:** Arquitetura fatiada em seções (`Hero`, `Sobre`, `Equipe`, `Contato`, etc.) para facilitar a manutenção.
-* **Carrossel Infinito Nativo:** Exibição de avaliações do Google Maps desenvolvida com animações de CSS puro (keyframes), sem bibliotecas externas.
-* **Roteamento por Estado:** Alternância limpa entre a Home e a visualização de Convênios sem recarregamento da página.
-* **Localização Integrada:** Iframe nativo do Google Maps apontando para o endereço físico da clínica.
-
-## Tecnologias Utilizadas
-
-* **React + Vite:** Biblioteca de construção de interface e bundler otimizado.
-* **TypeScript:** Tipagem estática para validação de dados e segurança do código.
-* **Tailwind CSS v4:** Framework de CSS utilitário integrado via plugin do Vite.
-* **Lucide React:** Biblioteca nativa para renderização de ícones SVG.
-* **npm:** Gerenciador de dependências.
-
-## Estrutura de Diretórios
+## 📂 Estrutura do Repositório
 
 ```text
 IPA_Psicologia/
-├── public/                 # Assets públicos estáticos
+├── public/                 # Assets públicos não processados
 ├── src/
 │   ├── app/
-│   │   ├── App.tsx         # Esqueleto principal e roteamento de estados
-│   │   └── sections/       # Componentes modulares de cada seção da página
-│   ├── imports/            # Imagens e logos (arquivos locais)
-│   ├── styles/             # Arquivos base de CSS (Tailwind, fontes e animações)
-│   └── main.tsx            # Ponto de entrada de renderização do React
-├── package.json            # Configuração de dependências e scripts do Node
-└── vite.config.ts          # Configurações do compilador Vite e plugins
+│   │   ├── App.tsx         # Roteador de estado e layout principal
+│   │   └── sections/       # Componentes fragmentados por escopo visual
+│   ├── imports/            # Assets
+│   ├── styles/             # Diretivas do Tailwind e CSS global
+│   └── main.tsx            # Entry point do React
+├── package.json            # Dependências e scripts de execução
+└── vite.config.ts          # Configuração de build
 ```
 
-## Como Executar o Projeto Localmente
+## Setup Local
 
-### Requisitos
-
-- Node.js instalado
-- npm instalado
-
-### 1. Clone o repositório
+**Pré-requisitos:** `Node.js` e `npm`.
 
 ```bash
-git clone https://github.com/seu-usuario/ipa-psicologia.git
+# 1. Clonar repositório
+git clone [https://github.com/seu-usuario/ipa-psicologia.git](https://github.com/seu-usuario/ipa-psicologia.git)
 cd ipa-psicologia
-```
 
-### 2. Instale as dependências
-
-```bash
+# 2. Instalar dependências
 npm install
-```
 
-### 3. Permita a execução dos scripts de construção
-
-Necessário apenas na primeira instalação para liberar os binários utilizados pelo Tailwind CSS e Esbuild.
-
-```bash
+# 3. Liberar binários de build (Apenas na 1ª instalação)
 npm approve-scripts @tailwindcss/oxide esbuild sharp
-```
 
-### 4. Inicie o servidor de desenvolvimento
-
-```bash
+# 4. Iniciar servidor de desenvolvimento (HMR ativo)
 npm run dev
 ```
 
-A aplicação estará disponível em:
-
-```text
-http://localhost:5173
-```
+> **Acesso Local:** `http://localhost:5173`
 
 ---
 
-## Deploy (Produção)
+## Build e Deploy
 
-O projeto é totalmente estático e pode ser hospedado em plataformas como:
-
-- Vercel
-- Netlify
-- Hostinger
-- HostGator
-- Outros serviços de hospedagem compatíveis com arquivos estáticos
-
-### Gerar Build de Produção
+Aplicação *100% Client-Side* (Static Files). Compatível com qualquer provedor de hospedagem estática (Vercel, Netlify, S3, Hostinger, etc.).
 
 ```bash
+# Compilar bundle otimizado e minificado
 npm run build
 ```
 
-Após a execução do comando, será criada uma pasta:
-
-```text
-dist/
-```
-
-Essa pasta conterá todos os arquivos otimizados e minificados da aplicação (HTML, CSS, JavaScript e assets), prontos para publicação em produção.
+> Os *assets* finais de produção serão gerados no diretório `/dist`.
