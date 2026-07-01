@@ -75,21 +75,24 @@ export default function App() {
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 will-change-transform ${navBg}`}
         style={{ boxShadow: scrolled ? "0 1px 3px 0 rgba(0, 0, 0, 0.05)" : "none" }}
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 flex h-20 w-full">
-          <div className="hidden lg:flex items-center justify-between lg:w-[52%] pr-12">
-            <button onClick={goHome} className="flex items-center transition-transform active:scale-98">
+        <div className="flex h-20 w-full">
+          
+          <div className="hidden lg:flex items-center justify-between w-1/2 pl-8 lg:pl-12 xl:pl-24 pr-[clamp(10px,3vw,40px)]">
+            <button onClick={goHome} className="flex items-center transition-transform active:scale-98 shrink-0">
               <img
                 src={ipaLogoSimple}
-                alt="IPA — Instituto de Psicologia Aplicada"
-                style={{ height: 48, width: "auto", objectFit: "contain", filter: onConvenios ? "brightness(0) invert(1)" : "none", opacity: onConvenios ? 0.88 : 1 }}
+                alt="IPA"
+                className="h-10 xl:h-12 w-auto object-contain"
+                style={{ filter: onConvenios ? "brightness(0) invert(1)" : "none", opacity: onConvenios ? 0.88 : 1 }}
               />
             </button>
-            <div className="flex items-center gap-8">
+            
+            <div className="flex items-center gap-4 xl:gap-8 shrink-0">
               {navLinks.slice(0, 3).map((link) => (
                 <button
                   key={link.href}
                   onClick={() => scrollTo(link.href)}
-                  className={`text-xs tracking-[0.15em] uppercase font-medium transition-colors duration-200 ${onConvenios ? "text-[#C8D8C2] hover:text-[#8BBDA0]" : scrolled ? "text-[#1A2118] hover:text-[#C97B52]" : "text-[#4A7259] hover:text-[#C97B52]"}`}
+                  className={`text-[10px] xl:text-xs tracking-[0.15em] uppercase font-semibold transition-colors duration-200 whitespace-nowrap ${onConvenios ? "text-[#C8D8C2] hover:text-[#8BBDA0]" : scrolled ? "text-[#1A2118] hover:text-[#C97B52]" : "text-[#4A7259] hover:text-[#C97B52]"}`}
                 >
                   {link.label}
                 </button>
@@ -97,34 +100,37 @@ export default function App() {
             </div>
           </div>
 
-          <div className="hidden lg:flex items-center justify-end lg:w-[48%] gap-8">
-            {navLinks.slice(3).map((link) => (
+          <div className="hidden lg:flex items-center justify-between w-1/2 pl-[clamp(10px,3vw,40px)] pr-6 lg:pr-12 xl:pr-24">
+            <div className="flex items-center gap-4 xl:gap-8 shrink-0">
+              {navLinks.slice(3).map((link) => (
+                <button
+                  key={link.href}
+                  onClick={() => scrollTo(link.href)}
+                  className={`text-[10px] xl:text-xs tracking-[0.15em] uppercase font-semibold transition-colors duration-200 whitespace-nowrap ${onConvenios ? "text-[#C8D8C2] hover:text-[#8BBDA0]" : scrolled ? "text-[#1A2118] hover:text-[#C97B52]" : "text-[#F7F5F1] hover:text-[#C97B52]"}`}
+                >
+                  {link.label}
+                </button>
+              ))}
               <button
-                key={link.href}
-                onClick={() => scrollTo(link.href)}
-                className={`text-xs tracking-[0.15em] uppercase font-medium transition-colors duration-200 ${onConvenios ? "text-[#C8D8C2] hover:text-[#8BBDA0]" : scrolled ? "text-[#1A2118] hover:text-[#C97B52]" : "text-[#F7F5F1] hover:text-[#C97B52]"}`}
+                onClick={goConvenios}
+                className={`text-[10px] xl:text-xs tracking-[0.15em] uppercase transition-colors duration-200 whitespace-nowrap ${onConvenios ? "text-[#8BBDA0] font-bold" : scrolled ? "text-[#1A2118] font-semibold hover:text-[#C97B52]" : "text-[#F7F5F1] font-semibold hover:text-[#C97B52]"}`}
               >
-                {link.label}
+                Convênios
               </button>
-            ))}
-            <button
-              onClick={goConvenios}
-              className={`text-xs tracking-[0.15em] uppercase transition-colors duration-200 ${onConvenios ? "text-[#8BBDA0] font-semibold" : scrolled ? "text-[#1A2118] font-medium hover:text-[#C97B52]" : "text-[#F7F5F1] font-medium hover:text-[#C97B52]"}`}
-            >
-              Convênios
-            </button>
+            </div>
+            
             <button
               onClick={() => scrollTo("#contato")}
-              className={`px-6 py-3 text-xs font-semibold rounded-sm transition-all duration-200 uppercase tracking-wider ${onConvenios || scrolled ? "bg-[#4A7259] text-[#F7F5F1] hover:bg-[#3A5E47]" : "bg-[#F7F5F1] text-[#4A7259] hover:bg-[#E5E1D9]"}`}
-              style={{ letterSpacing: "0.06em" }}
+              className={`px-5 xl:px-7 py-2.5 xl:py-3 text-[10px] xl:text-xs font-bold rounded-sm transition-all duration-200 uppercase tracking-widest whitespace-nowrap shrink-0 ${onConvenios || scrolled ? "bg-[#4A7259] text-[#F7F5F1] hover:bg-[#3A5E47]" : "bg-[#F7F5F1] text-[#4A7259] hover:bg-[#E5E1D9]"}`}
             >
               Agendar Consulta
             </button>
           </div>
 
-          <div className="lg:hidden flex items-center justify-between w-full">
+          {/* MOBILE / TABLET (< 1024px) */}
+          <div className="lg:hidden flex items-center justify-between w-full px-6">
             <button onClick={goHome} className="flex items-center">
-              <img src={ipaLogoSimple} alt="IPA" style={{ height: 48, width: "auto", objectFit: "contain", filter: onConvenios ? "brightness(0) invert(1)" : "none" }} />
+              <img src={ipaLogoSimple} alt="IPA" className="h-10 w-auto object-contain" style={{ filter: onConvenios ? "brightness(0) invert(1)" : "none" }} />
             </button>
             <button className="p-2 transition-colors" onClick={() => setMenuOpen(!menuOpen)} style={{ color: onConvenios ? "#C8D8C2" : "#1A2118" }}>
               {menuOpen ? <X size={22} /> : <Menu size={22} />}
