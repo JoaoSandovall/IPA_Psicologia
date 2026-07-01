@@ -5,7 +5,6 @@ import Hero from "./sections/Hero";
 import Sobre from "./sections/Sobre";
 import Especialidades from "./sections/Especialidades";
 import Equipe from "./sections/Equipe";
-import ConveniosCTA from "./sections/ConveniosCTA";
 import Depoimentos from "./sections/Depoimentos";
 import Localizacao from "./sections/Localizacao";
 import Contato from "./sections/Contato";
@@ -193,8 +192,6 @@ export default function App() {
 
           {/* ── 6. EQUIPE DE PSICÓLOGOS ── */}
           <Equipe />
-
-          <ConveniosCTA goConvenios={goConvenios} />
 
           {/* ── 7. MAPA E CONTATOS (LOCALIZAÇÃO) ── */}
           <Localizacao />
