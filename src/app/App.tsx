@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import ipaLogoSimple from "@/imports/logo.png";
+import iconeWhatsapp from "@/imports/iconewhatsapp.svg";
 import { Twirl as Hamburger } from 'hamburger-react';
 import Hero from "./sections/Hero";
 import Sobre from "./sections/Sobre";
@@ -228,6 +229,20 @@ export default function App() {
           <Footer navLinks={navLinks} goConvenios={goConvenios} scrollTo={scrollTo} />
         </>
       )}
+      <a
+        href="https://wa.me/5561992576460?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta."
+        target="_blank"
+        rel="noopener noreferrer"
+        className="lg:hidden fixed bottom-8 right-6 z-50 flex items-center justify-center w-14 h-14 bg-[#25D366] rounded-full shadow-[0_8px_20px_rgba(37,211,102,0.4)] transition-transform active:scale-90 animate-fade-in-up"
+        aria-label="Agendar pelo WhatsApp"
+      >
+        <img 
+          src={iconeWhatsapp} 
+          alt="WhatsApp" 
+          className="w-8 h-8"
+          style={{ filter: "brightness(0) invert(1)" }}
+        />
+      </a>
     </div>
   );
 }

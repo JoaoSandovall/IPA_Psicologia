@@ -21,6 +21,17 @@ const psychologists = [
     quote: "Acredito no poder da escuta e do acolhimento como caminhos para o autoconhecimento e para uma vida mais leve e significativa.",
   },
   {
+    name: "Matheus Leon",
+    image: fotoMatheus,
+    title: "Psicólogo Clínico",
+    crp: "CRP 01/22177",
+    specialty: "Neuropsicologia",
+    atende: "Crianças, adolescentes, adultos e idosos",
+    areas: ["Neuropsicologia", "EMDR", "Brainspotting", "ABA", "Espectro Autista (TEA)"],
+    sobre: "Psicólogo clínico com atuação em Psicologia humanista e Terapia Cognitivo-Comportamental.",
+    quote: "Meu objetivo é oferecer um espaço seguro e acolhedor, ajudando cada pessoa a compreender suas emoções e desenvolver formas mais leves e saudáveis de lidar com os desafios da vida.",
+  },
+  {
     name: "Giovani Tápia",
     image: fotoGiovane,
     title: "Psicólogo Clínico",
@@ -40,18 +51,7 @@ const psychologists = [
     atende: "A partir dos 18 anos",
     areas: ["Perspectiva Psicodinâmica", "Processos inconscientes", "Consciência emocional", "Qualidade de vida"],
     sobre: "Psicóloga clínica com atuação em Psicologia Psicodinâmica e conflitos inconscientes e suas manifestações no cotidiano.",
-    quote: "Meu objetivo é oferecer um space seguro e acolhedor, ajudando você a compreender suas emoções e desenvolver formas mais leves e saudáveis de lidar com os desafios da vida.",
-  },
-  {
-    name: "Matheus Leon",
-    image: fotoMatheus,
-    title: "Psicólogo Clínico",
-    crp: "CRP 01/22177",
-    specialty: "Neuropsicologia",
-    atende: "Crianças, adolescentes, adultos e idosos",
-    areas: ["Neuropsicologia", "EMDR", "Brainspotting", "ABA", "Espectro Autista (TEA)"],
-    sobre: "Psicólogo clínico com atuação em Psicologia humanista e Terapia Cognitivo-Comportamental.",
-    quote: "Meu objetivo é oferecer um space seguro e acolhedor, ajudando cada pessoa a compreender suas emoções e desenvolver formas mais leves e saudáveis de lidar com os desafios da vida.",
+    quote: "Meu objetivo é oferecer um espaço seguro e acolhedor, ajudando você a compreender suas emoções e desenvolver formas mais leves e saudáveis de lidar com os desafios da vida.",
   },
   {
     name: "Samara Pires",
@@ -226,7 +226,7 @@ export default function Equipe() {
                     </div>
                   </div>
 
-                  <p className="text-xs leading-relaxed italic pt-4 mt-4" style={{ color: "#9AA89A", borderTop: "1px solid rgba(26,33,24,0.07)", fontWeight: 300 }}>
+                  <p className="text-xs leading-relaxed italic pt-4 mt-4" style={{ color: "#363636", borderTop: "1px solid rgba(26,33,24,0.07)", fontWeight: 300 }}>
                     "{p.quote}"
                   </p>
                 </div>
