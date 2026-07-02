@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import ipaLogoSimple from "@/imports/logo.png";
-import { X, Menu } from 'lucide-react';
+import { Twirl as Hamburger } from 'hamburger-react';
 import Hero from "./sections/Hero";
 import Sobre from "./sections/Sobre";
 import Especialidades from "./sections/Especialidades";
@@ -72,12 +72,14 @@ export default function App() {
     <div className="relative w-full overflow-x-hidden bg-[#F4F1EA]">
       {/* ── NAV BAR HEADER ── */}
       <header 
-        className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 will-change-transform ${navBg}`}
-        style={{ boxShadow: scrolled ? "0 1px 3px 0 rgba(0, 0, 0, 0.05)" : "none" }}
+        // LÓGICA CORRIGIDA: Se o menu abrir, força o fundo a ficar Creme para o texto não sumir
+        className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 will-change-transform ${menuOpen ? "bg-[#F7F5F1]" : navBg}`}
+        style={{ boxShadow: scrolled || menuOpen ? "0 1px 3px 0 rgba(0, 0, 0, 0.05)" : "none" }}
       >
-        <div className="flex h-20 w-full">
+        <div className="flex h-20 w-full relative z-20">
           
-          <div className="hidden lg:flex items-center justify-between w-1/2 pl-8 lg:pl-12 xl:pl-24 pr-[clamp(10px,3vw,40px)]">
+          {/* LADO ESQUERDO DESKTOP */}
+          <div className="hidden lg:flex items-center justify-end w-1/2 pl-8 pr-[clamp(10px,3vw,40px)] gap-10 xl:gap-35">
             <button onClick={goHome} className="flex items-center transition-transform active:scale-98 shrink-0">
               <img
                 src={ipaLogoSimple}
@@ -100,7 +102,8 @@ export default function App() {
             </div>
           </div>
 
-          <div className="hidden lg:flex items-center justify-between w-1/2 pl-[clamp(10px,3vw,40px)] pr-6 lg:pr-12 xl:pr-24">
+          {/* LADO DIREITO DESKTOP */}
+          <div className="hidden lg:flex items-center justify-start w-1/2 pl-[clamp(10px,3vw,40px)] pr-8 gap-10 xl:gap-35">
             <div className="flex items-center gap-4 xl:gap-8 shrink-0">
               {navLinks.slice(3).map((link) => (
                 <button
@@ -127,30 +130,46 @@ export default function App() {
             </button>
           </div>
 
-          {/* MOBILE / TABLET (< 1024px) */}
           <div className="lg:hidden flex items-center justify-between w-full px-6">
             <button onClick={goHome} className="flex items-center">
-              <img src={ipaLogoSimple} alt="IPA" className="h-10 w-auto object-contain" style={{ filter: onConvenios ? "brightness(0) invert(1)" : "none" }} />
+              <img 
+                src={ipaLogoSimple} 
+                alt="IPA" 
+                className="h-10 w-auto object-contain transition-all duration-300" 
+                style={{ 
+                  filter: !menuOpen && (!scrolled || onConvenios) ? "brightness(0) invert(1)" : "none",
+                  opacity: !menuOpen && (!scrolled || onConvenios) ? 0.9 : 1
+                }} 
+              />
             </button>
-            <button className="p-2 transition-colors" onClick={() => setMenuOpen(!menuOpen)} style={{ color: onConvenios ? "#C8D8C2" : "#1A2118" }}>
-              {menuOpen ? <X size={22} /> : <Menu size={22} />}
-            </button>
+            <div className="relative z-20 -mr-3">
+              <Hamburger 
+                toggled={menuOpen} 
+                toggle={setMenuOpen} 
+                size={26} 
+                duration={0.4}
+                color={menuOpen || (scrolled && !onConvenios) ? "#1A2118" : "#F7F5F1"} 
+              />
+            </div>
           </div>
         </div>
 
+        {/* ── MENU MOBILE EXPANDIDO (GAVETA) ── */}
         {menuOpen && (
-          <div className="lg:hidden bg-[#F7F5F1] border-t border-border/40 py-6 px-6 flex flex-col gap-3 shadow-inner">
-            {navLinks.map((link) => (
-              <button key={link.href} onClick={() => scrollTo(link.href)} className="text-left text-sm text-[#1A2118] py-2.5 border-b border-border/30 tracking-wide">
-                {link.label}
+          <div className="lg:hidden w-full bg-[#F7F5F1] shadow-2xl border-t border-black/5 flex flex-col">
+            <div className="py-4 px-6 flex flex-col gap-1 pb-8">
+              {navLinks.map((link) => (
+                <button key={link.href} onClick={() => scrollTo(link.href)} className="text-left text-sm text-[#1A2118] py-3.5 border-b border-border/30 tracking-wide font-medium">
+                  {link.label}
+                </button>
+              ))}
+              <button onClick={goConvenios} className="text-left text-sm py-3.5 border-b border-border/30 font-bold" style={{ color: "#4A7259" }}>
+                Convênios
               </button>
-            ))}
-            <button onClick={goConvenios} className="text-left text-sm py-2.5 border-b border-border/30 font-semibold" style={{ color: "#4A7259" }}>
-              Convênios
-            </button>
-            <button onClick={() => scrollTo("#contato")} className="mt-3 px-5 py-3.5 text-xs font-semibold text-center rounded-sm uppercase tracking-wider bg-[#4A7259] text-[#F7F5F1]">
-              Agendar Consulta
-            </button>
+              <button onClick={() => scrollTo("#contato")} className="mt-6 px-5 py-4 text-xs font-bold text-center rounded-sm uppercase tracking-widest transition-colors bg-[#4A7259] text-[#F7F5F1] hover:bg-[#3A5E47]">
+                Agendar Consulta
+              </button>
+            </div>
           </div>
         )}
       </header>

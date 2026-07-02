@@ -62,9 +62,6 @@ export default function Hero({ scrollTo }: HeroProps) {
         </div>
       </div>
 
-      {/* ── DESKTOP (>= 1024px): DIVISÃO MATEMÁTICA 50/50 ── */}
-      
-      {/* LADO ESQUERDO (CREME) - 50% exato da tela */}
       <div
         className="relative z-10 hidden lg:flex flex-col justify-center w-1/2 px-10 xl:px-20 py-32"
         style={{ background: "#F4F1EA" }}
@@ -126,7 +123,6 @@ export default function Hero({ scrollTo }: HeroProps) {
         </div>
       </div>
 
-      {/* LADO DIREITO (VERDE) - 50% exato da tela */}
       <div
         className="hidden lg:flex flex-col items-center justify-center relative w-1/2 overflow-hidden"
         style={{ background: "#3D5447" }}
