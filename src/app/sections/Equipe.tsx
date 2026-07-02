@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { Camera, ChevronRight } from "lucide-react";
 import fotoCamila from "@/imports/Camila Rodrigues.jpeg";
 import fotoGiovane from "@/imports/Giovane Tapia.jpeg";
-import fotoMaira from "@/imports/Maira Muniz.png";
+import fotoMaiara from "@/imports/Maiara Muniz.png";
 import fotoMatheus from "@/imports/Matheus Leon.jpeg";
 import fotoSamara from "@/imports/Samara Pires.jpeg";
 import fotoVitoria from "@/imports/Vitoria Shalders.jpeg";
@@ -43,8 +43,8 @@ const psychologists = [
     quote: "Acredito que o autoconhecimento e a ampliação da consciência são caminhos fundamentais para relações mais saudáveis e uma vida com mais equilíbrio e sentido.",
   },
   {
-    name: "Maira Muniz",
-    image: fotoMaira,
+    name: "Maiara Muniz",
+    image: fotoMaiara,
     title: "Psicóloga Clínica",
     crp: "CRP 01/31337",
     specialty: "Psicodinâmica",
