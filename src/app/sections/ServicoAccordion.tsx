@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ChevronDown, Star } from "lucide-react";
+import FotoUm from "../../imports/FotoUm.jpg";
 
 interface Servico {
   titulo: string;
@@ -31,7 +32,7 @@ const servicos: Servico[] = [
         <p>
           Nossa mente é o que direciona toda nossa vida, deveria ser o metro quadrado mais valorizado por todos nós. Quando ela não está bem, nada mais vai bem e tardar cuidar desse aspecto é tardar e ampliar os problemas de não se olhar com mais atenção e carinho. Estamos aqui para te auxiliar nessa virada de chave.
         </p>
-        <p className="pt-6 mt-4 border-t border-[#F7F5F1]/20 italic text-base md:text-lg">
+        <p className="pt-6 mt-4 border-t border-[#1A2118]/10 italic text-base md:text-lg">
           "Sou Tatiana Kliamch, 18 anos como psicóloga clínica, 13 anos especializada em neuropsicologia e com formação em testes de personalidade, entre outras áreas que me dediquei com muito entusiasmo para uma entrega de um serviço que presto com devoção. Realizo Orientação profissional, sou gestora de projetos e diretora do Instituto de Psicologia Aplicada. Minha Avaliação Psicológica é diferenciada."
         </p>
       </div>
@@ -53,130 +54,148 @@ export default function ServicoAccordion() {
   const [aberto, setAberto] = useState<number | null>(0);
 
   return (
-    <section className="relative py-20 md:py-32 bg-[#F7F5F1] text-[#1A2118] overflow-hidden">
-      
-      {/* Elementos decorativos de fundo com responsividade no tamanho */}
-      <div className="absolute top-0 left-0 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-[#4A7259] opacity-[0.03] rounded-full blur-[80px] md:blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-[400px] md:w-[800px] h-[400px] md:h-[800px] bg-[#4A7259] opacity-[0.03] rounded-full blur-[80px] md:blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none" />
+    <section id="servicos" className="relative pt-24 pb-24 md:pt-32 md:pb-32 bg-[#F4F1EA] text-[#1A2118] overflow-hidden">
 
-      <div className="relative max-w-6xl mx-auto px-5 md:px-8 z-10">
+      {/* Container Principal */}
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-10 z-10">
         
         {/* Cabeçalho */}
-        <div className="text-center mb-14 md:mb-24">
-          <h3 
-            className="text-xs md:text-sm uppercase tracking-[0.2em] text-[#4A7259] font-bold mb-4"
-            style={{ fontFamily: "'Lato', sans-serif" }}
-          >
-            Cuidado e Especialidade
-          </h3>
+        <div className="text-center mb-16 md:mb-24">
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <div className="hidden md:block" style={{ width: 36, height: 1, background: "#C97B52" }} />
+            <p 
+              className="text-xs tracking-[0.32em] uppercase font-semibold text-[#C97B52]"
+              style={{ fontFamily: "'Lato', sans-serif" }}
+            >
+              Cuidado e Especialidade
+            </p>
+            <div className="hidden md:block" style={{ width: 36, height: 1, background: "#C97B52" }} />
+          </div>
+          
           <h2 
-            className="text-4xl md:text-5xl lg:text-6xl font-medium text-[#4A7259] mb-6" 
+            className="text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.1] text-[#1A2118] mb-6" 
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
             Nossas Especialidades
           </h2>
           <p 
-            className="text-[#6A7368] text-base md:text-xl max-w-2xl mx-auto leading-relaxed px-2"
-            style={{ fontFamily: "'Lato', sans-serif" }}
+            className="text-base md:text-lg max-w-2xl mx-auto leading-relaxed px-2 text-[#4A5848]"
+            style={{ fontFamily: "'Lato', sans-serif", fontWeight: 300 }}
           >
             Conheça nossos serviços desenhados para promover seu bem-estar, 
             desenvolvimento pessoal e qualidade de vida.
           </p>
         </div>
 
-        {/* 1. Serviço Destaque (Card Principal) */}
-        <div className="mb-8 md:mb-12">
-          <div 
-            className="group rounded-2xl md:rounded-3xl border border-[#4A7259] bg-[#4A7259] shadow-xl transition-all duration-300 overflow-hidden"
-          >
-            <button
-              onClick={() => setAberto(aberto === 0 ? null : 0)}
-              className="w-full flex justify-between items-center py-6 px-5 md:py-8 md:px-10 text-left focus:outline-none"
-            >
-              <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-6 pr-4">
-                <span 
-                  className="text-2xl md:text-3xl text-[#F7F5F1] leading-tight"
-                  style={{ fontFamily: "'Playfair Display', serif", fontWeight: 500 }}
-                >
-                  {servicos[0].titulo}
-                </span>
-                <span 
-                  className="inline-flex items-center gap-1.5 text-[10px] md:text-xs uppercase tracking-widest bg-[#F7F5F1] text-[#4A7259] px-4 py-1.5 rounded-full font-bold w-fit mt-1 md:mt-0"
-                  style={{ fontFamily: "'Lato', sans-serif" }}
-                >
-                  <Star className="w-3.5 h-3.5 fill-[#4A7259]" />
-                  Especialidade Principal
-                </span>
-              </div>
-              
-              <div className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-colors bg-[#F7F5F1]/10 hover:bg-[#F7F5F1]/25">
-                <ChevronDown 
-                  className={`w-5 h-5 md:w-6 md:h-6 transition-transform duration-500 text-[#F7F5F1] ${aberto === 0 ? "rotate-180" : ""}`} 
-                />
-              </div>
-            </button>
+        {/* Serviço Destaque (Correção da Imagem) */}
+        <div className="mb-6 md:mb-12 max-w-7xl mx-auto">
+          <div className="group rounded-sm bg-[#4A7259] shadow-md transition-all duration-300 overflow-hidden relative flex flex-col">
             
-            <div 
-              className={`grid transition-all duration-500 ease-in-out ${
-                aberto === 0 ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-              }`}
-            >
+            {/* Bloco 1: CABEÇALHO COM A FOTO FIXA */}
+            <div className="relative w-full flex flex-col md:flex-row">
+              <button
+                onClick={() => setAberto(aberto === 0 ? null : 0)}
+                className="relative z-20 w-full md:w-[60%] flex flex-col justify-center py-8 px-6 md:py-16 md:px-12 lg:px-16 text-left focus:outline-none cursor-pointer"
+              >
+                <div className="flex flex-col gap-3 md:gap-5 pr-4">
+                  <div className="flex items-center gap-3 mb-1">
+                    <span className="text-[#F4F1EA]/40 text-3xl md:text-4xl font-light italic" style={{ fontFamily: "'Playfair Display', serif" }}>
+                      01
+                    </span>
+                    <span 
+                      className="inline-flex items-center gap-1.5 text-[10px] md:text-xs uppercase tracking-widest bg-[#F4F1EA] text-[#4A7259] px-4 py-1.5 rounded-sm font-bold w-fit"
+                      style={{ fontFamily: "'Lato', sans-serif" }}
+                    >
+                      <Star className="w-3.5 h-3.5 fill-[#4A7259]" />
+                      Especialidade Principal
+                    </span>
+                  </div>
+                  <span 
+                    className="text-3xl md:text-4xl lg:text-5xl text-[#F4F1EA] leading-[1.15] font-semibold"
+                    style={{ fontFamily: "'Playfair Display', serif" }}
+                  >
+                    {servicos[0].titulo}
+                  </span>
+                </div>
+                
+                {/* Botão Chevron */}
+                <div className="flex-shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-sm flex items-center justify-center transition-colors bg-[#F4F1EA]/10 hover:bg-[#F4F1EA]/20 border border-[#F4F1EA]/20 mt-8 backdrop-blur-sm shadow-sm">
+                  <ChevronDown 
+                    className={`w-6 h-6 md:w-7 md:h-7 transition-transform duration-500 text-[#F4F1EA] ${aberto === 0 ? "rotate-180" : ""}`} 
+                  />
+                </div>
+              </button>
+
+              {/* A FOTO */}
+              <div className="relative w-full h-[250px] md:absolute md:top-0 md:right-0 md:w-[40%] md:h-full overflow-hidden pointer-events-none z-0 bg-[#4A7259]">
+                <img 
+                  src={FotoUm} 
+                  alt="Avaliação Neuropsicológica" 
+                  className="absolute inset-0 w-full h-full object-cover" 
+                />
+                <div className="hidden md:block absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#4A7259] to-transparent"></div>
+                <div className="md:hidden absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#4A7259] to-transparent"></div>
+              </div>
+            </div>
+            
+            {/* Bloco 2: CORPO DO ACORDEÃO */}
+            <div className={`relative z-10 grid transition-all duration-500 ease-in-out ${aberto === 0 ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
               <div className="overflow-hidden">
                 <div 
-                  className="px-5 md:px-10 pb-8 md:pb-10 pt-2 md:pt-4 leading-loose text-base md:text-[1.1rem] text-[#F7F5F1]/90"
-                  style={{ fontFamily: "'Lato', sans-serif" }}
+                  className="px-6 md:px-12 lg:px-16 pb-10 md:pb-16 pt-2 leading-relaxed text-sm md:text-base text-[#F4F1EA]/90"
+                  style={{ fontFamily: "'Lato', sans-serif", fontWeight: 300 }}
                 >
                   {servicos[0].descricao}
                 </div>
               </div>
             </div>
+
           </div>
         </div>
 
-        {/* 2. Restante dos Serviços em Grid de 2 Colunas */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 lg:gap-8 items-start">
+        {/* Restante dos Serviços */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 items-start max-w-7xl mx-auto">
           {servicos.slice(1).map((s, idx) => {
-            const i = idx + 1; 
+            const i = idx + 1;
             const isActive = aberto === i;
             
             return (
               <div 
                 key={i} 
-                className={`group transition-all duration-300 rounded-xl md:rounded-2xl border overflow-hidden ${
+                className={`group transition-all duration-300 rounded-sm border overflow-hidden ${
                   isActive 
                     ? 'bg-white border-[#4A7259]/30 shadow-md' 
-                    : 'bg-white/40 border-[#E6E2D8] hover:border-[#4A7259]/20 hover:bg-white/80 hover:shadow-sm'
+                    : 'bg-white/60 border-[#1A2118]/5 hover:border-[#4A7259]/30 hover:bg-white hover:shadow-sm'
                 }`}
               >
                 <button
                   onClick={() => setAberto(isActive ? null : i)}
-                  className="w-full flex justify-between items-center py-5 px-5 md:py-7 md:px-8 text-left transition-colors focus:outline-none"
+                  className="w-full flex justify-between items-center py-6 px-6 md:py-8 md:px-8 text-left transition-colors focus:outline-none cursor-pointer"
                 >
-                  <span 
-                    className={`text-lg md:text-xl pr-4 transition-colors ${isActive ? 'text-[#4A7259]' : 'text-[#1A2118]'}`}
-                    style={{ fontFamily: "'Playfair Display', serif", fontWeight: 500 }}
-                  >
-                    {s.titulo}
-                  </span>
+                  <div className="flex items-center gap-4 md:gap-6">
+                    <span className={`text-xl md:text-3xl font-light italic transition-colors ${isActive ? 'text-[#C97B52]' : 'text-[#4A7259]/30'}`} style={{ fontFamily: "'Playfair Display', serif" }}>
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <span 
+                      className={`text-lg md:text-xl pr-4 transition-colors font-semibold ${isActive ? 'text-[#C97B52]' : 'text-[#1A2118]'}`}
+                      style={{ fontFamily: "'Playfair Display', serif" }}
+                    >
+                      {s.titulo}
+                    </span>
+                  </div>
                   
-                  <div className={`flex-shrink-0 w-9 h-9 md:w-11 md:h-11 rounded-full flex items-center justify-center transition-all duration-300 ${
+                  <div className={`flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-sm flex items-center justify-center transition-all duration-300 ${
                     isActive ? 'bg-[#4A7259]/10' : 'bg-[#EAE6DF]/60 group-hover:bg-[#EAE6DF]'
                   }`}>
-                    <ChevronDown 
-                      className={`w-5 h-5 transition-transform duration-500 ${isActive ? "text-[#4A7259] rotate-180" : "text-[#6A7368]"}`} 
-                    />
+                    <ChevronDown className={`w-5 h-5 transition-transform duration-500 ${isActive ? "text-[#C97B52] rotate-180" : "text-[#4A5848]"}`} />
                   </div>
                 </button>
                 
-                <div 
-                  className={`grid transition-all duration-300 ease-in-out ${
-                    isActive ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-                  }`}
-                >
+                <div className={`grid transition-all duration-300 ease-in-out ${isActive ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
                   <div className="overflow-hidden">
                     <div 
-                      className="px-5 md:px-8 pb-6 md:pb-8 pt-1 leading-relaxed text-[#6A7368] text-base"
-                      style={{ fontFamily: "'Lato', sans-serif" }}
+                      className="px-6 md:px-8 pb-8 pt-0 leading-relaxed text-[#4A5848] text-sm md:text-base pl-[64px] md:pl-[84px]"
+                      style={{ fontFamily: "'Lato', sans-serif", fontWeight: 300 }}
                     >
                       {s.descricao}
                     </div>
@@ -186,7 +205,6 @@ export default function ServicoAccordion() {
             );
           })}
         </div>
-        
       </div>
     </section>
   );

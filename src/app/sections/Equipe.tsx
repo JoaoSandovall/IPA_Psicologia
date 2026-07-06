@@ -192,7 +192,7 @@ export default function Equipe() {
           onMouseUp={onTeamMouseUp}
           onMouseLeave={onTeamMouseUp}
         >
-          <div className="flex gap-4 px-6 lg:px-10 min-w-max items-stretch">
+          <div className="flex gap-4 px-6 lg:px-10 min-w-full justify-center lg:justify-center items-stretch">
             {psychologists.map((p) => (
               <div key={p.name} className="flex-shrink-0 flex flex-col rounded-md overflow-hidden hover:shadow-xl transition-shadow duration-300" style={{ width: 268, background: "#fff", border: "1px solid rgba(26,33,24,0.09)", cursor: "grab" }}>
                 {p.image ? (

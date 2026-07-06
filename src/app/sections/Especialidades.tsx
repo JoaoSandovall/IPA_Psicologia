@@ -1,4 +1,5 @@
-import { Heart, Shield, Users, Star } from "lucide-react";
+import { Star, Heart, Shield, Users } from "lucide-react";
+import FotoDois from "../../imports/FotoDois.jpg";
 
 const features = [
   {
@@ -23,39 +24,75 @@ const features = [
   },
 ];
 
-export default function Especialidades() {
+export default function PorQueNosEscolher() {
   return (
-    <section id="especialidades" style={{ background: "#DED9D0" }} className="py-24 lg:py-32">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="max-w-2xl mb-16">
-          <p className="text-xs tracking-[0.25em] uppercase mb-4 font-semibold" style={{ color: "#4A7259" }}>
-            Por que nos escolher
-          </p>
-          <h2
-            className="text-3xl lg:text-4xl font-semibold leading-snug"
-            style={{ fontFamily: "'Playfair Display', serif", color: "#1A2118" }}
-          >
-            Cuidado que vai além da consulta
-          </h2>
-        </div>
-
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {features.map((f) => {
-            const Icon = f.icon;
-            return (
-              <div key={f.title} className="bg-card rounded-sm p-8 border border-border/40 transition-shadow duration-300 hover:shadow-md">
-                <div className="w-10 h-10 rounded-sm flex items-center justify-center mb-6" style={{ background: "#4A7259" }}>
-                  <Icon size={20} color="#C8D8C2" />
-                </div>
-                <h3 className="text-lg font-semibold mb-3" style={{ fontFamily: "'Playfair Display', serif", color: "#1A2118" }}>
-                  {f.title}
-                </h3>
-                <p className="text-sm leading-relaxed" style={{ color: "#3A4838", fontWeight: 300 }}>
-                  {f.description}
+    <section className="w-full bg-[#3D5447] pt-20 pb-24 md:pt-32 md:pb-32 px-6 lg:px-10 relative z-20">
+      <div className="max-w-7xl mx-auto">
+        
+        {/* Grid padrão: Força as duas colunas a terem a exata mesma altura */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+          
+          {/* Esquerda: Textos + Imagem 2 */}
+          <div className="lg:col-span-5 flex flex-col text-center lg:text-left">
+            <div className="mb-8 md:mb-10">
+              <div className="flex items-center gap-3 mb-6 justify-center lg:justify-start">
+                <div className="hidden lg:block" style={{ width: 36, height: 1, background: "#C97B52" }} />
+                <p 
+                  className="text-xs tracking-[0.32em] uppercase font-semibold text-[#C97B52]" 
+                  style={{ fontFamily: "'Lato', sans-serif" }}
+                >
+                  Nossos Diferenciais
                 </p>
+                <div className="lg:hidden" style={{ width: 36, height: 1, background: "#C97B52" }} />
               </div>
-            );
-          })}
+              
+              <h2
+                className="text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.1] text-[#F7F5F1]"
+                style={{ fontFamily: "'Playfair Display', serif" }}
+              >
+                Cuidado que vai além <br className="hidden lg:block"/> da consulta.
+              </h2>
+            </div>
+            
+            {/* O SEGREDO DO ALINHAMENTO: flex-1 com relative na div, absolute na imagem */}
+            <div className="flex-1 relative rounded-sm overflow-hidden shadow-lg w-full bg-[#EAE6DF] min-h-[300px] lg:min-h-0">
+              <img 
+                src={FotoDois} 
+                alt="Atendimento humanizado na IPA" 
+                className="absolute inset-0 w-full h-full object-cover transition-transform hover:scale-105 duration-700" 
+              />
+            </div>
+          </div>
+          
+          {/* Direita: 4 Cards Brancos (Eles são os "chefes" que ditam a altura da seção) */}
+          <div className="lg:col-span-7 grid sm:grid-cols-2 gap-6 md:gap-8">
+            {features.map((f) => {
+              const Icon = f.icon;
+              return (
+                <div 
+                  key={f.title} 
+                  className="bg-[#F4F1EA] rounded-sm p-8 border border-[#1A2118]/10 transition-shadow duration-300 hover:shadow-lg relative overflow-hidden group"
+                >
+                  <div className="absolute top-0 right-0 p-6 opacity-[0.03] transition-opacity duration-300 group-hover:opacity-[0.08] pointer-events-none">
+                    <Icon size={120} className="text-[#4A7259]" />
+                  </div>
+                  
+                  <div className="relative z-10 pointer-events-none">
+                    <div className="w-12 h-12 rounded-sm flex items-center justify-center mb-6 bg-[#4A7259]">
+                      <Icon size={22} color="#F4F1EA" />
+                    </div>
+                    <h3 className="text-xl font-semibold mb-3 text-[#1A2118]" style={{ fontFamily: "'Playfair Display', serif" }}>
+                      {f.title}
+                    </h3>
+                    <p className="text-sm leading-relaxed text-[#4A5848]" style={{ fontFamily: "'Lato', sans-serif", fontWeight: 300 }}>
+                      {f.description}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          
         </div>
       </div>
     </section>

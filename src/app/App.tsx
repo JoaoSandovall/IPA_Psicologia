@@ -15,8 +15,8 @@ import Footer from "./sections/Footer";
 
 const navLinks = [
   { label: "Sobre", href: "#sobre" },
+  { label: "Serviços", href: "#servicos" },
   { label: "Nossa Equipe", href: "#equipe" },
-  { label: "Especialidades", href: "#especialidades" },
   { label: "Localização", href: "#localizacao" },
   { label: "Contato", href: "#contato" },
 ];
@@ -74,7 +74,6 @@ export default function App() {
     <div className="relative w-full overflow-x-hidden bg-[#F4F1EA]">
       {/* ── NAV BAR HEADER ── */}
       <header 
-        // LÓGICA CORRIGIDA: Se o menu abrir, força o fundo a ficar Creme para o texto não sumir
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 will-change-transform ${menuOpen ? "bg-[#F7F5F1]" : navBg}`}
         style={{ boxShadow: scrolled || menuOpen ? "0 1px 3px 0 rgba(0, 0, 0, 0.05)" : "none" }}
       >
@@ -207,9 +206,9 @@ export default function App() {
           <Sobre scrollTo={scrollTo} />
 
           <ServicoAccordion />
-
-          <Especialidades />
         
+          <Especialidades />
+
           <Equipe />
 
           <Localizacao />
@@ -231,7 +230,7 @@ export default function App() {
           src={iconeWhatsapp} 
           alt="WhatsApp" 
           className="w-8 h-8"
-          style={{ filter: "brightness(0) invert(1)" }} // Força o SVG a ficar 100% branco para contrastar com o fundo verde
+          style={{ filter: "brightness(0) invert(1)" }}
         />
       </a>
     </div>

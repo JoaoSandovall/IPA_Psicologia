@@ -98,7 +98,7 @@ export default function Depoimentos() {
         <div className="absolute left-0 top-0 bottom-0 w-12 lg:w-32 bg-gradient-to-r from-[#F4F1EA] to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-12 lg:w-32 bg-gradient-to-l from-[#F4F1EA] to-transparent z-10 pointer-events-none" />
 
-        <div className="flex w-max animate-marquee">
+        <div className="flex w-max animate-marquee justify-center">
           <div className="flex gap-5 pr-5">
             {avaliacoesGoogle.map((item) => (
               <a
