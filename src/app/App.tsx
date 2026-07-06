@@ -4,6 +4,7 @@ import iconeWhatsapp from "@/imports/iconewhatsapp.svg";
 import { Twirl as Hamburger } from 'hamburger-react';
 import Hero from "./sections/Hero";
 import Sobre from "./sections/Sobre";
+import ServicoAccordion from "./sections/ServicoAccordion";
 import Especialidades from "./sections/Especialidades";
 import Equipe from "./sections/Equipe";
 import Depoimentos from "./sections/Depoimentos";
@@ -201,25 +202,20 @@ export default function App() {
             </div>
           </div>
 
-          {/* ── 3. AVALIAÇÕES CARROSSEL INFINITO ── */}
           <Depoimentos />
 
-          {/* ── 4. SOBRE O IPA ── */}
           <Sobre scrollTo={scrollTo} />
 
-          {/* ── 5. POR QUE NOS ESCOLHER (ESPECIALIDADES) ── */}
-          <Especialidades />
+          <ServicoAccordion />
 
-          {/* ── 6. EQUIPE DE PSICÓLOGOS ── */}
+          <Especialidades />
+        
           <Equipe />
 
-          {/* ── 7. MAPA E CONTATOS (LOCALIZAÇÃO) ── */}
           <Localizacao />
 
-          {/* ── 8. FORMULÁRIO DE AGENDAMENTO ── */}
           <Contato />
 
-          {/* ── 9. RODAPÉ DE PÁGINA (FOOTER) ── */}
           <Footer navLinks={navLinks} goConvenios={goConvenios} scrollTo={scrollTo} />
         </>
       )}
