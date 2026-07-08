@@ -1,7 +1,7 @@
 import React, { useRef, useEffect ,useState } from "react";
 import { Camera, ChevronRight } from "lucide-react";
 import fotoCamila from "@/imports/Camila Rodrigues.jpeg";
-import fotoGiovane from "@/imports/Giovane Tapia.jpeg";
+import fotoGiovani from "@/imports/Giovane Tapia.jpeg";
 import fotoMaiara from "@/imports/Maiara Muniz.png";
 import fotoMatheus from "@/imports/Matheus Leon.jpeg";
 import fotoSamara from "@/imports/Samara Pires.jpeg";
@@ -34,7 +34,7 @@ const psychologists = [
   },
   {
     name: "Giovani Tápia",
-    image: fotoGiovane,
+    image: fotoGiovani,
     title: "Psicólogo Clínico",
     crp: "CRP 01/29959",
     specialty: "Gestalt-terapia",

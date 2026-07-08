@@ -1,4 +1,3 @@
-// src/app/pages/Home.tsx
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Twirl as Hamburger } from 'hamburger-react';
@@ -17,8 +16,6 @@ import Localizacao from "../sections/Localizacao";
 import Contato from "../sections/Contato";
 import Convenios from "./Convenios";
 import Footer from "../sections/Footer";
-
-// Importando os dados que separamos
 import { navLinks, stats } from "../constants";
 
 export default function Home() {
@@ -33,7 +30,7 @@ export default function Home() {
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 40);
-      
+
       const secaoLocalizacao = document.getElementById("localizacao");
       
       if (secaoLocalizacao) {
