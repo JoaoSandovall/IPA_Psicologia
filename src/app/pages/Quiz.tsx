@@ -151,7 +151,7 @@ const resultados: Resultado[] = [
 ];
 
 // --- COMPONENTE PRINCIPAL ---
-export default function QuizAvaliacao() {
+export default function Quiz() {
   const [passoAtual, setPassoAtual] = useState(0);
   const [respostas, setRespostas] = useState<Record<number, number>>({});
   const [quizFinalizado, setQuizFinalizado] = useState(false);

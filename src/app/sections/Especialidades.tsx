@@ -24,15 +24,13 @@ const features = [
   },
 ];
 
-export default function PorQueNosEscolher() {
+export default function Especialidades() {
   return (
     <section className="w-full bg-[#3D5447] pt-20 pb-24 md:pt-32 md:pb-32 px-6 lg:px-10 relative z-20">
       <div className="max-w-7xl mx-auto">
         
-        {/* Grid padrão: Força as duas colunas a terem a exata mesma altura */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
           
-          {/* Esquerda: Textos + Imagem 2 */}
           <div className="lg:col-span-5 flex flex-col text-center lg:text-left">
             <div className="mb-8 md:mb-10">
               <div className="flex items-center gap-3 mb-6 justify-center lg:justify-start">
@@ -54,7 +52,6 @@ export default function PorQueNosEscolher() {
               </h2>
             </div>
             
-            {/* O SEGREDO DO ALINHAMENTO: flex-1 com relative na div, absolute na imagem */}
             <div className="flex-1 relative rounded-sm overflow-hidden shadow-lg w-full bg-[#EAE6DF] min-h-[300px] lg:min-h-0">
               <img 
                 src={FotoDois} 
@@ -64,7 +61,6 @@ export default function PorQueNosEscolher() {
             </div>
           </div>
           
-          {/* Direita: 4 Cards Brancos (Eles são os "chefes" que ditam a altura da seção) */}
           <div className="lg:col-span-7 grid sm:grid-cols-2 gap-6 md:gap-8">
             {features.map((f) => {
               const Icon = f.icon;

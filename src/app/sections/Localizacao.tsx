@@ -1,5 +1,12 @@
 import { MapPin, Clock, Phone, Mail } from "lucide-react";
 
+const infosContato = [
+  { Icon: MapPin, label: "Endereço", text: "STN Edifício Vital Brazil, Bloco M\n1° andar, Sala 212/214 — Asa Norte\nBrasília — DF, 70770-100" },
+  { Icon: Clock, label: "Horário de Funcionamento", text: "Segunda a Sexta: 08h às 17h\nSábado e Domingo: Fechado" },
+  { Icon: Phone, label: "Telefone / WhatsApp", text: "(61) 99257-6460" },
+  { Icon: Mail, label: "E-mail", text: "contato@ipapsicologia.com.br" },
+];
+
 export default function Localizacao() {
   return (
     <section id="localizacao" style={{ background: "#1A2118" }} className="py-16 lg:py-32">
@@ -18,12 +25,7 @@ export default function Localizacao() {
           </h2>
 
           <div className="space-y-6 w-full">
-            {[
-              { Icon: MapPin, label: "Endereço", text: "STN Edifício Vital Brazil, Bloco M\n1° andar, Sala 212/214 — Asa Norte\nBrasília — DF, 70770-100" },
-              { Icon: Clock, label: "Horário de Funcionamento", text: "Segunda a Sexta: 08h às 17h\nSábado e Domingo: Fechado" },
-              { Icon: Phone, label: "Telefone / WhatsApp", text: "(61) 99257-6460" },
-              { Icon: Mail, label: "E-mail", text: "contato@ipapsicologia.com.br" },
-            ].map(({ Icon, label, text }) => (
+            {infosContato.map(({ Icon, label, text }) => (
               <div key={label} className="flex items-start gap-4 w-full">
                 <div className="w-10 h-10 rounded-sm flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: "rgba(201,123,82,0.15)" }}>
                   <Icon size={18} color="#C97B52" />
