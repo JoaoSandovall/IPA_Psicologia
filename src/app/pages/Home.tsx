@@ -24,14 +24,25 @@ import { navLinks, stats } from "../constants";
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [showQuizBalloon] = useState(false);
+  const [showQuizBalloon, setShowQuizBalloon] = useState(false);
 
   const location = useLocation();
   const navigate = useNavigate();
   const onConvenios = location.pathname === "/convenios";
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 40);
+      
+      const secaoLocalizacao = document.getElementById("localizacao");
+      
+      if (secaoLocalizacao) {
+        const distanciaTopo = secaoLocalizacao.getBoundingClientRect().top;
+
+        setShowQuizBalloon(distanciaTopo <= window.innerHeight);
+      }
+    };
+
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -187,7 +198,7 @@ export default function Home() {
       {onConvenios && (
         <Convenios onBack={goHome} />
         )}
-        
+
       {!onConvenios && (
         <>
           <Hero scrollTo={scrollTo} />

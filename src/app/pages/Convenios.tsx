@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { ChevronRight, ChevronLeft, Search, MessageCircle } from "lucide-react";
 
 const convenioGroups = [
@@ -33,6 +33,7 @@ interface ConveniosSectionProps {
 
 export default function ConveniosSection({ onBack }: ConveniosSectionProps) {
   const [query, setQuery] = useState("");
+  const refsLetras = useRef<Record<string, HTMLDivElement | null>>({});
   const allItems = convenioGroups.flatMap((g) => g.items);
 
   const filteredGroups = query.trim()
@@ -111,7 +112,7 @@ export default function ConveniosSection({ onBack }: ConveniosSectionProps) {
                     <button
                       key={g.letter}
                       onClick={() => {
-                        const el = document.getElementById(`grp-${g.letter}`);
+                        const el = refsLetras.current[g.letter];
                         if (el) {
                           const y = el.getBoundingClientRect().top + window.scrollY - 100;
                           window.scrollTo({ top: y, behavior: 'smooth' });
@@ -164,7 +165,12 @@ export default function ConveniosSection({ onBack }: ConveniosSectionProps) {
             ) : (
               <div className="flex flex-col gap-14">
                 {filteredGroups.map((group) => (
-                  <div key={group.letter} id={`grp-${group.letter}`} className="scroll-mt-28">
+                  <div 
+                    key={group.letter} 
+                    ref={(el) => { refsLetras.current[group.letter] = el; }}
+                    id={`grp-${group.letter}`} 
+                    className="scroll-mt-28"
+                  >
                     
                     {/* Cabeçalho da Letra (Estilo moderno com linha gradiente) */}
                     <div className="flex items-center gap-6 mb-6">
