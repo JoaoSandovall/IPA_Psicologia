@@ -1,13 +1,13 @@
 import ipaLogoSimple from "@/imports/logo.png";
 import { Instagram, Facebook } from "lucide-react";
+import { Link } from "react-router-dom";
 
 interface FooterProps {
   navLinks: Array<{ label: string; href: string }>;
-  goConvenios: () => void;
   scrollTo: (href: string) => void;
 }
 
-export default function Footer({ navLinks, goConvenios, scrollTo }: FooterProps) {
+export default function Footer({ navLinks, scrollTo }: FooterProps) {
   return (
     <footer style={{ background: "#111816" }} className="py-12">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
@@ -39,23 +39,43 @@ export default function Footer({ navLinks, goConvenios, scrollTo }: FooterProps)
 
           {/* Bloco 2: Navegação */}
           <div className="flex flex-col items-center lg:items-start">
+            
             <p className="text-xs font-semibold tracking-widest uppercase mb-4" style={{ color: "rgba(200,216,194,0.35)" }}>
               Navegação
             </p>
+
             <ul className="space-y-2 flex flex-col items-center lg:items-start">
-              {[...navLinks, { label: "Convênios", href: "#" }].map((l) => (
+    
+              {navLinks.map((l) => (
                 <li key={l.label}>
-                  <button
-                    onClick={() => l.label === "Convênios" ? goConvenios() : scrollTo(l.href)}
-                    className="text-sm transition-colors cursor-pointer"
+                  <a
+                    href={l.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollTo(l.href);
+                    }}
+                    className="text-sm transition-colors cursor-pointer block py-0.5"
                     style={{ color: "rgba(200,216,194,0.5)", fontWeight: 300 }}
                     onMouseEnter={(e) => ((e.target as HTMLElement).style.color = "#C97B52")}
                     onMouseLeave={(e) => ((e.target as HTMLElement).style.color = "rgba(200,216,194,0.5)")}
                   >
                     {l.label}
-                  </button>
+                  </a>
                 </li>
               ))}
+
+              <li>
+                <Link
+                  to="/convenios"
+                  className="text-sm transition-colors cursor-pointer block py-0.5"
+                  style={{ color: "rgba(200,216,194,0.5)", fontWeight: 300 }}
+                  onMouseEnter={(e) => ((e.target as HTMLElement).style.color = "#C97B52")}
+                  onMouseLeave={(e) => ((e.target as HTMLElement).style.color = "rgba(200,216,194,0.5)")}
+                >
+                  Convênios
+                </Link>
+              </li>
+
             </ul>
           </div>
 

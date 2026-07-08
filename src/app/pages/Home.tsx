@@ -58,14 +58,19 @@ export default function Home() {
 
   const scrollTo = (href: string) => {
     setMenuOpen(false);
+        
+    const targetId = href.replace("#", "");
+
     if (onConvenios) {
       navigate("/");
       setTimeout(() => {
-        document.querySelector(href)?.scrollIntoView({ behavior: "smooth", block: "start" });
+        document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth", block: "start" });
       }, 100);
       return;
     }
-    document.querySelector(href)?.scrollIntoView({ behavior: "smooth", block: "start" });
+
+    document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth", block: "start" });
+
   };
 
   const navBg = onConvenios
@@ -169,23 +174,37 @@ export default function Home() {
           <div className="lg:hidden w-full bg-[#F7F5F1] shadow-2xl border-t border-black/5 flex flex-col">
             <div className="py-4 px-6 flex flex-col gap-1 pb-8">
               {navLinks.map((link) => (
-                <button key={link.href} onClick={() => scrollTo(link.href)} className="text-left text-sm text-[#1A2118] py-3.5 border-b border-border/30 tracking-wide font-medium cursor-pointer">
+                <a 
+                  key={link.href} 
+                  href={link.href}
+                  onClick={(e) => { e.preventDefault(); scrollTo(link.href); }} 
+                  className="text-left text-sm text-[#1A2118] py-3.5 border-b border-border/30 tracking-wide font-medium cursor-pointer block"
+                >
                   {link.label}
-                </button>
+                </a>
               ))}
               <Link
                 to="/quiz"
                 onClick={() => setMenuOpen(false)}
-                className="text-left text-sm text-[#1A2118] py-3.5 border-b border-border/30 tracking-wide font-medium cursor-pointer"
+                className="text-left text-sm text-[#1A2118] py-3.5 border-b border-border/30 tracking-wide font-medium cursor-pointer block"
               >
                 Autoavaliação
               </Link>
-              <button onClick={goConvenios} className="text-left text-sm py-3.5 border-b border-border/30 font-bold cursor-pointer" style={{ color: "#4A7259" }}>
+              <Link 
+                to="/convenios"
+                onClick={() => setMenuOpen(false)}
+                className="text-left text-sm py-3.5 border-b border-border/30 font-bold cursor-pointer block" 
+                style={{ color: "#4A7259" }}
+              >
                 Convênios
-              </button>
-              <button onClick={() => scrollTo("#contato")} className="mt-6 px-5 py-4 text-xs font-bold text-center rounded-sm uppercase tracking-widest transition-colors bg-[#4A7259] text-[#F7F5F1] hover:bg-[#3A5E47] cursor-pointer">
+              </Link>
+              <a 
+                href="#contato"
+                onClick={(e) => { e.preventDefault(); scrollTo("#contato"); }} 
+                className="mt-6 px-5 py-4 text-xs font-bold text-center rounded-sm uppercase tracking-widest transition-colors bg-[#4A7259] text-[#F7F5F1] hover:bg-[#3A5E47] cursor-pointer block"
+              >
                 Agendar Consulta
-              </button>
+              </a>
             </div>
           </div>
         )}
@@ -221,7 +240,7 @@ export default function Home() {
           <Equipe />
           <Localizacao />
           <Contato />
-          <Footer navLinks={navLinks} goConvenios={goConvenios} scrollTo={scrollTo} />
+          <Footer navLinks={navLinks} scrollTo={scrollTo} />
         </>
       )}
 
