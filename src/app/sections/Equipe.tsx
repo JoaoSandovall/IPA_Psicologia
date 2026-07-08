@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useEffect ,useState } from "react";
 import { Camera, ChevronRight } from "lucide-react";
 import fotoCamila from "@/imports/Camila Rodrigues.jpeg";
 import fotoGiovane from "@/imports/Giovane Tapia.jpeg";
@@ -7,6 +7,7 @@ import fotoMatheus from "@/imports/Matheus Leon.jpeg";
 import fotoSamara from "@/imports/Samara Pires.jpeg";
 import fotoVitoria from "@/imports/Vitoria Shalders.jpeg";
 import fotoYan from "@/imports/Yan Ribeiro.jpeg";
+
 
 const psychologists = [
   {
@@ -112,12 +113,27 @@ export default function Equipe() {
   const [teamScrollLeft, setTeamScrollLeft] = useState(false);
   const [teamScrollRight, setTeamScrollRight] = useState(true);
 
+  useEffect(() => {
+    if (teamRef.current) {
+      const el = teamRef.current;
+      el.scrollLeft = (el.scrollWidth - el.clientWidth) / 2;
+    }
+  }, []);
+
   const updateTeamScroll = () => {
     const el = teamRef.current;
     if (!el) return;
     setTeamScrollLeft(el.scrollLeft > 4);
     setTeamScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 4);
   };
+
+  useEffect(() => {
+    if (teamRef.current) {
+      const el = teamRef.current;
+      el.scrollLeft = (el.scrollWidth - el.clientWidth) / 2;
+      updateTeamScroll();
+    }
+  }, []);
 
   const scrollTeam = (dir: "left" | "right") => {
     if (!teamRef.current) return;
@@ -167,7 +183,7 @@ export default function Equipe() {
         <button
           onClick={() => scrollTeam("left")}
           aria-label="Anterior"
-          className="hidden sm:flex absolute left-2 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full items-center justify-center shadow-md transition-all duration-200"
+          className="flex absolute left-2 md:-left-4 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full items-center justify-center shadow-md transition-all duration-200"
           style={{ background: "#fff", color: "#4A7259", border: "1px solid rgba(26,33,24,0.12)", opacity: teamScrollLeft ? 1 : 0, pointerEvents: teamScrollLeft ? "auto" : "none", transition: "opacity 0.2s ease" }}
         >
           <ChevronRight size={18} style={{ transform: "rotate(180deg)" }} />
@@ -176,7 +192,7 @@ export default function Equipe() {
         <button
           onClick={() => scrollTeam("right")}
           aria-label="Próximo"
-          className="hidden sm:flex absolute right-2 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full items-center justify-center shadow-md transition-all duration-200"
+          className="flex absolute right-2 md:-right-4 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full items-center justify-center shadow-md transition-all duration-200"
           style={{ background: "#fff", color: "#4A7259", border: "1px solid rgba(26,33,24,0.12)", opacity: teamScrollRight ? 1 : 0, pointerEvents: teamScrollRight ? "auto" : "none", transition: "opacity 0.2s ease" }}
         >
           <ChevronRight size={18} />
@@ -192,7 +208,7 @@ export default function Equipe() {
           onMouseUp={onTeamMouseUp}
           onMouseLeave={onTeamMouseUp}
         >
-          <div className="flex gap-4 px-6 lg:px-10 min-w-full justify-center lg:justify-center items-stretch">
+          <div className="flex gap-4 px-6 lg:px-10 w-max mx-auto items-stretch">
             {psychologists.map((p) => (
               <div key={p.name} className="flex-shrink-0 flex flex-col rounded-md overflow-hidden hover:shadow-xl transition-shadow duration-300" style={{ width: 268, background: "#fff", border: "1px solid rgba(26,33,24,0.09)", cursor: "grab" }}>
                 {p.image ? (

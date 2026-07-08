@@ -50,7 +50,6 @@ export default function ConveniosSection({ onBack }: ConveniosSectionProps) {
 
   return (
     <>
-      {/* Estilo para ocultar a barra de rolagem da sidebar nativa suavemente */}
       <style>{`
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
@@ -58,13 +57,11 @@ export default function ConveniosSection({ onBack }: ConveniosSectionProps) {
 
       <div className="flex flex-col lg:flex-row bg-[#F7F3EE] min-h-screen font-sans">
         
-        {/* ── 1. LADO ESQUERDO: BARRA LATERAL VERDE FIXA ── */}
         <div className="w-full lg:w-[380px] xl:w-[420px] shrink-0 bg-[#4A7259] z-10 border-r border-[#3A5E47] lg:pt-20">
           
           <aside className="lg:sticky lg:top-20 flex flex-col px-8 py-12 lg:px-10 lg:py-8 h-auto lg:h-[calc(100vh-5rem)] overflow-y-auto hide-scrollbar pt-28">
             
             <div className="flex-1">
-              {/* Botão Voltar */}
               <button
                 onClick={onBack}
                 className="group flex items-center gap-2 mb-10 text-[10px] xl:text-xs tracking-[0.2em] uppercase font-bold text-[#C8D8C2]/70 hover:text-[#F7F5F1] transition-colors duration-300"

@@ -47,7 +47,7 @@ export default function Footer({ navLinks, goConvenios, scrollTo }: FooterProps)
                 <li key={l.label}>
                   <button
                     onClick={() => l.label === "Convênios" ? goConvenios() : scrollTo(l.href)}
-                    className="text-sm transition-colors"
+                    className="text-sm transition-colors cursor-pointer"
                     style={{ color: "rgba(200,216,194,0.5)", fontWeight: 300 }}
                     onMouseEnter={(e) => ((e.target as HTMLElement).style.color = "#C97B52")}
                     onMouseLeave={(e) => ((e.target as HTMLElement).style.color = "rgba(200,216,194,0.5)")}

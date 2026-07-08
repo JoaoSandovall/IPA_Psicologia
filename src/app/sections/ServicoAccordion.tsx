@@ -107,7 +107,7 @@ export default function ServicoAccordion() {
                       style={{ fontFamily: "'Lato', sans-serif" }}
                     >
                       <Star className="w-3.5 h-3.5 fill-[#4A7259]" />
-                      Especialidade Principal
+                      Destaque
                     </span>
                   </div>
                   <span 
