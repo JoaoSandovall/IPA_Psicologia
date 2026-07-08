@@ -15,7 +15,7 @@ import Equipe from "../sections/Equipe";
 import Depoimentos from "../sections/Depoimentos";
 import Localizacao from "../sections/Localizacao";
 import Contato from "../sections/Contato";
-import ConveniosSection from "../sections/ConveniosSection";
+import Convenios from "./Convenios";
 import Footer from "../sections/Footer";
 
 // Importando os dados que separamos
@@ -185,8 +185,9 @@ export default function Home() {
 
       {/* CONVÊNIOS OU HOME */}
       {onConvenios && (
-        <ConveniosSection onBack={goHome} />
-      )}
+        <Convenios onBack={goHome} />
+        )}
+        
       {!onConvenios && (
         <>
           <Hero scrollTo={scrollTo} />
