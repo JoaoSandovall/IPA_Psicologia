@@ -9,6 +9,6 @@ export const navLinks = [
 export const stats = [
   { value: "7", label: "Psicólogos especialistas" },
   { value: "32", label: "Convênios aceitos" },
-  { value: "4.9  ", label: "Avaliação no Google" },
+  { value: "4.9", label: "Avaliação no Google" },
   { value: "Online", label: "e presencial" },
 ];
