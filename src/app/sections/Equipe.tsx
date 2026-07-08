@@ -113,13 +113,6 @@ export default function Equipe() {
   const [teamScrollLeft, setTeamScrollLeft] = useState(false);
   const [teamScrollRight, setTeamScrollRight] = useState(true);
 
-  useEffect(() => {
-    if (teamRef.current) {
-      const el = teamRef.current;
-      el.scrollLeft = (el.scrollWidth - el.clientWidth) / 2;
-    }
-  }, []);
-
   const updateTeamScroll = () => {
     const el = teamRef.current;
     if (!el) return;
