@@ -2,10 +2,8 @@ import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Twirl as Hamburger } from 'hamburger-react';
 import { ClipboardList } from "lucide-react";
-
 import ipaLogoSimple from "@/imports/logo.png";
 import iconeWhatsapp from "@/imports/iconewhatsapp.svg";
-
 import Hero from "../sections/Hero";
 import Sobre from "../sections/Sobre";
 import ServicoAccordion from "../sections/ServicoAccordion";
@@ -28,20 +26,38 @@ export default function Home() {
   const onConvenios = location.pathname === "/convenios";
 
   useEffect(() => {
-    const onScroll = () => {
+    const handleScroll = () => {
       setScrolled(window.scrollY > 40);
-
-      const secaoLocalizacao = document.getElementById("localizacao");
-      
-      if (secaoLocalizacao) {
-        const distanciaTopo = secaoLocalizacao.getBoundingClientRect().top;
-
-        setShowQuizBalloon(distanciaTopo <= window.innerHeight);
-      }
     };
 
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const sectionLocalizacao = document.getElementById("localizacao");
+    
+    if (!sectionLocalizacao) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        setShowQuizBalloon(entry.isIntersecting);
+      },
+      {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.1,
+      }
+    );
+
+    observer.observe(sectionLocalizacao);
+
+    return () => {
+      if (sectionLocalizacao) {
+        observer.unobserve(sectionLocalizacao);
+      }
+    };
   }, []);
 
   const goHome = () => {
@@ -70,7 +86,6 @@ export default function Home() {
     }
 
     document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth", block: "start" });
-
   };
 
   const navBg = onConvenios

@@ -1,23 +1,18 @@
 import { useState, useEffect, useRef, useMemo } from "react";
 import { ChevronLeft, RotateCcw, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
-// Importando as novas tipagens estritas
 import { questoes, resultados, QuizOption, QuizResult, QuizWeight } from "./quizData";
 
 export default function Quiz() {
   const [passoAtual, setPassoAtual] = useState(0);
-  // Estado agora é tipado estritamente com o peso permitido
   const [respostas, setRespostas] = useState<Record<number, QuizWeight>>({});
   const [quizFinalizado, setQuizFinalizado] = useState(false);
-  
-  // Ref para armazenar o ID do timeout e evitar memory leaks
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
     
   useEffect(() => {
     window.scrollTo(0, 0);
     document.body.style.overflow = 'hidden';
     
-    // Cleanup function: garante que o scroll volta ao normal se o componente for desmontado
     return () => {
       document.body.style.overflow = '';
       if (timeoutRef.current) {
@@ -31,7 +26,6 @@ export default function Quiz() {
   const letrasOpcoes = ["A", "B", "C", "D"];
 
   const handleResponder = (peso: QuizWeight) => {
-    // 1. Limpa qualquer timeout pendente se o usuário clicar duas vezes rápido
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
     }
@@ -39,7 +33,7 @@ export default function Quiz() {
     // 2. Salva a resposta
     setRespostas(prev => ({ ...prev, [passoAtual]: peso }));
     
-    // 3. Define o novo timeout com segurança
+    // 3. Define o novo timeout
     timeoutRef.current = setTimeout(() => {
       if (passoAtual < questoes.length - 1) {
         setPassoAtual(prev => prev + 1);
