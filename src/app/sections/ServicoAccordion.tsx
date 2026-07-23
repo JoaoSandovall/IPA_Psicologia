@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ChevronDown, Star } from "lucide-react";
-import FotoUm from "../../imports/FotoUm.jpg";
+import avaliacaoclinica from "../../imports/Avaliacao-clinica.jpg";
 
 interface Servico {
   titulo: string;
@@ -129,7 +129,7 @@ export default function ServicoAccordion() {
               {/* A FOTO */}
               <div className="relative w-full h-[250px] md:absolute md:top-0 md:right-0 md:w-[40%] md:h-full overflow-hidden pointer-events-none z-0 bg-[#4A7259]">
                 <img 
-                  src={FotoUm} 
+                  src={avaliacaoclinica} 
                   alt="Avaliação Neuropsicológica" 
                   className="absolute inset-0 w-full h-full object-cover" 
                 />

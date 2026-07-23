@@ -1,5 +1,5 @@
 import { Star, Heart, Shield, Users } from "lucide-react";
-import FotoDois from "../../imports/FotoDois.jpg";
+import imgcerebro from "../../imports/cerebro.jpg";
 
 const features = [
   {
@@ -54,7 +54,7 @@ export default function Especialidades() {
             
             <div className="flex-1 relative rounded-sm overflow-hidden shadow-lg w-full bg-[#EAE6DF] min-h-[300px] lg:min-h-0">
               <img 
-                src={FotoDois} 
+                src={imgcerebro} 
                 alt="Atendimento humanizado na IPA" 
                 className="absolute inset-0 w-full h-full object-cover transition-transform hover:scale-105 duration-700" 
               />
@@ -69,7 +69,7 @@ export default function Especialidades() {
                   key={f.title} 
                   className="bg-[#F4F1EA] rounded-sm p-8 border border-[#1A2118]/10 transition-shadow duration-300 hover:shadow-lg relative overflow-hidden group"
                 >
-                  <div className="absolute top-0 right-0 p-6 opacity-[0.03] transition-opacity duration-300 group-hover:opacity-[0.08] pointer-events-none">
+                  <div className="absolute top-0 right-0 p-6 opacity-[0.10] transition-opacity duration-300 group-hover:opacity-[0.20] pointer-events-none">
                     <Icon size={120} className="text-[#4A7259]" />
                   </div>
                   

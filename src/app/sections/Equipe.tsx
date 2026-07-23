@@ -1,12 +1,12 @@
 import React, { useRef, useEffect ,useState } from "react";
 import { Camera, ChevronRight } from "lucide-react";
-import fotoCamila from "@/imports/Camila Rodrigues.jpeg";
-import fotoGiovani from "@/imports/Giovane Tapia.jpeg";
-import fotoMaiara from "@/imports/Maiara Muniz.png";
-import fotoMatheus from "@/imports/Matheus Leon.jpeg";
-import fotoSamara from "@/imports/Samara Pires.jpeg";
-import fotoVitoria from "@/imports/Vitoria Shalders.jpeg";
-import fotoYan from "@/imports/Yan Ribeiro.jpeg";
+import fotoCamila from "@/imports/Camila-Rodrigues.jpeg";
+import fotoGiovani from "@/imports/Giovane-Tapia.jpeg";
+import fotoMaiara from "@/imports/Maiara-Muniz.png";
+import fotoMatheus from "@/imports/Matheus-Leon.jpeg";
+import fotoSamara from "@/imports/Samara-Pires.jpeg";
+import fotoVitoria from "@/imports/Vitoria-Shalders.jpeg";
+import fotoYan from "@/imports/Yan-Ribeiro.jpeg";
 
 
 const psychologists = [
