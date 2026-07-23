@@ -1,4 +1,4 @@
-import clinicaPhoto from "@/imports/image.png";
+import clinicaPhoto from "@/assets/image.png";
 import { ChevronRight } from "lucide-react";
 
 interface SobreProps {

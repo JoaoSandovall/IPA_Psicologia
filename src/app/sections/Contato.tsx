@@ -1,4 +1,4 @@
-import iconewhatsapp from "@/imports/iconewhatsapp.svg"
+import iconewhatsapp from "@/assets/iconewhatsapp.svg"
 
 export default function Contato() {
   const whatsappNumber = "5561992576460";

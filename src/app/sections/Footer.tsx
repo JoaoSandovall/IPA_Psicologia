@@ -1,4 +1,4 @@
-import ipaLogoSimple from "@/imports/logo.png";
+import ipaLogoSimple from "@/assets/logo.png";
 import { Instagram, Facebook } from "lucide-react";
 import { Link } from "react-router-dom";
 

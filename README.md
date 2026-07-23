@@ -32,7 +32,7 @@ IPA_Psicologia/
 │   ├── app/
 │   │   ├── App.tsx         # Roteador de estado e layout principal
 │   │   └── sections/       # Componentes fragmentados por escopo visual
-│   ├── imports/            # Assets
+│   ├── assets/            # Assets
 │   ├── styles/             # Diretivas do Tailwind e CSS global
 │   └── main.tsx            # Entry point do React
 ├── package.json            # Dependências e scripts de execução

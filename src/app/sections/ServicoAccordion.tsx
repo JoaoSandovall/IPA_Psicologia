@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ChevronDown, Star } from "lucide-react";
-import avaliacaoclinica from "../../imports/Avaliacao-clinica.jpg";
+import avaliacaoclinica from "../../assets/Avaliacao-clinica.jpg";
 
 interface Servico {
   titulo: string;
