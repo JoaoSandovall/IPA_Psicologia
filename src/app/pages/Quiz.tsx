@@ -1,19 +1,28 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { ChevronLeft, RotateCcw, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
-import { questoes, resultados, Option, Resultado } from "./quizData";
+// Importando as novas tipagens estritas
+import { questoes, resultados, QuizOption, QuizResult, QuizWeight } from "./quizData";
 
 export default function Quiz() {
   const [passoAtual, setPassoAtual] = useState(0);
-  const [respostas, setRespostas] = useState<Record<number, number>>({});
+  // Estado agora é tipado estritamente com o peso permitido
+  const [respostas, setRespostas] = useState<Record<number, QuizWeight>>({});
   const [quizFinalizado, setQuizFinalizado] = useState(false);
+  
+  // Ref para armazenar o ID do timeout e evitar memory leaks
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
     
   useEffect(() => {
     window.scrollTo(0, 0);
     document.body.style.overflow = 'hidden';
     
+    // Cleanup function: garante que o scroll volta ao normal se o componente for desmontado
     return () => {
       document.body.style.overflow = '';
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
     };
   }, []);
 
@@ -21,12 +30,19 @@ export default function Quiz() {
   const progresso = (passoAtual / questoes.length) * 100;
   const letrasOpcoes = ["A", "B", "C", "D"];
 
-  const handleResponder = (peso: number) => {
+  const handleResponder = (peso: QuizWeight) => {
+    // 1. Limpa qualquer timeout pendente se o usuário clicar duas vezes rápido
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+
+    // 2. Salva a resposta
     setRespostas(prev => ({ ...prev, [passoAtual]: peso }));
     
-    setTimeout(() => {
+    // 3. Define o novo timeout com segurança
+    timeoutRef.current = setTimeout(() => {
       if (passoAtual < questoes.length - 1) {
-        setPassoAtual(passoAtual + 1);
+        setPassoAtual(prev => prev + 1);
       } else {
         setQuizFinalizado(true);
       }
@@ -34,26 +50,38 @@ export default function Quiz() {
   };
 
   const handleVoltar = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
     if (passoAtual > 0) {
-      setPassoAtual(passoAtual - 1);
+      setPassoAtual(prev => prev - 1);
     }
   };
 
   const reiniciarQuiz = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
     setPassoAtual(0);
     setRespostas({});
     setQuizFinalizado(false);
   };
 
-  const pontuacaoTotal = Object.values(respostas).reduce((acc, curr) => acc + curr, 0);
-  const resultadoAlcancado = resultados.find(
-    (r: Resultado) => pontuacaoTotal >= r.min && pontuacaoTotal <= r.max
-  ) || resultados[0];
+  const {resultadoAlcancado } = useMemo(() => {
+    if (!quizFinalizado) return { pontuacaoTotal: 0, resultadoAlcancado: resultados[0] };
+
+    const total = Object.values(respostas).reduce((acc, curr) => acc + curr, 0);
+    const resultado = resultados.find(
+      (r: QuizResult) => total >= r.min && total <= r.max
+    ) || resultados[0];
+
+    return { pontuacaoTotal: total, resultadoAlcancado: resultado };
+  }, [quizFinalizado, respostas]);
 
   return (
     <div className="fixed inset-0 z-[9999] h-screen h-[100dvh] w-screen overflow-hidden bg-[#F4F1EA] text-[#1A2118] font-sans flex flex-col">
       
-      {/* BARRA DE PROGRESSO NO TOPO ABSOLUTO DA TELA */}
+      {/* BARRA DE PROGRESSO */}
       <div className="absolute top-0 left-0 w-full h-1 md:h-1.5 bg-[#E6E2D8] z-50">
         <div 
           className="h-full bg-[#C97B52] transition-all duration-700 ease-out" 
@@ -113,7 +141,7 @@ export default function Quiz() {
 
                 {/* Opções de Resposta */}
                 <div className="flex flex-col gap-3 md:gap-4 w-full">
-                  {questaoAtual.opcoes.map((opcao: Option, index: number) => {
+                  {questaoAtual.opcoes.map((opcao: QuizOption, index: number) => {
                     const isSelecionada = respostas[passoAtual] === opcao.peso;
                     
                     return (

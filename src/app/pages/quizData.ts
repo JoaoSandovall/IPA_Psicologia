@@ -1,24 +1,26 @@
-export interface Option {
-  texto: string;
-  peso: number;
+export type QuizWeight = 1 | 2 | 3 | 4;
+
+export interface QuizOption {
+  readonly texto: string;
+  readonly peso: QuizWeight;
 }
 
-export interface Question {
-  categoria: string;
-  pergunta: string;
-  opcoes: Option[];
+export interface QuizQuestion {
+  readonly categoria: string;
+  readonly pergunta: string;
+  readonly opcoes: readonly QuizOption[];
 }
 
-export interface Resultado {
-  min: number;
-  max: number;
-  stamp: string;
-  title: string;
-  kicker: string;
-  body: string;
+export interface QuizResult {
+  readonly min: number;
+  readonly max: number;
+  readonly stamp: string;
+  readonly title: string;
+  readonly kicker: string;
+  readonly body: string;
 }
 
-export const questoes: Question[] = [
+export const questoes: readonly QuizQuestion[] = [
   {
     categoria: "Descontrole emocional",
     pergunta: "Nos últimos tempos, como você lida com raiva, tristeza ou ansiedade?",
@@ -99,9 +101,9 @@ export const questoes: Question[] = [
       { texto: "Sim, e isso tem se repetido nas últimas conversas que tenho tido.", peso: 4 },
     ]
   }
-];
+] as const;
 
-export const resultados: Resultado[] = [
+export const resultados: readonly QuizResult[] = [
   {
     min: 8, max: 14,
     stamp: "Tudo em\nordem",
@@ -142,4 +144,4 @@ export const resultados: Resultado[] = [
       <p>Considere conversar com um psicólogo ou psiquiatra em breve. <strong>Se em algum momento esse peso ficar difícil demais de segurar, o CVV (188) está disponível 24h, gratuito e sigiloso, para conversar com você agora.</strong></p>
     `,
   },
-];
+] as const;
