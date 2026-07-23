@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { ChevronRight, ChevronLeft, Search, MessageCircle } from "lucide-react";
 
 const convenioGroups = [
@@ -34,6 +34,11 @@ interface ConveniosSectionProps {
 export default function ConveniosSection({ onBack }: ConveniosSectionProps) {
   const [query, setQuery] = useState("");
   const refsLetras = useRef<Record<string, HTMLDivElement | null>>({});
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const allItems = convenioGroups.flatMap((g) => g.items);
 
   const filteredGroups = query.trim()
