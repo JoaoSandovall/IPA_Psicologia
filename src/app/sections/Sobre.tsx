@@ -18,17 +18,21 @@ export default function Sobre({ scrollTo }: SobreProps) {
             ser quem você é.
           </SectionTitle>
 
-          <div className="space-y-4 text-base leading-relaxed" style={{ color: "#3A4838", fontWeight: 200 }}>
-            <p className="indent-8">
-              O IPA está no mercado há mais de 2 décadas, nasceu de um sonho de mulheres empreendedoras, estudiosas e que sempre tiveram em sua história a valorização do ser humano. O IPA, trata-se de um instituto diferenciado, pois, a justificativa de nossa existência é o ser humano em sua totalidade, tanto valorizamos os nossos clientes como nossos profissionais e temos um ambiente que entrega resultados.
+          <div 
+            className="space-y-6 text-base md:text-lg leading-relaxed md:leading-loose text-justify sm:text-left" 
+            style={{ color: "#4A5848", fontFamily: "'Lato', sans-serif", fontWeight: 300 }}
+          >
+            <p>
+              O IPA está no mercado há mais de 2 décadas, nasceu de um sonho de mulheres empreendedoras, estudiosas e que sempre tiveram em sua história a valorização do ser humano. O IPA trata-se de um instituto diferenciado, pois a justificativa de nossa existência é o ser humano em sua totalidade. Tanto valorizamos os nossos clientes como nossos profissionais, e temos um ambiente que entrega resultados.
             </p>
-            <p className="indent-8">
-              Em nosso ambiente de trabalho apoiado na valorização da pessoa e com base científica, levamos nossos clientes a possibilidade de viverem a experiência de cura, de bem-estar e de consciência do seu state atual e do state desejado, conferindo ações, produtividade e realização.
+            <p>
+              Em nosso ambiente de trabalho, apoiado na valorização da pessoa e com base científica, levamos nossos clientes à possibilidade de viverem a experiência de cura, de bem-estar e de consciência do seu estado atual e do estado desejado, conferindo ações, produtividade e realização.
             </p>
-            <p className="indent-8">
+            <p>
               Atendemos a partir de 2 anos de idade, oferecemos palestras, treinamentos e encontros com os mais diversos grupos.
             </p>
           </div>
+
           <button
             onClick={() => scrollTo("#equipe")}
             className="mt-10 inline-flex items-center gap-2 text-sm font-semibold tracking-wide transition-colors duration-200"
@@ -46,7 +50,7 @@ export default function Sobre({ scrollTo }: SobreProps) {
             <img
               src={clinicaPhoto}
               alt="Sala de atendimento do Instituto de Psicologia Aplicada — IPA"
-              className="w-full h-[480px] object-cover object-[center_75%]"
+              className="w-full h-[680px] object-cover object-[center_75%]"
             />
             <div
               className="absolute bottom-0 left-0 right-0 p-8"
