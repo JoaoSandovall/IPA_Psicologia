@@ -54,17 +54,14 @@ export default function ServicoAccordion() {
   const [aberto, setAberto] = useState<number | null>(0);
 
   return (
-    <section id="servicos" className="relative pt-24 pb-24 md:pt-32 md:pb-32 bg-[#F4F1EA] text-[#1A2118] overflow-hidden">
-
-      {/* Container Principal */}
+    <section id="servicos" className="relative py-16 lg:py-20 bg-[#F4F1EA] text-[#1A2118] overflow-hidden">
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10 z-10">
-        
-        {/* Cabeçalho */}
-        <div className="text-center mb-16 md:mb-24">
-          <div className="flex items-center justify-center gap-3 mb-6">
+                
+        <div className="text-center mb-10 md:mb-14">
+          <div className="flex items-center justify-center gap-3 mb-2">
             <div className="hidden md:block" style={{ width: 36, height: 1, background: "#C97B52" }} />
             <p 
-              className="text-xs tracking-[0.32em] uppercase font-semibold text-[#C97B52]"
+              className="text-[10px] md:text-xs tracking-[0.32em] uppercase font-bold text-[#C97B52]"
               style={{ fontFamily: "'Lato', sans-serif" }}
             >
               Cuidado e Especialidade
@@ -73,7 +70,7 @@ export default function ServicoAccordion() {
           </div>
           
           <h2 
-            className="text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.1] text-[#1A2118] mb-6" 
+            className="text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight text-[#1A2118] mb-4" 
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
             Nossas Especialidades
@@ -87,7 +84,6 @@ export default function ServicoAccordion() {
           </p>
         </div>
 
-        {/* Serviço Destaque (Correção da Imagem) */}
         <div className="mb-6 md:mb-12 max-w-7xl mx-auto">
           <div className="group rounded-sm bg-[#4A7259] shadow-md transition-all duration-300 overflow-hidden relative flex flex-col">
             
