@@ -1,5 +1,6 @@
-import React, { useRef, useEffect ,useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { Camera, ChevronRight } from "lucide-react";
+import SectionTitle from '../components/SectionTitle';
 import fotoCamila from "@/assets/Camila-Rodrigues.jpeg";
 import fotoGiovani from "@/assets/Giovane-Tapia.jpeg";
 import fotoMaiara from "@/assets/Maiara-Muniz.png";
@@ -7,10 +8,20 @@ import fotoMatheus from "@/assets/Matheus-Leon.jpeg";
 import fotoSamara from "@/assets/Samara-Pires.jpeg";
 import fotoVitoria from "@/assets/Vitoria-Shalders.jpeg";
 import fotoYan from "@/assets/Yan-Ribeiro.jpeg";
-import SectionTitle from '../components/SectionTitle';
 
+interface Psychologist {
+  name: string;
+  image: string | null;
+  title: string;
+  crp: string;
+  specialty: string;
+  atende: string;
+  areas: string[];
+  sobre: string;
+  quote: string;
+}
 
-const psychologists = [
+const psychologists: Psychologist[] = [
   {
     name: "Camila Rodrigues",
     image: fotoCamila,
@@ -109,6 +120,43 @@ function PhotoPlaceholder({ name }: { name: string }) {
   );
 }
 
+function PsychologistCard({ p }: { p: Psychologist }) {
+  return (
+    <div className="flex-shrink-0 flex flex-col rounded-md overflow-hidden hover:shadow-xl transition-shadow duration-300" style={{ width: 268, background: "#fff", border: "1px solid rgba(26,33,24,0.09)", cursor: "grab" }}>
+      {p.image ? (
+        <img src={p.image} alt={p.name} draggable={false} className="w-full object-cover select-none" style={{ height: 260 }} />
+      ) : (
+        <PhotoPlaceholder name={p.name} />
+      )}
+      <div className="w-full flex justify-center -mt-[2px] relative z-10">
+        <div className="w-1/2 h-[3px] rounded-full shadow-sm" style={{ background: "#4A7259" }} />
+      </div>
+      <div className="flex flex-col flex-1 p-5">
+        <div className="mb-4">
+          <h3 className="text-base font-semibold leading-snug" style={{ fontFamily: "'Playfair Display', serif", color: "#1A2118" }}>{p.name}</h3>
+          <p className="text-xs mt-0.5" style={{ color: "#8A9688", fontWeight: 400 }}>{p.title} • <span style={{ color: "#B0BEB0" }}>{p.crp}</span></p>
+        </div>
+        <div className="mb-4 pb-4" style={{ borderBottom: "1px solid rgba(26,33,24,0.07)" }}>
+          <span className="inline-block px-2.5 py-1 text-xs font-semibold rounded-sm leading-snug" style={{ background: "#EAF2EA", color: "#2A4E39" }}>{p.specialty}</span>
+        </div>
+        <div className="flex-1">
+          <p className="text-xs leading-relaxed mb-3" style={{ color: "#6A7368" }}>
+            <span className="font-semibold" style={{ color: "#3A4838" }}>Atende: </span>{p.atende}
+          </p>
+          <div className="flex flex-wrap gap-1">
+            {p.areas.map((a) => (
+              <span key={a} className="px-2 py-0.5 text-xs rounded-sm" style={{ background: "#F3F1ED", color: "#4A5848" }}>{a}</span>
+            ))}
+          </div>
+        </div>
+        <p className="text-xs leading-relaxed italic pt-4 mt-4" style={{ color: "#363636", borderTop: "1px solid rgba(26,33,24,0.07)", fontWeight: 300 }}>
+          "{p.quote}"
+        </p>
+      </div>
+    </div>
+  );
+}
+
 export default function Equipe() {
   const teamRef = useRef<HTMLDivElement>(null);
   const [teamScrollLeft, setTeamScrollLeft] = useState(false);
@@ -135,7 +183,7 @@ export default function Equipe() {
   };
 
   const teamDrag = useRef({ active: false, startX: 0, scrollLeft: 0 });
-  
+
   const onTeamMouseDown = (e: React.MouseEvent) => {
     const el = teamRef.current;
     if (!el) return;
@@ -143,21 +191,25 @@ export default function Equipe() {
     el.style.cursor = "grabbing";
     el.style.userSelect = "none";
   };
-  
+
   const onTeamMouseMove = (e: React.MouseEvent) => {
     if (!teamDrag.current.active || !teamRef.current) return;
     const el = teamRef.current;
     const x = e.pageX - el.offsetLeft;
     el.scrollLeft = teamDrag.current.scrollLeft - (x - teamDrag.current.startX);
   };
-  
+
   const onTeamMouseUp = () => {
     teamDrag.current.active = false;
-    if (teamRef.current) { teamRef.current.style.cursor = "default"; teamRef.current.style.userSelect = ""; }
+    if (teamRef.current) { 
+      teamRef.current.style.cursor = "default"; 
+      teamRef.current.style.userSelect = ""; 
+    }
   };
 
   return (
     <section id="equipe" className="py-16 lg:py-20 bg-background">
+      
       <div className="max-w-7xl mx-auto px-6 lg:px-10 mb-12 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <SectionTitle subtitle="Nossa Equipe">
           Conheça os profissionais<br />
@@ -168,6 +220,7 @@ export default function Equipe() {
         </p>
       </div>
 
+      {/* ÁREA DO CARROSSEL */}
       <div className="relative">
         <button
           onClick={() => scrollTeam("left")}
@@ -177,7 +230,6 @@ export default function Equipe() {
         >
           <ChevronRight size={18} style={{ transform: "rotate(180deg)" }} />
         </button>
-
         <button
           onClick={() => scrollTeam("right")}
           aria-label="Próximo"
@@ -199,43 +251,7 @@ export default function Equipe() {
         >
           <div className="flex gap-4 px-6 lg:px-10 w-max mx-auto items-stretch">
             {psychologists.map((p) => (
-              <div key={p.name} className="flex-shrink-0 flex flex-col rounded-md overflow-hidden hover:shadow-xl transition-shadow duration-300" style={{ width: 268, background: "#fff", border: "1px solid rgba(26,33,24,0.09)", cursor: "grab" }}>
-                {p.image ? (
-                  <img src={p.image} alt={p.name} draggable={false} className="w-full object-cover select-none" style={{ height: 260 }} />
-                ) : (
-                  <PhotoPlaceholder name={p.name} />
-                )}
-
-                <div className="w-full flex justify-center -mt-[2px] relative z-10">
-                  <div className="w-1/2 h-[3px] rounded-full shadow-sm" style={{ background: "#4A7259" }} />
-                </div>
-
-                <div className="flex flex-col flex-1 p-5">
-                  <div className="mb-4">
-                    <h3 className="text-base font-semibold leading-snug" style={{ fontFamily: "'Playfair Display', serif", color: "#1A2118" }}>{p.name}</h3>
-                    <p className="text-xs mt-0.5" style={{ color: "#8A9688", fontWeight: 400 }}>{p.title} · <span style={{ color: "#B0BEB0" }}>{p.crp}</span></p>
-                  </div>
-
-                  <div className="mb-4 pb-4" style={{ borderBottom: "1px solid rgba(26,33,24,0.07)" }}>
-                    <span className="inline-block px-2.5 py-1 text-xs font-semibold rounded-sm leading-snug" style={{ background: "#EAF2EA", color: "#2A4E39" }}>{p.specialty}</span>
-                  </div>
-
-                  <div className="flex-1">
-                    <p className="text-xs leading-relaxed mb-3" style={{ color: "#6A7368" }}>
-                      <span className="font-semibold" style={{ color: "#3A4838" }}>Atende: </span>{p.atende}
-                    </p>
-                    <div className="flex flex-wrap gap-1">
-                      {p.areas.map((a) => (
-                        <span key={a} className="px-2 py-0.5 text-xs rounded-sm" style={{ background: "#F3F1ED", color: "#4A5848" }}>{a}</span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <p className="text-xs leading-relaxed italic pt-4 mt-4" style={{ color: "#363636", borderTop: "1px solid rgba(26,33,24,0.07)", fontWeight: 300 }}>
-                    "{p.quote}"
-                  </p>
-                </div>
-              </div>
+              <PsychologistCard key={p.name} p={p} />
             ))}
           </div>
         </div>
