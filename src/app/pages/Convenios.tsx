@@ -61,10 +61,8 @@ export default function ConveniosSection({ onBack }: ConveniosSectionProps) {
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
       `}</style>
 
-      {/* MÁGICA 1: pt-20. Isso garante que todo o componente comece apenas ABAIXO do seu menu fixo */}
       <div className="flex flex-col lg:flex-row bg-[#F7F3EE] min-h-screen lg:h-[100dvh] lg:overflow-hidden font-sans pt-20">
         
-        {/* LADO ESQUERDO (SIDEBAR) */}
         <div className="w-full lg:w-[380px] xl:w-[420px] shrink-0 bg-[#4A7259] z-20 border-r border-[#3A5E47] lg:h-full lg:overflow-y-auto hide-scrollbar">
           
           <aside className="flex flex-col px-8 py-8 lg:px-10 lg:py-10 min-h-full">
@@ -117,7 +115,6 @@ export default function ConveniosSection({ onBack }: ConveniosSectionProps) {
                       onClick={() => {
                         const el = refsLetras.current[g.letter];
                         if (el) {
-                          // Como agora temos um espaço seguro (pt-20), a rolagem nativa funciona perfeita!
                           el.scrollIntoView({ behavior: 'smooth', block: 'start' });
                         }
                       }}
@@ -152,7 +149,6 @@ export default function ConveniosSection({ onBack }: ConveniosSectionProps) {
           </aside>
         </div>
 
-        {/* MÁGICA 2: flex-1 min-w-0 corrige o corte da barra de rolagem (impede o container de crescer além da tela) */}
         <main id="area-lista-convenios" className="flex-1 min-w-0 flex justify-center px-4 md:px-8 py-8 lg:px-12 xl:px-20 lg:py-12 lg:h-full lg:overflow-y-auto relative">
           
           <div className="w-full max-w-4xl">
@@ -171,7 +167,6 @@ export default function ConveniosSection({ onBack }: ConveniosSectionProps) {
                     key={group.letter} 
                     ref={(el) => { refsLetras.current[group.letter] = el; }}
                     id={`grp-${group.letter}`} 
-                    // MÁGICA 3: O scroll-mt diz onde a tela deve parar ao rolar para compensar variações no mobile/desktop.
                     className="scroll-mt-24 lg:scroll-mt-8"
                   >
                     

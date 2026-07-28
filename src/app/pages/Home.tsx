@@ -104,56 +104,75 @@ export default function Home() {
         <div className="flex h-20 w-full relative z-20">
           
           {/* LADO ESQUERDO DESKTOP */}
-          <div className="hidden lg:flex items-center justify-end w-1/2 pl-8 pr-[clamp(10px,3vw,40px)] gap-10 xl:gap-35">
+          <div className={`hidden lg:flex items-center justify-end w-1/2 pl-8 transition-all duration-700 ease-in-out ${
+            onConvenios ? "pr-2 xl:pr-4" : "pr-[clamp(10px,3vw,40px)]"
+          }`}>
             <button onClick={goHome} className="flex items-center transition-transform active:scale-98 shrink-0 cursor-pointer">
               <img
                 src={ipaLogoSimple}
                 alt="IPA"
-                className="h-10 xl:h-12 w-auto object-contain"
+                className="h-10 xl:h-12 w-auto object-contain transition-all duration-700"
                 style={{ filter: onConvenios ? "brightness(0) invert(1)" : "none", opacity: onConvenios ? 0.88 : 1 }}
               />
             </button>
+            
+            <div className={`transition-all duration-700 ease-in-out ${onConvenios ? "w-full" : "w-[40px] xl:w-[140px]"}`} />
+
             <div className="flex items-center gap-4 xl:gap-8 shrink-0">
               {navLinks.slice(0, 3).map((link) => (
                 <button
                   key={link.href}
                   onClick={() => scrollTo(link.href)}
-                  className={`text-[10px] xl:text-xs tracking-[0.15em] uppercase font-semibold transition-colors duration-200 whitespace-nowrap cursor-pointer ${onConvenios ? "text-[#C8D8C2] hover:text-[#8BBDA0]" : scrolled ? "text-[#1A2118] hover:text-[#C97B52]" : "text-[#4A7259] hover:text-[#C97B52]"}`}
+                  className={`text-[10px] xl:text-xs tracking-[0.15em] uppercase font-semibold transition-colors duration-300 whitespace-nowrap cursor-pointer ${
+                    onConvenios ? "text-[#C8D8C2] hover:text-[#8BBDA0]" : scrolled ? "text-[#1A2118] hover:text-[#C97B52]" : "text-[#4A7259] hover:text-[#C97B52]"
+                  }`}
                 >
                   {link.label}
                 </button>
               ))}
               <Link
                 to="/quiz"
-                className={`text-[10px] xl:text-xs tracking-[0.15em] uppercase font-semibold transition-colors duration-200 whitespace-nowrap cursor-pointer ${onConvenios ? "text-[#C8D8C2] hover:text-[#8BBDA0]" : scrolled ? "text-[#1A2118] hover:text-[#C97B52]" : "text-[#4A7259] hover:text-[#C97B52]"}`}
+                className={`text-[10px] xl:text-xs tracking-[0.15em] uppercase font-semibold transition-colors duration-300 whitespace-nowrap cursor-pointer ${
+                  onConvenios ? "text-[#C8D8C2] hover:text-[#8BBDA0]" : scrolled ? "text-[#1A2118] hover:text-[#C97B52]" : "text-[#4A7259] hover:text-[#C97B52]"
+                }`}
               >
                 Autoavaliação
               </Link>
             </div>
           </div>
 
-          {/* LADO DIREITO DESKTOP */}
-          <div className="hidden lg:flex items-center justify-start w-1/2 pl-[clamp(10px,3vw,40px)] pr-8 gap-10 xl:gap-35">
+          <div className={`hidden lg:flex items-center justify-start w-1/2 pr-8 transition-all duration-700 ease-in-out ${
+            onConvenios ? "pl-2 xl:pl-4" : "pl-[clamp(10px,3vw,40px)]"
+          }`}>
             <div className="flex items-center gap-4 xl:gap-8 shrink-0">
               {navLinks.slice(3).map((link) => (
                 <button
                   key={link.href}
                   onClick={() => scrollTo(link.href)}
-                  className={`text-[10px] xl:text-xs tracking-[0.15em] uppercase font-semibold transition-colors duration-200 whitespace-nowrap cursor-pointer ${onConvenios ? "text-[#C8D8C2] hover:text-[#8BBDA0]" : scrolled ? "text-[#1A2118] hover:text-[#C97B52]" : "text-[#F7F5F1] hover:text-[#C97B52]"}`}
+                  className={`text-[10px] xl:text-xs tracking-[0.15em] uppercase font-semibold transition-colors duration-300 whitespace-nowrap cursor-pointer ${
+                    onConvenios ? "text-[#C8D8C2] hover:text-[#8BBDA0]" : scrolled ? "text-[#1A2118] hover:text-[#C97B52]" : "text-[#F7F5F1] hover:text-[#C97B52]"
+                  }`}
                 >
                   {link.label}
                 </button>
               ))}
               <button
                 onClick={goConvenios}
-                className={`text-[10px] xl:text-xs tracking-[0.15em] uppercase transition-colors duration-200 whitespace-nowrap cursor-pointer ${onConvenios ? "text-[#8BBDA0] font-bold" : scrolled ? "text-[#1A2118] font-semibold hover:text-[#C97B52]" : "text-[#F7F5F1] font-semibold hover:text-[#C97B52]"}`}
+                className={`text-[10px] xl:text-xs tracking-[0.15em] uppercase transition-colors duration-300 whitespace-nowrap cursor-pointer ${
+                  onConvenios ? "text-[#8BBDA0] font-bold" : scrolled ? "text-[#1A2118] font-semibold hover:text-[#C97B52]" : "text-[#F7F5F1] font-semibold hover:text-[#C97B52]"
+                }`}
               >
                 Convênios
               </button>
             </div>
+
+            <div className={`transition-all duration-700 ease-in-out ${onConvenios ? "w-full" : "w-[40px] xl:w-[140px]"}`} />
+
             <button
               onClick={() => scrollTo("#contato")}
-              className={`px-5 xl:px-7 py-2.5 xl:py-3 text-[10px] xl:text-xs font-bold rounded-sm transition-all duration-200 uppercase tracking-widest whitespace-nowrap shrink-0 cursor-pointer ${onConvenios || scrolled ? "bg-[#4A7259] text-[#F7F5F1] hover:bg-[#3A5E47]" : "bg-[#F7F5F1] text-[#4A7259] hover:bg-[#E5E1D9]"}`}
+              className={`px-5 xl:px-7 py-2.5 xl:py-3 text-[10px] xl:text-xs font-bold rounded-sm transition-all duration-300 uppercase tracking-widest whitespace-nowrap shrink-0 cursor-pointer ${
+                onConvenios || scrolled ? "bg-[#4A7259] text-[#F7F5F1] hover:bg-[#3A5E47]" : "bg-[#F7F5F1] text-[#4A7259] hover:bg-[#E5E1D9]"
+              }`}
             >
               Agendar Consulta
             </button>
