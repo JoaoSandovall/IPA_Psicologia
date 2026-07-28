@@ -1,4 +1,5 @@
 import iconewhatsapp from "@/assets/iconewhatsapp.svg"
+import SectionTitle from '../components/SectionTitle';
 
 export default function Contato() {
   const whatsappNumber = "5561992576460";
@@ -6,17 +7,11 @@ export default function Contato() {
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(mensagem)}`;
 
   return (
-    <section id="contato" style={{ background: "#EDEAE3" }} className="py-24 lg:py-32 flex flex-col items-center">
-      <div className="max-w-3xl mx-auto px-6 lg:px-10 text-center mb-10">
-        <p className="text-xs tracking-[0.25em] uppercase mb-4 font-semibold" style={{ color: "#4A7259" }}>
-          Agende sua consulta
-        </p>
-        <h2 className="text-3xl lg:text-4xl font-semibold leading-snug" style={{ fontFamily: "'Playfair Display', serif", color: "#1A2118" }}>
-          O primeiro passo é o mais importante.
-          <br />
-          <em style={{ color: "#C97B52" }}>Estamos aqui para você.</em>
-        </h2>
-      </div>
+    <section id="contato" style={{ background: "#EDEAE3" }} className="py-16 lg:py-20 flex flex-col items-center">
+      <SectionTitle subtitle="Agende sua consulta" align="center" className="max-w-3xl px-6 lg:px-10 mb-10 md:mb-14">
+        O primeiro passo é o mais importante.<br />
+        <em className="italic text-[#C97B52]">Estamos aqui para você.</em>
+      </SectionTitle>
 
       <div className="max-w-lg w-full mx-auto px-6 text-center bg-card rounded-sm border border-border/40 p-8 lg:p-12 shadow-sm bg-white">
         <p className="text-sm leading-relaxed mb-8" style={{ color: "#6A7368", fontWeight: 300 }}>

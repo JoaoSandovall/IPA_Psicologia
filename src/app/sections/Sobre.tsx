@@ -1,5 +1,6 @@
 import clinicaPhoto from "@/assets/image.png";
 import { ChevronRight } from "lucide-react";
+import SectionTitle from '../components/SectionTitle';
 
 interface SobreProps {
   scrollTo: (href: string) => void;
@@ -7,23 +8,17 @@ interface SobreProps {
 
 export default function Sobre({ scrollTo }: SobreProps) {
   return (
-    <section id="sobre" className="py-24 lg:py-32 bg-background">
+    <section id="sobre" className="py-16 lg:py-20 bg-background">
       <div className="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-2 gap-16 items-center">
         <div>
-          <p className="text-xs tracking-[0.25em] uppercase mb-4 font-semibold" style={{ color: "#4A7259" }}>
-            Sobre o IPA
-          </p>
-          <h2
-            className="text-3xl lg:text-5xl font-semibold leading-tight mb-8"
-            style={{ fontFamily: "'Playfair Display', serif", color: "#1A2118" }}
-          >
-            Um lugar onde você
-            <br />
-            <em style={{ color: "#C97B52" }}>se sente seguro</em> para
-            <br />
+
+          <SectionTitle subtitle="Sobre o IPA" className="mb-8 md:mb-10">
+            Um lugar onde você <br />
+            <em className="italic text-[#C97B52]">se sente seguro</em> para <br />
             ser quem você é.
-          </h2>
-          <div className="space-y-4 text-base leading-relaxed" style={{ color: "#3A4838", fontWeight: 300 }}>
+          </SectionTitle>
+
+          <div className="space-y-4 text-base leading-relaxed" style={{ color: "#3A4838", fontWeight: 200 }}>
             <p className="indent-8">
               O IPA está no mercado há mais de 2 décadas, nasceu de um sonho de mulheres empreendedoras, estudiosas e que sempre tiveram em sua história a valorização do ser humano. O IPA, trata-se de um instituto diferenciado, pois, a justificativa de nossa existência é o ser humano em sua totalidade, tanto valorizamos os nossos clientes como nossos profissionais e temos um ambiente que entrega resultados.
             </p>

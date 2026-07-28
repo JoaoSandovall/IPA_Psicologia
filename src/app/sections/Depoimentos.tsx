@@ -1,4 +1,5 @@
 import { Star } from "lucide-react";
+import SectionTitle from '../components/SectionTitle';
 
 const linkGoogleMaps = "https://www.google.com/maps/place/Instituto+de+Psicologia+Aplicada+-+IPA/@-15.7328445,-47.8997995,17z/data=!3m1!5s0x935a39926d1aaacb:0x5b42fe4c59fe1305!4m8!3m7!1s0x935a39d82ca80417:0xdafe33d521fa3da7!8m2!3d-15.7328445!4d-47.8972246!9m1!1b1!16s%2Fg%2F11h_446cjk?entry=ttu&g_ep=EgoyMDI2MDYxNi4wIKXMDSoASAFQAw%3D%3D";
 
@@ -64,33 +65,24 @@ const linkGoogleMaps = "https://www.google.com/maps/place/Instituto+de+Psicologi
 export default function Depoimentos() {
 
   return (
-    <section id="depoimentos" style={{ background: "#F4F1EA" }} className="py-16 lg:py-24 overflow-hidden relative">
+    <section id="depoimentos" style={{ background: "#F4F1EA" }} className="py-12 lg:py-16 overflow-hidden relative">
       <div className="max-w-7xl mx-auto px-6 lg:px-10 mb-10 lg:mb-14">
-        <div className="text-center lg:text-left">
-          <p className="text-xs tracking-[0.25em] uppercase mb-4 font-semibold" style={{ color: "#C97B52" }}>
-            Avaliações do Google
-          </p>
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
-            <h2
-              className="text-[2rem] leading-tight lg:text-4xl font-semibold"
-              style={{ fontFamily: "'Playfair Display', serif", color: "#1A2118" }}
-            >
-              O que dizem sobre
-              <br />
-              o nosso acolhimento
-            </h2>
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-8 lg:mb-0">
+          <SectionTitle subtitle="Avaliações do Google">
+            O que dizem sobre <br />
+            o nosso <em className="italic text-[#C97B52]">acolhimento</em>
+          </SectionTitle>
             
-            <div className="flex items-center justify-center lg:justify-end gap-3 mt-2 lg:mt-0">
-              <span className="text-2xl font-bold" style={{ color: "#1A2118" }}>4.9</span>
-              <div className="flex gap-0.5">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={20} fill="#FBBC04" color="#FBBC04" />
-                ))}
-              </div>
-              <span className="text-sm" style={{ color: "#4A5848", fontWeight: 400 }}>
-                (+30 Avaliações 5 Estrelas)
-              </span>
+          <div className="flex items-center justify-center lg:justify-end gap-3 mb-2">
+            <span className="text-2xl font-bold" style={{ color: "#1A2118" }}>4.9</span>
+            <div className="flex gap-0.5">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} size={20} fill="#FBBC04" color="#FBBC04" />
+              ))}
             </div>
+            <span className="text-sm" style={{ color: "#4A5848", fontWeight: 400 }}>
+              (+30 Avaliações 5 Estrelas)
+            </span>
           </div>
         </div>
       </div>

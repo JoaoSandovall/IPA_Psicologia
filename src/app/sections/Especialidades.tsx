@@ -48,7 +48,7 @@ export default function Especialidades() {
                 className="text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.1] text-[#F7F5F1]"
                 style={{ fontFamily: "'Playfair Display', serif" }}
               >
-                Cuidado que vai além <br className="hidden lg:block"/> da consulta.
+                Cuidado que vai além da consulta
               </h2>
             </div>
             

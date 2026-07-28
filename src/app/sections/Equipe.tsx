@@ -7,6 +7,7 @@ import fotoMatheus from "@/assets/Matheus-Leon.jpeg";
 import fotoSamara from "@/assets/Samara-Pires.jpeg";
 import fotoVitoria from "@/assets/Vitoria-Shalders.jpeg";
 import fotoYan from "@/assets/Yan-Ribeiro.jpeg";
+import SectionTitle from '../components/SectionTitle';
 
 
 const psychologists = [
@@ -156,20 +157,15 @@ export default function Equipe() {
   };
 
   return (
-    <section id="equipe" className="py-24 lg:py-32 bg-background">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 mb-12">
-        <p className="text-xs tracking-[0.25em] uppercase mb-4 font-semibold" style={{ color: "#4A7259" }}>
-          Nossa Equipe
+    <section id="equipe" className="py-16 lg:py-20 bg-background">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 mb-12 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <SectionTitle subtitle="Nossa Equipe">
+          Conheça os profissionais<br />
+          <em className="italic text-[#C97B52]">que cuidam de você</em>
+        </SectionTitle>
+        <p className="text-sm max-w-xs hidden sm:block mb-2" style={{ color: "#6A7368", fontWeight: 300 }}>
+          Todos os nossos psicólogos são registrados no CRP e possuem especialização reconhecida.
         </p>
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold" style={{ fontFamily: "'Playfair Display', serif", color: "#1A2118" }}>
-            Conheça os profissionais<br />
-            <em style={{ color: "#C97B52" }}>que cuidam de você</em>
-          </h2>
-          <p className="text-sm max-w-xs hidden sm:block" style={{ color: "#6A7368", fontWeight: 300 }}>
-            Todos os nossos psicólogos são registrados no CRP e possuem especialização reconhecida.
-          </p>
-        </div>
       </div>
 
       <div className="relative">
