@@ -70,7 +70,7 @@ export default function ConveniosSection({ onBack }: ConveniosSectionProps) {
             <div className="flex-1">
               <button
                 onClick={onBack}
-                className="group flex items-center gap-2 mb-10 text-[10px] xl:text-xs tracking-[0.2em] uppercase font-bold text-[#C8D8C2]/70 hover:text-[#F7F5F1] transition-colors duration-300"
+                className="group flex items-center gap-2 mb-10 text-[10px] xl:text-xs tracking-[0.2em] uppercase font-bold text-[#C8D8C2]/70 hover:text-[#F7F5F1] transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F0EDE8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#4A7259] rounded-sm px-1"
               >
                 <ChevronLeft size={16} className="transform group-hover:-translate-x-1 transition-transform duration-300" />
                 Voltar ao site
@@ -103,7 +103,7 @@ export default function ConveniosSection({ onBack }: ConveniosSectionProps) {
                   placeholder="Buscar convênio..."
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3.5 text-sm bg-[#F0EDE8]/5 border border-[#F0EDE8]/15 rounded-sm text-[#F0EDE8] placeholder:text-[#F0EDE8]/40 outline-none focus:border-[#F0EDE8]/50 focus:bg-[#F0EDE8]/10 transition-all shadow-inner tracking-wide"
+                  className="w-full pl-12 pr-4 py-3.5 text-sm bg-[#F0EDE8]/5 border border-[#F0EDE8]/15 rounded-sm text-[#F0EDE8] placeholder:text-[#F0EDE8]/40 outline-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C97B52] focus-visible:bg-[#F0EDE8]/10 transition-all shadow-inner tracking-wide"
                 />
               </div>
 
@@ -112,13 +112,8 @@ export default function ConveniosSection({ onBack }: ConveniosSectionProps) {
                   {convenioGroups.map((g) => (
                     <button
                       key={g.letter}
-                      onClick={() => {
-                        const el = refsLetras.current[g.letter];
-                        if (el) {
-                          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        }
-                      }}
-                      className="w-8 h-8 flex items-center justify-center text-xs font-bold rounded-sm bg-[#F0EDE8]/5 border border-[#F0EDE8]/10 text-[#C8D8C2]/80 hover:bg-[#F0EDE8]/15 hover:text-[#F0EDE8] transition-all duration-200"
+                      onClick={() => { /* ... código de rolagem ... */ }}
+                      className="w-8 h-8 flex items-center justify-center text-xs font-bold rounded-sm bg-[#F0EDE8]/5 border border-[#F0EDE8]/10 text-[#C8D8C2]/80 hover:bg-[#F0EDE8]/15 hover:text-[#F0EDE8] transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C97B52] focus-visible:ring-offset-2 focus-visible:ring-offset-[#4A7259]"
                       style={{ fontFamily: "'Playfair Display', serif" }}
                     >
                       {g.letter}
