@@ -23,7 +23,7 @@ export default function Sobre({ scrollTo }: SobreProps) {
             style={{ color: "#4A5848", fontFamily: "'Lato', sans-serif", fontWeight: 300 }}
           >
             <p>
-              O IPA está no mercado há mais de 2 décadas, nasceu de um sonho de mulheres empreendedoras, estudiosas e que sempre tiveram em sua história a valorização do ser humano. O IPA trata-se de um instituto diferenciado, pois a justificativa de nossa existência é o ser humano em sua totalidade. Tanto valorizamos os nossos clientes como nossos profissionais, e temos um ambiente que entrega resultados.
+              O IPA nasceu de um sonho de mulheres empreendedoras, estudiosas e que sempre tiveram em sua história a valorização do ser humano. O IPA trata-se de um instituto diferenciado, pois a justificativa de nossa existência é o ser humano em sua totalidade. Tanto valorizamos os nossos clientes como nossos profissionais, e temos um ambiente que entrega resultados.
             </p>
             <p>
               Em nosso ambiente de trabalho, apoiado na valorização da pessoa e com base científica, levamos nossos clientes à possibilidade de viverem a experiência de cura, de bem-estar e de consciência do seu estado atual e do estado desejado, conferindo ações, produtividade e realização.
@@ -44,23 +44,59 @@ export default function Sobre({ scrollTo }: SobreProps) {
           </button>
         </div>
 
-        <div className="relative">
+        <div className="relative mt-8 lg:mt-0">
+          
+          {/* BALÃO FLUTUANTE DE EXPERIÊNCIA (AGORA MAIS COMPACTO E ELEGANTE) */}
+          <div className="absolute bottom-10 md:bottom-12 -left-3 md:-left-8 lg:-left-12 z-20 bg-white py-3 px-5 md:py-4 md:px-6 rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] border border-black/5 flex items-center gap-4 md:gap-5">
+            
+            {/* Número com o "+" estilizado no topo */}
+            <div className="flex items-start text-[#4A7259]">
+              <span className="text-lg md:text-xl font-medium mt-0.5 md:mt-1 mr-0.5">+</span>
+              <span 
+                className="text-4xl md:text-5xl font-bold tracking-tight" 
+                style={{ fontFamily: "'Playfair Display', serif", lineHeight: 0.9 }}
+              >
+                20
+              </span>
+            </div>
+            
+            <div className="w-px h-10 md:h-12 bg-gradient-to-b from-transparent via-[#4A7259]/30 to-transparent"></div>
+          
+            <div className="flex flex-col justify-center">
+              <span 
+                className="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.3em] text-[#C97B52] mb-1.5" 
+                style={{ fontFamily: "'Lato', sans-serif", lineHeight: 1 }}
+              >
+                Anos de
+              </span>
+              <span 
+                className="text-sm md:text-base font-semibold text-[#1A2118]" 
+                style={{ fontFamily: "'Playfair Display', serif", lineHeight: 1 }}
+              >
+                Experiência Clínica
+              </span>
+            </div>
+            
+          </div>
+
           <div className="absolute -top-4 -left-4 w-full h-full rounded-sm" style={{ background: "#D2CEC6" }} />
-          <div className="relative rounded-sm overflow-hidden">
+          
+          <div className="relative rounded-sm overflow-hidden border border-black/5">
             <img
               src={clinicaPhoto}
               alt="Sala de atendimento do Instituto de Psicologia Aplicada — IPA"
-              className="w-full h-[680px] object-cover object-[center_75%]"
+              className="w-full h-[520px] md:h-[680px] object-cover object-[center_75%]"
             />
             <div
-              className="absolute bottom-0 left-0 right-0 p-8"
-              style={{ background: "linear-gradient(to top, rgba(26,33,24,0.82), transparent)" }}
+              className="absolute top-0 left-0 right-0 px-6 py-8 md:px-8 md:py-10"
+              style={{ background: "linear-gradient(to bottom, rgba(26,33,24,0.85), transparent)" }}
             >
-              <p className="text-lg font-medium italic" style={{ fontFamily: "'Playfair Display', serif", color: "#E8EDE6" }}>
+              <p className="text-sm md:text-base lg:text-[1.05rem] font-medium italic text-[#E8EDE6] drop-shadow-sm" style={{ fontFamily: "'Playfair Display', serif" }}>
                 "O primeiro passo para mudar é decidir que não ficará igual."
               </p>
             </div>
           </div>
+          
         </div>
       </div>
     </section>
