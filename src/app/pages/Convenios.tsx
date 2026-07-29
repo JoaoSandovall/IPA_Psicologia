@@ -63,7 +63,7 @@ export default function ConveniosSection({ onBack }: ConveniosSectionProps) {
 
       <div className="flex flex-col lg:flex-row bg-[#F7F3EE] min-h-screen lg:h-[100dvh] lg:overflow-hidden font-sans pt-20">
         
-        <div className="w-full lg:w-[380px] xl:w-[420px] shrink-0 bg-[#4A7259] z-20 border-r border-[#3A5E47] lg:h-full lg:overflow-y-auto hide-scrollbar">
+        <div data-lenis-prevent className="w-full lg:w-[380px] xl:w-[420px] shrink-0 bg-[#4A7259] z-20 border-r border-[#3A5E47] lg:h-full lg:overflow-y-auto hide-scrollbar">
           
           <aside className="flex flex-col px-8 py-8 lg:px-10 lg:py-10 min-h-full">
             
@@ -149,7 +149,7 @@ export default function ConveniosSection({ onBack }: ConveniosSectionProps) {
           </aside>
         </div>
 
-        <main id="area-lista-convenios" className="flex-1 min-w-0 flex justify-center px-4 md:px-8 py-8 lg:px-12 xl:px-20 lg:py-12 lg:h-full lg:overflow-y-auto relative">
+        <main data-lenis-prevent id="area-lista-convenios" className="flex-1 min-w-0 flex justify-center px-4 md:px-8 py-8 lg:px-12 xl:px-20 lg:py-12 lg:h-full lg:overflow-y-auto relative">
           
           <div className="w-full max-w-4xl">
             {noResults ? (
