@@ -1,4 +1,4 @@
-import clinicaPhoto from "@/assets/image.png";
+import clinicaPhoto from "@/assets/foto-clinica.png";
 import { ChevronRight } from "lucide-react";
 import SectionTitle from '../components/SectionTitle';
 
