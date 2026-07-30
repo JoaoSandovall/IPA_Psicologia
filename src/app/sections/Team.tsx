@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import { Camera, ChevronRight } from "lucide-react";
 import SectionTitle from '../components/SectionTitle';
-import fotoCamila from "@/assets/Camila-Rodrigues.jpeg";
+import fotoCamila from "@/assets/camila-rodrigues.jpeg";
 import fotoGiovani from "@/assets/giovane-tapia.jpeg";
 import fotoMaiara from "@/assets/maiara-muniz.png";
 import fotoMatheus from "@/assets/matheus-leon.jpeg";
@@ -20,7 +20,7 @@ interface Psychologist {
   sobre: string;
   quote: string;
 }
-
+// comentario de teste
 const psychologists: Psychologist[] = [
   {
     name: "Camila Rodrigues",
