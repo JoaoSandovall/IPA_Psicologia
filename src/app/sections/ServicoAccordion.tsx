@@ -91,7 +91,7 @@ export default function ServicoAccordion() {
             <div className="relative w-full flex flex-col md:flex-row">
               <button
                 onClick={() => setAberto(aberto === 0 ? null : 0)}
-                className="relative z-20 w-full md:w-[60%] flex flex-col justify-center py-8 px-6 md:py-16 md:px-12 lg:px-16 text-left focus:outline-none cursor-pointer"
+                className="relative z-20 w-full md:w-[60%] flex flex-col justify-center py-8 px-6 md:py-16 md:px-12 lg:px-16 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F4F1EA] focus-visible:ring-offset-2 focus-visible:ring-offset-[#4A7259] cursor-pointer"
               >
                 <div className="flex flex-col gap-3 md:gap-5 pr-4">
                   <div className="flex items-center gap-3 mb-1">
@@ -116,17 +116,18 @@ export default function ServicoAccordion() {
                 
                 {/* Botão Chevron */}
                 <div className="flex-shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-sm flex items-center justify-center transition-colors bg-[#F4F1EA]/10 hover:bg-[#F4F1EA]/20 border border-[#F4F1EA]/20 mt-8 backdrop-blur-sm shadow-sm">
-                  <ChevronDown 
-                    className={`w-6 h-6 md:w-7 md:h-7 transition-transform duration-500 text-[#F4F1EA] ${aberto === 0 ? "rotate-180" : ""}`} 
-                  />
-                </div>
+                <span className="sr-only">{aberto === 0 ? "Fechar resposta" : "Ver resposta"}</span>
+                <ChevronDown 
+                  className={`w-6 h-6 md:w-7 md:h-7 transition-transform duration-500 text-[#F4F1EA] ${aberto === 0 ? "rotate-180" : ""}`} 
+                />
+              </div>
               </button>
 
               {/* A FOTO */}
               <div className="relative w-full h-[250px] md:absolute md:top-0 md:right-0 md:w-[40%] md:h-full overflow-hidden pointer-events-none z-0 bg-[#4A7259]">
                 <img 
                   src={avaliacaoclinica} 
-                  alt="Avaliação Neuropsicológica" 
+                  alt="Imagem com um close-up em primeira pessoa mostra as mãos de uma pessoa escrevendo com uma caneta azul em um bloco de anotações branco preso em uma prancheta de metal prateado." 
                   className="absolute inset-0 w-full h-full object-cover" 
                 />
                 <div className="hidden md:block absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#4A7259] to-transparent"></div>
@@ -183,6 +184,7 @@ export default function ServicoAccordion() {
                   <div className={`flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-sm flex items-center justify-center transition-all duration-300 ${
                     isActive ? 'bg-[#4A7259]/10' : 'bg-[#EAE6DF]/60 group-hover:bg-[#EAE6DF]'
                   }`}>
+                    <span className="sr-only">{isActive ? "Fechar resposta" : "Ver resposta"}</span>
                     <ChevronDown className={`w-5 h-5 transition-transform duration-500 ${isActive ? "text-[#C97B52] rotate-180" : "text-[#4A5848]"}`} />
                   </div>
                 </button>

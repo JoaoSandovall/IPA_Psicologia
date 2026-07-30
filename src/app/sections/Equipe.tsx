@@ -124,7 +124,12 @@ function PsychologistCard({ p }: { p: Psychologist }) {
   return (
     <div className="flex-shrink-0 flex flex-col rounded-md overflow-hidden hover:shadow-xl transition-shadow duration-300" style={{ width: 268, background: "#fff", border: "1px solid rgba(26,33,24,0.09)", cursor: "grab" }}>
       {p.image ? (
-        <img src={p.image} alt={p.name} draggable={false} className="w-full object-cover select-none" style={{ height: 260 }} />
+        <img 
+          src={p.image}
+          alt={`Retrato de ${p.name}`}
+          draggable={false} 
+          className="w-full object-cover select-none" style={{ height: 260 }} 
+        />
       ) : (
         <PhotoPlaceholder name={p.name} />
       )}
@@ -224,19 +229,19 @@ export default function Equipe() {
       <div className="relative">
         <button
           onClick={() => scrollTeam("left")}
-          aria-label="Anterior"
+          aria-label="Ver membro anterior da equipe"
           className="flex absolute left-2 md:-left-4 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full items-center justify-center shadow-md transition-all duration-200"
           style={{ background: "#fff", color: "#4A7259", border: "1px solid rgba(26,33,24,0.12)", opacity: teamScrollLeft ? 1 : 0, pointerEvents: teamScrollLeft ? "auto" : "none", transition: "opacity 0.2s ease" }}
         >
-          <ChevronRight size={18} style={{ transform: "rotate(180deg)" }} />
+          <ChevronRight aria-hidden="true" size={18} style={{ transform: "rotate(180deg)" }} />
         </button>
         <button
           onClick={() => scrollTeam("right")}
-          aria-label="Próximo"
+          aria-label="Ver próximo membro da equipe"
           className="flex absolute right-2 md:-right-4 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full items-center justify-center shadow-md transition-all duration-200"
           style={{ background: "#fff", color: "#4A7259", border: "1px solid rgba(26,33,24,0.12)", opacity: teamScrollRight ? 1 : 0, pointerEvents: teamScrollRight ? "auto" : "none", transition: "opacity 0.2s ease" }}
         >
-          <ChevronRight size={18} />
+          <ChevronRight aria-hidden="true" size={18} />
         </button>
 
         <div

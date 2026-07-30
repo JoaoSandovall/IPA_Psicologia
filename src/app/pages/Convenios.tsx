@@ -70,10 +70,11 @@ export default function ConveniosSection({ onBack }: ConveniosSectionProps) {
             <div className="flex-1">
               <button
                 onClick={onBack}
+                aria-label="Voltar para a p gina anterior"
                 className="group flex items-center gap-2 mb-10 text-[10px] xl:text-xs tracking-[0.2em] uppercase font-bold text-[#C8D8C2]/70 hover:text-[#F7F5F1] transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F0EDE8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#4A7259] rounded-sm px-1"
               >
                 <ChevronLeft size={16} className="transform group-hover:-translate-x-1 transition-transform duration-300" />
-                Voltar ao site
+                <span aria-hidden="true">Voltar ao site</span>
               </button>
 
               <p className="text-[10px] tracking-[0.28em] uppercase mb-3 font-semibold text-[#C8D8C2]">

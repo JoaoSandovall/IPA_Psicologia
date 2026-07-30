@@ -55,7 +55,7 @@ export default function Especialidades() {
             <div className="flex-1 relative rounded-sm overflow-hidden shadow-lg w-full bg-[#EAE6DF] min-h-[300px] lg:min-h-0">
               <img 
                 src={imgcerebro} 
-                alt="Atendimento humanizado na IPA" 
+                alt="Desenho de um cérebro na palma de uma mão" 
                 className="absolute inset-0 w-full h-full object-cover transition-transform hover:scale-105 duration-700" 
               />
             </div>

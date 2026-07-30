@@ -27,12 +27,15 @@ export default function Footer({ navLinks, scrollTo }: FooterProps) {
             </p>
             <div className="flex gap-4 mt-6 justify-center lg:justify-start w-full">
               <div className="flex gap-4">
-                <a href="https://www.instagram.com/psicologia_ipa/" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-[#C97B52] transition-colors">
+                
+                <a href="https://www.instagram.com/psicologia_ipa/" target="_blank" rel="noopener noreferrer" aria-label="Acessar Instagram da cl nica" className="text-gray-600 hover:text-[#C97B52] transition-colors">
                   <Instagram className="w-6 h-6" />
                 </a>
-                <a href="https://www.facebook.com/ipapsicologia/" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-[#C97B52] transition-colors">
+
+                <a href="https://www.facebook.com/ipapsicologia/" target="_blank" rel="noopener noreferrer" aria-label="Acessar Facebook da cl nica" className="text-gray-600 hover:text-[#C97B52] transition-colors">
                   <Facebook className="w-6 h-6" />
                 </a>
+                
               </div>
             </div>
           </div>
