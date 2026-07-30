@@ -87,7 +87,7 @@ export default function Quiz() {
       <header className="flex justify-between items-center w-full px-6 py-5 md:px-12 md:py-8 shrink-0 z-40 mt-1 md:mt-0">
         <Link 
           to="/"
-          className="group inline-flex items-center gap-2 text-[10px] md:text-xs tracking-[0.2em] uppercase font-bold text-[#4A7259] hover:text-[#C97B52] transition-colors duration-300"
+          className="group inline-flex items-center gap-2 text-[10px] md:text-xs tracking-[0.2em] uppercase font-bold text-[#4A7259] hover:text-[#C97B52] transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4A7259] focus-visible:ring-offset-4 focus-visible:ring-offset-[#F4F1EA] rounded-sm"
           style={{ fontFamily: "'Lato', sans-serif" }}
         >
           <ChevronLeft size={18} className="transform group-hover:-translate-x-1 transition-transform duration-300" />
@@ -118,7 +118,7 @@ export default function Quiz() {
               <div className="flex flex-col w-full animate-in fade-in duration-500">
                 
                 {/* Títulos */}
-                <div className="mb-8 md:mb-12 text-center md:text-left px-2">
+                <div className="mb-4 md:mb-8 text-center md:text-left px-2">
                   <span 
                     className="text-[10px] md:text-xs uppercase tracking-[0.25em] text-[#C97B52] font-bold block mb-4"
                     style={{ fontFamily: "'Lato', sans-serif" }}
@@ -134,7 +134,7 @@ export default function Quiz() {
                 </div>
 
                 {/* Opções de Resposta */}
-                <div className="flex flex-col gap-3 md:gap-4 w-full">
+                <div className="flex flex-col gap-2 md:gap-3 w-full">
                   {questaoAtual.opcoes.map((opcao: QuizOption, index: number) => {
                     const isSelecionada = respostas[passoAtual] === opcao.peso;
                     
@@ -142,7 +142,8 @@ export default function Quiz() {
                       <button
                         key={index}
                         onClick={() => handleResponder(opcao.peso)}
-                        className={`group relative w-full text-left p-5 md:p-6 rounded-xl border transition-all duration-300 flex items-center bg-white focus:outline-none ${
+                        aria-pressed={isSelecionada}
+                        className={`group relative w-full text-left p-3 md:p-4 rounded-xl border transition-all duration-300 flex items-center bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4A7259] focus-visible:ring-offset-2 ${
                           isSelecionada 
                             ? 'border-[#4A7259] ring-1 ring-[#4A7259]/20 shadow-md' 
                             : 'border-black/5 hover:border-[#4A7259]/30 hover:shadow-lg hover:-translate-y-0.5'
@@ -168,11 +169,11 @@ export default function Quiz() {
                 </div>
 
                 {/* Botão Anterior */}
-                <div className="mt-8 flex justify-start px-2">
+                <div className="mt-4 md:mt-5 flex justify-start px-2">
                   <button
                     onClick={handleVoltar}
                     disabled={passoAtual === 0}
-                    className={`flex items-center gap-2 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] transition-all duration-300 py-2 ${
+                    className={`flex items-center gap-2 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] transition-all duration-300 py-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4A7259] focus-visible:ring-offset-4 focus-visible:ring-offset-[#F4F1EA] rounded-sm ${
                       passoAtual === 0 
                         ? 'opacity-0 pointer-events-none -translate-x-4' 
                         : 'opacity-100 translate-x-0 text-[#C97B52] hover:text-[#B56A42]'
@@ -217,10 +218,10 @@ export default function Quiz() {
 
                   <div className="mt-4 md:mt-8 flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-4 pt-6 md:pt-8 border-t border-black/5">
                     <a 
-                      href="https://wa.me/5561992576460?text=Ol%C3%A1!%20Realizei%20a%20autoavalia%C3%A7%C3%A3o%20no%20site%20e%20gostaria%20de%20agendar%20uma%20conversa."
+                      href="https://wa.me/5561992576460?text=..."
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-6 md:px-8 py-4 text-[10px] md:text-xs font-bold uppercase tracking-[0.15em] rounded-full transition-all duration-300 shadow-md hover:shadow-lg bg-[#4A7259] hover:bg-[#3A5E47] text-[#F7F5F1]"
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-6 md:px-8 py-4 text-[10px] md:text-xs font-bold uppercase tracking-[0.15em] rounded-full transition-all duration-300 shadow-md hover:shadow-lg bg-[#4A7259] hover:bg-[#3A5E47] text-[#F7F5F1] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4A7259] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                       style={{ fontFamily: "'Lato', sans-serif" }}
                     >
                       <MessageCircle className="w-4 h-4 shrink-0" />
@@ -229,7 +230,7 @@ export default function Quiz() {
 
                     <button 
                       onClick={reiniciarQuiz}
-                      className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-6 md:px-8 py-4 text-[10px] md:text-xs font-bold uppercase tracking-[0.15em] rounded-full border transition-all duration-300 bg-transparent text-[#4A7259] border-[rgba(74,114,89,0.3)] hover:bg-[rgba(74,114,89,0.05)] hover:border-[#4A7259]"
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-6 md:px-8 py-4 text-[10px] md:text-xs font-bold uppercase tracking-[0.15em] rounded-full border transition-all duration-300 bg-transparent text-[#4A7259] border-[rgba(74,114,89,0.3)] hover:bg-[rgba(74,114,89,0.05)] hover:border-[#4A7259] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4A7259] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                       style={{ fontFamily: "'Lato', sans-serif" }}
                     >
                       <RotateCcw className="w-4 h-4 shrink-0" />
