@@ -20,7 +20,7 @@ interface Psychologist {
   sobre: string;
   quote: string;
 }
-// comentario de teste
+
 const psychologists: Psychologist[] = [
   {
     name: "Camila Rodrigues",
