@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Header from "./Header";
-import Footer from "../sections/Footer";
+import Footer from "./Footer";
 import { navLinks } from "../constants";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
