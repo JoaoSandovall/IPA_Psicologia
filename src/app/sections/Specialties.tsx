@@ -1,5 +1,5 @@
 import { Star, Heart, Shield, Users } from "lucide-react";
-import imgcerebro from "../../assets/cerebro.jpg";
+import imgcerebro from "../../assets/foto-cerebro.jpg";
 
 const features = [
   {

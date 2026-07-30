@@ -1,4 +1,4 @@
-import ipaLogo from "@/assets/marca-ipa-sem-fundo.png";
+import ipaLogo from "@/assets/marca-ipa.png";
 
 interface HeroProps {
   scrollTo: (href: string) => void;

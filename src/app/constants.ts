@@ -1,9 +1,11 @@
 export const navLinks = [
-  { label: "Sobre", href: "#sobre" },
-  { label: "Serviços", href: "#servicos" },
-  { label: "Nossa Equipe", href: "#equipe" },
-  { label: "Localização", href: "#localizacao" },
-  { label: "Contato", href: "#contato" },
+  { label: "Sobre", href: "#sobre", isPage: false, position: "left" },
+  { label: "Serviços", href: "#servicos", isPage: false, position: "left" },
+  { label: "Nossa Equipe", href: "#equipe", isPage: false, position: "left" },
+  { label: "Localização", href: "#localizacao", isPage: false, position: "left" },
+  { label: "Contato", href: "#contato", isPage: false, position: "right" },
+  { label: "Autoavaliação", href: "/quiz", isPage: true, position: "right" },
+  { label: "Convênios", href: "/insurances", isPage: true, position: "right" },
 ];
 
 export const stats = [

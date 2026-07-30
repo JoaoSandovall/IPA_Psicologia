@@ -11,7 +11,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const location = useLocation();
   const navigate = useNavigate();
   
-  const onConvenios = location.pathname === "/convenios";
+  const onConvenios = location.pathname === "/insurances";
   const isQuiz = location.pathname === "/quiz";
 
   useEffect(() => {
@@ -24,13 +24,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     setMenuOpen(false);
     navigate("/");
     window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  const goConvenios = () => {
-    setMenuOpen(false);
-    navigate("/convenios");
-    window.scrollTo({ top: 0 });
-  };
+  };  
 
   const scrollTo = (href: string) => {
     setMenuOpen(false);
@@ -58,7 +52,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         scrolled={scrolled} 
         onConvenios={onConvenios}
         goHome={goHome}
-        goConvenios={goConvenios}
         scrollTo={scrollTo}
         navLinks={navLinks}
       />

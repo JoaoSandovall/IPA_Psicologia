@@ -1,13 +1,13 @@
 import React, { useRef, useEffect, useState } from "react";
 import { Camera, ChevronRight } from "lucide-react";
 import SectionTitle from '../components/SectionTitle';
-import fotoCamila from "@/assets/Camila-Rodrigues.jpeg";
-import fotoGiovani from "@/assets/Giovane-Tapia.jpeg";
-import fotoMaiara from "@/assets/Maiara-Muniz.png";
-import fotoMatheus from "@/assets/Matheus-Leon.jpeg";
-import fotoSamara from "@/assets/Samara-Pires.jpeg";
-import fotoVitoria from "@/assets/Vitoria-Shalders.jpeg";
-import fotoYan from "@/assets/Yan-Ribeiro.jpeg";
+import fotoCamila from "@/assets/camila-rodrigues.jpeg";
+import fotoGiovani from "@/assets/giovane-tapia.jpeg";
+import fotoMaiara from "@/assets/maiara-muniz.png";
+import fotoMatheus from "@/assets/matheus-leon.jpeg";
+import fotoSamara from "@/assets/samara-pires.jpeg";
+import fotoVitoria from "@/assets/vitoria-shalders.jpeg";
+import fotoYan from "@/assets/yan-ribeiro.jpeg";
 
 interface Psychologist {
   name: string;

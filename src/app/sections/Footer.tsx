@@ -1,9 +1,9 @@
-import ipaLogoSimple from "@/assets/logo.png";
+import ipaLogoSimple from "@/assets/logo-ipa.png";
 import { Instagram, Facebook } from "lucide-react";
 import { Link } from "react-router-dom";
 
 interface FooterProps {
-  navLinks: Array<{ label: string; href: string }>;
+  navLinks: Array<{ label: string; href: string; isPage: boolean; position: string }>;
   scrollTo: (href: string) => void;
 }
 
@@ -47,39 +47,21 @@ export default function Footer({ navLinks, scrollTo }: FooterProps) {
               Navegação
             </p>
 
-            <ul className="space-y-2 flex flex-col items-center lg:items-start">
-    
-              {navLinks.map((l) => (
-                <li key={l.label}>
-                  <a
-                    href={l.href}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      scrollTo(l.href);
-                    }}
-                    className="text-sm transition-colors cursor-pointer block py-0.5"
-                    style={{ color: "rgba(200,216,194,0.5)", fontWeight: 300 }}
-                    onMouseEnter={(e) => ((e.target as HTMLElement).style.color = "#C97B52")}
-                    onMouseLeave={(e) => ((e.target as HTMLElement).style.color = "rgba(200,216,194,0.5)")}
-                  >
-                    {l.label}
-                  </a>
-                </li>
-              ))}
-
-              <li>
-                <Link
-                  to="/convenios"
-                  className="text-sm transition-colors cursor-pointer block py-0.5"
-                  style={{ color: "rgba(200,216,194,0.5)", fontWeight: 300 }}
-                  onMouseEnter={(e) => ((e.target as HTMLElement).style.color = "#C97B52")}
-                  onMouseLeave={(e) => ((e.target as HTMLElement).style.color = "rgba(200,216,194,0.5)")}
-                >
-                  Convênios
-                </Link>
-              </li>
-
-            </ul>
+            <ul className="space-y-2 flex flex-col items-center lg:items-start">  
+                {navLinks.map((l) => (
+                  <li key={l.label}>
+                    {l.isPage ? (
+                      <Link to={l.href} className="text-sm transition-colors cursor-pointer block py-0.5" style={{ color: "rgba(200,216,194,0.5)", fontWeight: 300 }} onMouseEnter={(e) => ((e.target as HTMLElement).style.color = "#C97B52")} onMouseLeave={(e) => ((e.target as HTMLElement).style.color = "rgba(200,216,194,0.5)")}>
+                        {l.label}
+                      </Link>
+                    ) : (
+                      <a href={l.href} onClick={(e) => { e.preventDefault(); scrollTo(l.href); }} className="text-sm transition-colors cursor-pointer block py-0.5" style={{ color: "rgba(200,216,194,0.5)", fontWeight: 300 }} onMouseEnter={(e) => ((e.target as HTMLElement).style.color = "#C97B52")} onMouseLeave={(e) => ((e.target as HTMLElement).style.color = "rgba(200,216,194,0.5)")}>
+                        {l.label}
+                      </a>
+                    )}
+                  </li>
+                ))}
+              </ul>
           </div>
 
           {/* Bloco 3: Contato */}

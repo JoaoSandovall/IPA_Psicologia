@@ -1,4 +1,4 @@
-import iconewhatsapp from "@/assets/iconewhatsapp.svg"
+import iconewhatsapp from "@/assets/icone-whatsapp.svg"
 import SectionTitle from '../components/SectionTitle';
 
 export default function Contato() {

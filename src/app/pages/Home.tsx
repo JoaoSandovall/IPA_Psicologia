@@ -1,32 +1,27 @@
-// arquivo: src/app/pages/Home.tsx
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom"; // Removido useNavigate
+import { Link, useLocation } from "react-router-dom";
 import { ClipboardList } from "lucide-react";
-import iconeWhatsapp from "@/assets/iconewhatsapp.svg";
+import iconeWhatsapp from "@/assets/icone-whatsapp.svg";
 import Hero from "../sections/Hero";
-import Sobre from "../sections/Sobre";
-import ServicoAccordion from "../sections/ServicoAccordion";
-import Especialidades from "../sections/Especialidades";
-import Equipe from "../sections/Equipe";
-import Depoimentos from "../sections/Depoimentos";
-import Localizacao from "../sections/Localizacao";
-import Contato from "../sections/Contato";
-// IMPORTANTE: Não precisamos mais importar o Footer nem as navLinks aqui
+import About from "../sections/About";
+import ServiceAccordion from "../sections/ServiceAccordion";
+import Specialties from "../sections/Specialties";
+import Team from "../sections/Team";
+import Testimonials from "../sections/Testimonials";
+import Location from "../sections/Location";
+import Contact from "../sections/Contact";
 import { stats } from "../constants";
 
-// ADICIONAMOS A TIPAGEM DA PROP scrollTo
 interface HomeProps {
   scrollTo: (href: string) => void;
 }
 
-// RECEBENDO O scrollTo COMO PROP
 export default function Home({ scrollTo }: HomeProps) {
   const [showQuizBalloon, setShowQuizBalloon] = useState(false);
 
   const location = useLocation();
-  const onConvenios = location.pathname === "/convenios";
+  const onConvenios = location.pathname === "/insurances";
 
-  // A lógica do balão do Quiz continua aqui
   useEffect(() => {
     const sectionLocalizacao = document.getElementById("localizacao");
     
@@ -55,9 +50,8 @@ export default function Home({ scrollTo }: HomeProps) {
 
   return (
     <>
-      {/* NÃO RENDERIZAMOS CONVÊNIOS AQUI, O LAYOUT CUIDA DISSO AGORA */}
       {!onConvenios && (
-        <main> {/* AQUI ESTÁ A NOSSA TAG SEMÂNTICA! */}
+        <main>
           <Hero scrollTo={scrollTo} />
           
           <div style={{ background: "#4A7259" }}>
@@ -75,17 +69,16 @@ export default function Home({ scrollTo }: HomeProps) {
             </div>
           </div>
 
-          <Depoimentos />
-          <Sobre scrollTo={scrollTo} />
-          <ServicoAccordion />
-          <Especialidades />
-          <Equipe />
-          <Localizacao />
-          <Contato />
+          <Testimonials />
+          <About scrollTo={scrollTo} />
+          <ServiceAccordion />
+          <Specialties />
+          <Team />
+          <Location />
+          <Contact />
         </main>
       )}
 
-      {/* BOTÕES FLUTUANTES (continuam os mesmos) */}
       <Link
         to="/quiz"
         className={`flex fixed bottom-6 left-4 md:bottom-8 md:left-6 z-50 items-center gap-3 bg-white border border-[#E6E2D8] shadow-xl shadow-[#4A7259]/10 px-3.5 py-2.5 md:px-4 md:py-3 rounded-2xl rounded-bl-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#4A7259]/20 group cursor-pointer ${
