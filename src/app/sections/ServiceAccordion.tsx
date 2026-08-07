@@ -50,7 +50,7 @@ const servicos: Servico[] = [
   { titulo: "Supervisão Acadêmica", descricao: "Supervisão especializada para estudantes e profissionais de Psicologia em TCC, artigos científicos, pesquisas e desenvolvimento clínico. Acompanhamento técnico voltado ao aperfeiçoamento acadêmico e profissional." }
 ];
 
-export default function ServicoAccordion() {
+export default function ServiceAccordion() {
   const [aberto, setAberto] = useState<number | null>(0);
 
   return (
@@ -91,6 +91,8 @@ export default function ServicoAccordion() {
             <div className="relative w-full flex flex-col md:flex-row">
               <button
                 onClick={() => setAberto(aberto === 0 ? null : 0)}
+                aria-expanded={aberto === 0}
+                aria-controls="servico-painel-0"
                 className="relative z-20 w-full md:w-[60%] flex flex-col justify-center py-8 px-6 md:py-16 md:px-12 lg:px-16 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F4F1EA] focus-visible:ring-offset-2 focus-visible:ring-offset-[#4A7259] cursor-pointer"
               >
                 <div className="flex flex-col gap-3 md:gap-5 pr-4">
@@ -136,7 +138,7 @@ export default function ServicoAccordion() {
             </div>
             
             {/* Bloco 2: CORPO DO ACORDEÃO */}
-            <div className={`relative z-10 grid transition-all duration-500 ease-in-out ${aberto === 0 ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
+            <div id="servico-painel-0" role="region" aria-label={servicos[0].titulo} className={`relative z-10 grid transition-all duration-500 ease-in-out ${aberto === 0 ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
               <div className="overflow-hidden">
                 <div 
                   className="px-6 md:px-12 lg:px-16 pb-10 md:pb-16 pt-2 leading-relaxed text-sm md:text-base text-[#F4F1EA]/90"
@@ -167,7 +169,9 @@ export default function ServicoAccordion() {
               >
                 <button
                   onClick={() => setAberto(isActive ? null : i)}
-                  className="w-full flex justify-between items-center py-6 px-6 md:py-8 md:px-8 text-left transition-colors focus:outline-none cursor-pointer"
+                  aria-expanded={isActive}
+                  aria-controls={`servico-painel-${i}`}
+                  className="w-full flex justify-between items-center py-6 px-6 md:py-8 md:px-8 text-left transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4A7259] focus-visible:ring-offset-2 cursor-pointer"
                 >
                   <div className="flex items-center gap-4 md:gap-6">
                     <span className={`text-xl md:text-3xl font-light italic transition-colors ${isActive ? 'text-[#C97B52]' : 'text-[#4A7259]/30'}`} style={{ fontFamily: "'Playfair Display', serif" }}>
@@ -189,7 +193,7 @@ export default function ServicoAccordion() {
                   </div>
                 </button>
                 
-                <div className={`grid transition-all duration-300 ease-in-out ${isActive ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
+                <div id={`servico-painel-${i}`} role="region" aria-label={s.titulo} className={`grid transition-all duration-300 ease-in-out ${isActive ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
                   <div className="overflow-hidden">
                     <div 
                       className="px-6 md:px-8 pb-8 pt-0 leading-relaxed text-[#4A5848] text-sm md:text-base pl-[64px] md:pl-[84px]"

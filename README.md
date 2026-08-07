@@ -25,15 +25,15 @@ Link: https://ipapsicologia.com.br/
 
 A navegação é feita via **React Router** (`BrowserRouter`), com três rotas principais definidas em `App.tsx`:
 
-| Rota         | Componente  | Descrição                                              |
-|--------------|-------------|---------------------------------------------------------|
-| `/`          | `Home`      | Página institucional com todas as seções (scroll único) |
-| `/convenios` | `Convenios` | Listagem de convênios aceitos                            |
-| `/quiz`      | `Quiz`      | Autoavaliação interativa com resultado ponderado         |
+| Rota          | Componente   | Descrição                                              |
+|---------------|--------------|---------------------------------------------------------|
+| `/`           | `Home`       | Página institucional com todas as seções (scroll único) |
+| `/insurances` | `Insurances` | Listagem de convênios aceitos                            |
+| `/quiz`       | `Quiz`       | Autoavaliação interativa com resultado ponderado         |
 
-O componente `Layout` envolve todas as rotas e é responsável pelo cabeçalho (`Header`), rodapé (`Footer`) e pela lógica de navegação entre seções via scroll (`scrollTo`), incluindo o redirecionamento de volta para `/` quando o usuário está em `/convenios` ou `/quiz` e clica em um link de âncora. A rota `/quiz` renderiza em tela cheia, sem `Header`/`Footer`.
+O componente `Layout` envolve todas as rotas e é responsável pelo cabeçalho (`Header`), rodapé (`Footer`) e pela lógica de navegação entre seções via scroll (`scrollTo`), incluindo o redirecionamento de volta para `/` quando o usuário está em `/insurances` ou `/quiz` e clica em um link de âncora. A rota `/quiz` renderiza em tela cheia, sem `Header`/`Footer`.
 
-A `Home` é composta por seções independentes, renderizadas em sequência: `Hero`, bloco de estatísticas, `Depoimentos`, `Sobre`, `ServicoAccordion`, `Especialidades`, `Equipe`, `Localizacao` e `Contato`.
+A `Home` é composta por seções independentes, renderizadas em sequência: `Hero`, bloco de estatísticas, `Testimonials`, `About`, `ServiceAccordion`, `Specialties`, `Team`, `Location` e `Contact`.
 
 ## Funcionalidades
 
@@ -59,10 +59,10 @@ IPA_Psicologia/
 │   │   │   └── SectionTitle.tsx
 │   │   ├── pages/
 │   │   │   ├── Home.tsx        # Composição das seções institucionais
-│   │   │   ├── Convenios.tsx   # Página de convênios
+│   │   │   ├── Insurances.tsx  # Página de convênios
 │   │   │   ├── Quiz.tsx        # Página de autoavaliação
 │   │   │   └── quizData.ts     # Perguntas, opções e pesos do quiz
-│   │   └── sections/           # Seções da Home (Hero, Sobre, Equipe, Contato, etc.)
+│   │   └── sections/           # Seções da Home (Hero, About, Team, Contact, etc.)
 │   ├── assets/                 # Imagens, logos e ícones
 │   ├── styles/                 # Diretivas do Tailwind e CSS global
 │   └── main.tsx                # Entry point do React
@@ -100,4 +100,4 @@ npm run build
 
 Gera os arquivos estáticos otimizados no diretório `/dist`. Por ser uma aplicação 100% client-side, o build é compatível com qualquer provedor de hospedagem estática (Vercel, Netlify, S3, Hostinger, etc.).
 
-> **Observação:** por se tratar de uma SPA com rotas via `BrowserRouter`, o servidor de hospedagem deve ser configurado para redirecionar todas as rotas para `index.html` (fallback), evitando erros 404 em recarregamentos de páginas internas como `/convenios` ou `/quiz`.
+> **Observação:** por se tratar de uma SPA com rotas via `BrowserRouter`, o servidor de hospedagem deve ser configurado para redirecionar todas as rotas para `index.html` (fallback), evitando erros 404 em recarregamentos de páginas internas como `/insurances` ou `/quiz`.

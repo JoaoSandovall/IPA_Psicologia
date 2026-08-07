@@ -119,7 +119,7 @@ export default function Depoimentos() {
             ))}
           </div>
 
-          <div className="flex gap-5 pr-5">
+          <div className="flex gap-5 pr-5" aria-hidden="true">
             {avaliacoesGoogle.map((item) => (
               <a
                 key={`grp2-${item.id}`}
@@ -127,6 +127,7 @@ export default function Depoimentos() {
                 target="_blank"
                 rel="noopener noreferrer"
                 draggable={false}
+                tabIndex={-1}
                 className="flex flex-col shrink-0 w-[85vw] max-w-[340px] bg-white p-7 rounded-2xl shadow-[0_2px_12px_rgba(0,0,0,0.04)] border border-black/5 transition-transform duration-300 hover:-translate-y-1.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)] cursor-pointer"
               >
                 <div className="flex items-center gap-3.5 mb-4 pointer-events-none">

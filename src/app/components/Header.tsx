@@ -19,16 +19,39 @@ export default function Header({
 
   const isCentered = onConvenios || scrolled;
 
-  const navBg = onConvenios
-    ? "bg-[#161E1F] border-b border-white/5"
+  const bgColor = menuOpen
+    ? "#F7F5F1"
+    : onConvenios
+    ? "#161E1F"
     : scrolled
-    ? "bg-[#F4F1EA]/95 backdrop-blur-md shadow-sm border-b border-[#1A2118]/5"
-    : "bg-transparent";
+    ? "rgba(244, 241, 234, 0.95)"
+    : "rgba(244, 241, 234, 0)";
+
+  const borderColor = menuOpen
+    ? "rgba(0, 0, 0, 0.05)"
+    : onConvenios
+    ? "rgba(255, 255, 255, 0.05)"
+    : scrolled
+    ? "rgba(26, 33, 24, 0.05)"
+    : "rgba(26, 33, 24, 0)";
+
+  const boxShadowValue =
+    scrolled || menuOpen
+      ? "0 1px 3px 0 rgba(0, 0, 0, 0.05)"
+      : "0 1px 3px 0 rgba(0, 0, 0, 0)";
+
+  const blurValue = scrolled && !onConvenios && !menuOpen ? "blur(8px)" : "blur(0px)";
 
   return (
     <header
-        className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 will-change-transform ${menuOpen ? "bg-[#F7F5F1]" : navBg}`}
-        style={{ boxShadow: scrolled || menuOpen ? "0 1px 3px 0 rgba(0, 0, 0, 0.05)" : "none" }}
+        className="fixed inset-x-0 top-0 z-50 border-b will-change-transform transition-[background-color,border-color,box-shadow,backdrop-filter] duration-500 ease-out"
+        style={{
+          backgroundColor: bgColor,
+          borderColor: borderColor,
+          boxShadow: boxShadowValue,
+          backdropFilter: blurValue,
+          WebkitBackdropFilter: blurValue,
+        }}
       >
         <div className="flex h-20 w-full relative z-20">
           
@@ -46,7 +69,7 @@ export default function Header({
             </button>
             
             {/* Espaçador Dinâmico */}
-            <div className={`transition-all duration-700 ease-in-out ${isCentered ? "flex-1" : "w-[40px] xl:w-[140px]"}`} />
+            <div className="flex-1 transition-[max-width] duration-700 ease-in-out" style={{ maxWidth: isCentered ? "600px" : "clamp(40px, 4vw, 140px)" }} />
 
             <div className="flex items-center gap-4 xl:gap-8 shrink-0">
               {navLinks.filter(link => link.position === "left").map((link) => (
@@ -83,7 +106,7 @@ export default function Header({
             </div>
 
             {/* Espaçador Dinâmico */}
-            <div className={`transition-all duration-700 ease-in-out ${isCentered ? "flex-1" : "w-[40px] xl:w-[140px]"}`} />
+            <div className="flex-1 transition-[max-width] duration-700 ease-in-out" style={{ maxWidth: isCentered ? "600px" : "clamp(40px, 4vw, 140px)" }} />
 
             <button
               onClick={() => scrollTo("#contato")}
