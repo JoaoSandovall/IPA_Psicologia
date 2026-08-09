@@ -5,6 +5,8 @@ import Home from "./pages/Home";
 import Convenios from "./pages/Insurances";
 import Quiz from "./pages/Quiz";
 
+
+// teste
 export default function App() {
   
   const scrollTo = (href: string) => {
