@@ -1,3 +1,8 @@
+export const contactInfo = {
+  whatsappNumber: "5561992576460",
+  whatsappDefaultMessage: "Olá! Gostaria de agendar uma consulta.",
+};
+
 export const navLinks = [
   { label: "Sobre", href: "#sobre", isPage: false, position: "left" },
   { label: "Serviços", href: "#servicos", isPage: false, position: "left" },

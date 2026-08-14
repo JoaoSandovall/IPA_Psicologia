@@ -98,19 +98,15 @@ export default function Hero({ scrollTo }: HeroProps) {
           <div className="flex flex-col xl:flex-row gap-4">
             <button
               onClick={() => scrollTo("#contato")}
-              className="px-8 py-4 text-sm font-semibold rounded-sm transition-all duration-200 text-center whitespace-nowrap"
-              style={{ background: "#4A7259", color: "#F7F5F1", letterSpacing: "0.07em" }}
-              onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.background = "#3A5E47")}
-              onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.background = "#4A7259")}
+              className="px-8 py-4 text-sm font-semibold rounded-sm transition-colors duration-200 text-center whitespace-nowrap bg-[#4A7259] hover:bg-[#3A5E47]"
+              style={{ color: "#F7F5F1", letterSpacing: "0.07em" }}
             >
               Agendar Consulta
             </button>
             <button
               onClick={() => scrollTo("#equipe")}
-              className="px-8 py-4 text-sm font-semibold rounded-sm border transition-all duration-200 text-center whitespace-nowrap"
-              style={{ borderColor: "rgba(74,114,89,0.35)", color: "#4A7259", letterSpacing: "0.07em", background: "transparent" }}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = "rgba(74,114,89,0.07)"; (e.currentTarget as HTMLElement).style.borderColor = "#4A7259"; }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = "transparent"; (e.currentTarget as HTMLElement).style.borderColor = "rgba(74,114,89,0.35)"; }}
+              className="px-8 py-4 text-sm font-semibold rounded-sm border transition-colors duration-200 text-center whitespace-nowrap border-[rgba(74,114,89,0.35)] hover:border-[#4A7259] hover:bg-[rgba(74,114,89,0.07)]"
+              style={{ color: "#4A7259", letterSpacing: "0.07em", background: "transparent" }}
             >
               Conheça Nossa Equipe
             </button>

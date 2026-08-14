@@ -166,12 +166,22 @@ export default function Equipe() {
   const teamRef = useRef<HTMLDivElement>(null);
   const [teamScrollLeft, setTeamScrollLeft] = useState(false);
   const [teamScrollRight, setTeamScrollRight] = useState(true);
+  const scrollTicking = useRef(false);
 
   const updateTeamScroll = () => {
     const el = teamRef.current;
     if (!el) return;
     setTeamScrollLeft(el.scrollLeft > 4);
     setTeamScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 4);
+  };
+
+  const handleTeamScroll = () => {
+    if (scrollTicking.current) return;
+    scrollTicking.current = true;
+    requestAnimationFrame(() => {
+      updateTeamScroll();
+      scrollTicking.current = false;
+    });
   };
 
   useEffect(() => {
@@ -248,7 +258,7 @@ export default function Equipe() {
           ref={teamRef}
           className="overflow-x-auto pb-6"
           style={{ scrollbarWidth: "none" }}
-          onScroll={updateTeamScroll}
+          onScroll={handleTeamScroll}
           onMouseDown={onTeamMouseDown}
           onMouseMove={onTeamMouseMove}
           onMouseUp={onTeamMouseUp}

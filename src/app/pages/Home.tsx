@@ -10,6 +10,7 @@ import Team from "../sections/Team";
 import Testimonials from "../sections/Testimonials";
 import Location from "../sections/Location";
 import Contact from "../sections/Contact";
+import RevealOnScroll from "../components/RevealOnScroll";
 import { stats } from "../constants";
 
 interface HomeProps {
@@ -53,29 +54,45 @@ export default function Home({ scrollTo }: HomeProps) {
       {!onConvenios && (
         <main>
           <Hero scrollTo={scrollTo} />
-          
-          <div style={{ background: "#4A7259" }}>
-            <div className="max-w-7xl mx-auto px-6 lg:px-10 py-12 grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0 lg:divide-x divide-white/20">
-              {stats.map((s) => (
-                <div key={s.label} className="flex flex-col items-center text-center px-6">
-                  <span className="text-3xl lg:text-4xl font-semibold mb-1" style={{ fontFamily: "'Playfair Display', serif", color: "#C8D8C2" }}>
-                    {s.value}
-                  </span>
-                  <span className="text-xs tracking-widest uppercase" style={{ color: "rgba(200,216,194,0.6)" }}>
-                    {s.label}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
 
-          <Testimonials />
-          <About scrollTo={scrollTo} />
-          <ServiceAccordion />
-          <Specialties />
-          <Team />
-          <Location />
-          <Contact />
+          <RevealOnScroll>
+            <div style={{ background: "#4A7259" }}>
+              <div className="max-w-7xl mx-auto px-6 lg:px-10 py-12 grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0 lg:divide-x divide-white/20">
+                {stats.map((s) => (
+                  <div key={s.label} className="flex flex-col items-center text-center px-6">
+                    <span className="text-3xl lg:text-4xl font-semibold mb-1" style={{ fontFamily: "'Playfair Display', serif", color: "#C8D8C2" }}>
+                      {s.value}
+                    </span>
+                    <span className="text-xs tracking-widest uppercase" style={{ color: "rgba(200,216,194,0.6)" }}>
+                      {s.label}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </RevealOnScroll>
+
+          <RevealOnScroll>
+            <Testimonials />
+          </RevealOnScroll>
+          <RevealOnScroll>
+            <About scrollTo={scrollTo} />
+          </RevealOnScroll>
+          <RevealOnScroll>
+            <ServiceAccordion />
+          </RevealOnScroll>
+          <RevealOnScroll>
+            <Specialties />
+          </RevealOnScroll>
+          <RevealOnScroll>
+            <Team />
+          </RevealOnScroll>
+          <RevealOnScroll>
+            <Location />
+          </RevealOnScroll>
+          <RevealOnScroll>
+            <Contact />
+          </RevealOnScroll>
         </main>
       )}
 

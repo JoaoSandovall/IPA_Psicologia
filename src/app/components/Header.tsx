@@ -105,13 +105,14 @@ export default function Header({
               ))}
             </div>
 
-            {/* Espaçador Dinâmico */}
             <div className="flex-1 transition-[max-width] duration-700 ease-in-out" style={{ maxWidth: isCentered ? "600px" : "clamp(40px, 4vw, 140px)" }} />
 
             <button
               onClick={() => scrollTo("#contato")}
-              className={`px-5 xl:px-7 py-2.5 xl:py-3 text-[10px] xl:text-xs font-bold rounded-sm transition-all duration-300 uppercase tracking-widest whitespace-nowrap shrink-0 cursor-pointer ${
-                isCentered ? "bg-[#4A7259] text-[#F7F5F1] hover:bg-[#3A5E47]" : "bg-[#F7F5F1] text-[#4A7259] hover:bg-[#E5E1D9]"
+              className={`px-5 xl:px-7 py-2.5 xl:py-3 text-[10px] xl:text-xs font-bold rounded-sm transition-all duration-300 uppercase tracking-widest whitespace-nowrap shrink-0 cursor-pointer border ${
+                isCentered
+                  ? "bg-[#4A7259] text-[#F7F5F1] border-[#4A7259] hover:bg-[#3A5E47]"
+                  : "bg-transparent text-[#F7F5F1] border-[#F7F5F1]/40 hover:bg-[#F7F5F1]/10 hover:border-[#F7F5F1]/70"
               }`}
             >
               Agendar Consulta

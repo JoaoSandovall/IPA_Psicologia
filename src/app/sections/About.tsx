@@ -46,10 +46,8 @@ export default function Sobre({ scrollTo }: SobreProps) {
 
         <div className="relative mt-8 lg:mt-0">
           
-          {/* BALÃO FLUTUANTE DE EXPERIÊNCIA (AGORA MAIS COMPACTO E ELEGANTE) */}
           <div className="absolute bottom-10 md:bottom-12 -left-3 md:-left-8 lg:-left-12 z-20 bg-white py-3 px-5 md:py-4 md:px-6 rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] border border-black/5 flex items-center gap-4 md:gap-5">
             
-            {/* Número com o "+" estilizado no topo */}
             <div className="flex items-start text-[#4A7259]">
               <span className="text-lg md:text-xl font-medium mt-0.5 md:mt-1 mr-0.5">+</span>
               <span 

@@ -51,7 +51,7 @@ const servicos: Servico[] = [
 ];
 
 export default function ServiceAccordion() {
-  const [aberto, setAberto] = useState<number | null>(0);
+  const [aberto, setAberto] = useState<number | null>(null);
 
   return (
     <section id="servicos" className="relative py-16 lg:py-20 bg-[#F4F1EA] text-[#1A2118] overflow-hidden">
@@ -125,7 +125,6 @@ export default function ServiceAccordion() {
               </div>
               </button>
 
-              {/* A FOTO */}
               <div className="relative w-full h-[250px] md:absolute md:top-0 md:right-0 md:w-[40%] md:h-full overflow-hidden pointer-events-none z-0 bg-[#4A7259]">
                 <img 
                   src={avaliacaoclinica} 
