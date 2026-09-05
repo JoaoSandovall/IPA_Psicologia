@@ -21,7 +21,7 @@ export default function Hero({ scrollTo }: HeroProps) {
           </div>
 
           <div className="relative z-10 text-center text-[#F7F5F1]">
-            <h2 className="text-7xl md:text-8xl mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>IPA</h2>
+            <div className="text-7xl md:text-8xl mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>IPA</div>
             <p className="text-[9px] md:text-xs uppercase tracking-[0.25em] opacity-80">Instituto de Psicologia Aplicada</p>
           </div>
 

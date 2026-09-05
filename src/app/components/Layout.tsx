@@ -56,20 +56,28 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="relative w-full overflow-x-hidden bg-[#F4F1EA]">
-      <Header 
-        menuOpen={menuOpen} 
-        setMenuOpen={setMenuOpen} 
-        scrolled={scrolled} 
-        onConvenios={onConvenios}
+      {/* Link de pular para o conteúdo escondido visualmente, visível apenas no foco do teclado */}
+      <a 
+        href="#conteudo-principal" 
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[9999] focus:px-5 focus:py-3 focus:bg-[#4A7259] focus:text-[#F7F5F1] focus:rounded-sm focus:font-bold focus:outline-none focus:ring-2 focus:ring-[#C97B52] focus:ring-offset-2 focus:tracking-widest focus:uppercase focus:text-xs"
+      >
+        Pular para o conteúdo principal
+      </a>
+
+      <Header
+         menuOpen={menuOpen}
+         setMenuOpen={setMenuOpen}
+         scrolled={scrolled}
+         onConvenios={onConvenios}
         goHome={goHome}
         scrollTo={scrollTo}
         navLinks={navLinks}
       />
-
-      <main>
+      
+      <main id="conteudo-principal">
         {children}
       </main>
-
+      
       {!onConvenios && (
         <Footer navLinks={navLinks} scrollTo={scrollTo} />
       )}

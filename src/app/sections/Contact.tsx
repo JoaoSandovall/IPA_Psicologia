@@ -39,7 +39,7 @@ export default function Contato() {
           Agende pelo WhatsApp
         </a>
 
-        <p className="mt-6 text-xs" style={{ color: "#9AA89A", fontWeight: 300 }}>
+        <p className="mt-6 text-xs" style={{ color: "#6A7368", fontWeight: 300 }}>
           Nossa equipe responderá o mais breve possível.
         </p>
       </div>

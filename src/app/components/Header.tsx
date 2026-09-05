@@ -139,6 +139,7 @@ export default function Header({
                 size={26}
                 duration={0.4}
                 color={menuOpen || (scrolled && !onConvenios) ? "#1A2118" : "#F7F5F1"}
+                label={menuOpen ? "Fechar menu" : "Abrir menu"}
               />
             </div>
           </div>

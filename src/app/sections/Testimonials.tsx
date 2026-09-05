@@ -1,68 +1,10 @@
-import { Star } from "lucide-react";
+import { useState } from "react";
+import { Star, Pause, Play } from "lucide-react";
 import SectionTitle from '../components/SectionTitle';
-
-const linkGoogleMaps = "https://www.google.com/maps/place/Instituto+de+Psicologia+Aplicada+-+IPA/@-15.7328445,-47.8997995,17z/data=!3m1!5s0x935a39926d1aaacb:0x5b42fe4c59fe1305!4m8!3m7!1s0x935a39d82ca80417:0xdafe33d521fa3da7!8m2!3d-15.7328445!4d-47.8972246!9m1!1b1!16s%2Fg%2F11h_446cjk?entry=ttu&g_ep=EgoyMDI2MDYxNi4wIKXMDSoASAFQAw%3D%3D";
-
-  const avaliacoesGoogle = [
-    {
-      id: 1,
-      nome: "Daniel e Samantha Adv",
-      tempo: "Há 1 mês",
-      texto: "Ótimos profissionais, estou me sentindo muito bem com meu tratamento, minha saúde mental melhorou muito, obrigado.",
-      nota: 5,
-    },
-    {
-      id: 2,
-      nome: "Rogeis Santos",
-      tempo: "Há 7 meses",
-      texto: "Nestes 3 anos que faço acompanhamento no IPA só tenho a agradecer pela experiência que tenho na clínica.",
-      nota: 5,
-    },
-    {
-      id: 3,
-      nome: "Glai Eres",
-      tempo: "Há 1 ano",
-      texto: "Eu tinha um pé atrás em fazer terapia.. até conhecer o Instituto de Psicologia Aplicada - IPA... de primeira já me conectei com o ambiente, que é leve, limpo, tranquilo, temperatura agradável.",
-      nota: 5,
-    },
-    {
-      id: 4,
-      nome: "Ana Carolina Vargas",
-      tempo: "Há 1 ano",
-      texto: "Sou atendida há quase dois anos e não troco por outra. Meu quadro tem melhorado muito. A clínica também tem uma estrutura ótima e é bem localizada. Recomendo!",
-      nota: 5,
-    },
-    {
-      id: 5,
-      nome: "Paula Mendonca",
-      tempo: "Há 1 ano",
-      texto: "A minha experiência foi e é maravilhosa. O trabalho é excepcional! Muito humana, sensata, inteligente e dedicada. Recomendo muito a profissional e a instituição!",
-      nota: 5,
-    },
-    {
-      id: 6,
-      nome: "Iago Carvalho",
-      tempo: "Há 1 ano",
-      texto: "Ambiente acolhedor e profissionalismo exceptional. Foi essencial na busca para que eu me encontrasse novamente e resolvesse minhas questões. Recomendo demais!",
-      nota: 5,
-    },
-    {
-      id: 7,
-      nome: "Arialba Siufi",
-      tempo: "Há 1 ano",
-      texto: "Gostei muito do local e recomendo. É um ambiente acolhedor e a profissional que me atende é ótima! Super atenciosa e pontual! Está me ajudando muito no meu processo de evolução.",
-      nota: 5,
-    },
-    {
-      id: 8,
-      nome: "Dark Ane Mendes",
-      tempo: "Há 1 ano",
-      texto: "Excelente clínica, com profissionais gabaritados no mercado e bem humanos nos atendimentos. Recomendo.",
-      nota: 5,
-    }
-  ];
+import { avaliacoesGoogle, linkGoogleMaps } from './testimonialsData';
 
 export default function Depoimentos() {
+  const [isPaused, setIsPaused] = useState(false);
 
   return (
     <section id="depoimentos" style={{ background: "#F4F1EA" }} className="py-12 lg:py-16 overflow-hidden relative">
@@ -91,7 +33,10 @@ export default function Depoimentos() {
         <div className="absolute left-0 top-0 bottom-0 w-12 lg:w-32 bg-gradient-to-r from-[#F4F1EA] to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-12 lg:w-32 bg-gradient-to-l from-[#F4F1EA] to-transparent z-10 pointer-events-none" />
 
-        <div className="flex w-max animate-marquee justify-center">
+        <div 
+  className="flex w-max animate-marquee justify-center"
+  style={{ animationPlayState: isPaused ? 'paused' : undefined }}
+        >
           <div className="flex gap-5 pr-5">
             {avaliacoesGoogle.map((item) => (
               <a
@@ -148,6 +93,20 @@ export default function Depoimentos() {
           </div>
         </div>
       </div>
+      
+      {/* Controles de Acessibilidade do Marquee */}
+      <div className="flex justify-center mt-6 lg:mt-8 relative z-20">
+        <button
+          onClick={() => setIsPaused(!isPaused)}
+          aria-label={isPaused ? "Retomar rolagem dos depoimentos" : "Pausar rolagem dos depoimentos"}
+          className="flex items-center gap-2 px-4 py-2 text-[10px] md:text-xs font-bold uppercase tracking-widest rounded-full border transition-colors hover:bg-black/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4A7259]"
+          style={{ borderColor: "rgba(26,33,24,0.1)", color: "#4A5848" }}
+        >
+          {isPaused ? <Play size={14} /> : <Pause size={14} />}
+          <span className="mt-0.5">{isPaused ? "Retomar" : "Pausar"}</span>
+        </button>
+      </div>
+
     </section>
   );
 }

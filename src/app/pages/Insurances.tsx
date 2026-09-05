@@ -105,6 +105,7 @@ export default function ConveniosSection({ onBack }: ConveniosSectionProps) {
                 <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-[#F0EDE8]/40 group-focus-within:text-[#F0EDE8] transition-colors duration-300" />
                 <input
                   type="text"
+                  aria-label="Buscar convênio"
                   placeholder="Buscar convênio..."
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
